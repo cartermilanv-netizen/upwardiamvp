@@ -1,0 +1,3141 @@
+{
+  "schemaVersion": 1,
+  "programs": [
+    {
+      "id": "la-county-dpss-calfresh",
+      "publicationStatus": "unpublished",
+      "humanReviewStatus": "extracted_pending_review",
+      "name": {
+        "value": "CalFresh",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page title and heading are CalFresh. The first sentence says it was formerly known as Food Stamps."
+        }
+      },
+      "administeringOrganization": {
+        "value": "Los Angeles County Department of Public Social Services (DPSS)",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page tells people to apply at a Department of Public Social Services (DPSS) district office and the site is the LA County DPSS site."
+        }
+      },
+      "state": {
+        "value": "California",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says SSI/SSP recipients in California may be eligible, and it describes CalFresh as federally funded with a separate California Food Assistance Program."
+        }
+      },
+      "county": {
+        "value": "Los Angeles County",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page is on the LA County DPSS site and points people to LA County offices and the LA County hotspot locator."
+        }
+      },
+      "city": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "serviceArea": {
+        "value": "LA County DPSS takes applications online, by phone, at district offices and outreach sites, by drop box, by mail, and by fax. The page does not state a ZIP-code residency rule.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Application channels are listed on the page. A residency or ZIP rule is not stated on the fetched pages."
+        }
+      },
+      "category": {
+        "value": "food",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page describes help buying food."
+        }
+      },
+      "subcategory": {
+        "value": "CalFresh food benefits",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page is the CalFresh program page under Food and Nutrition."
+        }
+      },
+      "description": {
+        "value": "CalFresh, formerly Food Stamps, helps low-income households increase their food-buying power. Benefits are issued on an EBT card.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Opening description on the CalFresh page."
+        }
+      },
+      "services": {
+        "value": [
+          "EBT benefits that can be used in grocery stores and participating farmers markets",
+          "Prepared meals from participating restaurants for homeless, elderly, or disabled persons",
+          "Expedited CalFresh when the page's three expedited tests are met"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Those three uses are stated on the CalFresh page. Benefit amounts other than the stated minimum were not on the page."
+        }
+      },
+      "applicationInstructions": {
+        "value": "Apply online at https://benefitscal.com, by phone at (866) 613-3777, in person at a DPSS district office or outreach site, by drop box at a district office, by mail to a local DPSS district office, or by fax at (310) 215-8220. A filing must include, at minimum, the applicant's full name, a household address unless the household is homeless, and a signature from the head of household, any adult household member, an authorized representative, or a responsible household member. The page encourages applicants to disclose immigration status on the application or in the interview. The BenefitsCal site itself was not retrieved.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Minimum filing items and the listed submission channels are on the CalFresh page."
+        }
+      },
+      "officialUrls": {
+        "value": [
+          "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "https://dpss.lacounty.gov/content/dpss/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "https://benefitscal.com/"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "This page's address, the forms button href (/content/dpss/en/food/calfresh/calfresh-applications-and-forms0.html), and the printed BenefitsCal URL. BenefitsCal content was not retrieved."
+        }
+      },
+      "submissionMethods": {
+        "value": [
+          "online_portal",
+          "phone",
+          "in_person",
+          "drop_box",
+          "outreach_partner",
+          "mail",
+          "fax"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The CalFresh page lists online BenefitsCal, phone, district office or outreach, drop box, mail, and fax."
+        }
+      },
+      "openingStatus": {
+        "value": "The page gives current ways to apply and does not say applications are closed.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Apply sections are written in the present tense. No opening or closing date for the program is stated."
+        }
+      },
+      "closingStatus": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "waitlistStatus": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactPhone": {
+        "value": "(866) 613-3777",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Customer Service Center number on the CalFresh page. Expedited callers are told to press option 2, then option 2 again."
+        }
+      },
+      "contactEmail": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactAddress": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactHours": {
+        "value": "Monday through Friday, 7:30 a.m. to 5:30 p.m. Closed weekends and County holidays.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Customer Service Center hours on the CalFresh page."
+        }
+      },
+      "accessibility": {
+        "value": "The English page links a Spanish version. People without internet are pointed to the LA County hotspot locator. The County accessibility policy page was not fetched.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Spanish language link and the hotspot-locator paragraph on the CalFresh page."
+        }
+      }
+    },
+    {
+      "id": "california-wic",
+      "publicationStatus": "unpublished",
+      "humanReviewStatus": "extracted_pending_review",
+      "name": {
+        "value": "California WIC",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page calls it the California Women, Infants and Children (WIC) program and the California WIC Program."
+        }
+      },
+      "administeringOrganization": {
+        "value": "California Department of Public Health, Women, Infants and Children Program",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The footer names the California Department of Public Health, Women, Infants and Children Program."
+        }
+      },
+      "state": {
+        "value": "California",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The how-to-apply page says a person may qualify if they live in California."
+        }
+      },
+      "county": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "city": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "serviceArea": {
+        "value": "California. Local offices are found with the on-page office search or by calling 1-800-852-5770. The fetched pages do not list ZIP codes.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says WIC has local offices all over California and offers a city or ZIP search. The search was not run."
+        }
+      },
+      "category": {
+        "value": "food",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page describes a food and nutrition program."
+        }
+      },
+      "subcategory": {
+        "value": "Nutrition program for pregnant people, infants, and children under 5",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The who-is-WIC-for section names pregnancy, postpartum, breastfeeding or chestfeeding, and a child under age 5."
+        }
+      },
+      "description": {
+        "value": "California WIC is a food and nutrition program for growing families. It provides nutrition education, breastfeeding and chestfeeding support, benefits to buy healthy foods, and referrals.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Why choose WIC section."
+        }
+      },
+      "services": {
+        "value": [
+          "Nutrition education for mothers and children",
+          "Breastfeeding and chestfeeding support",
+          "Benefits to buy listed healthy foods",
+          "Referrals to health care and other community services"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The services list on the how-to-apply page. Food-package amounts were not stated."
+        }
+      },
+      "applicationInstructions": {
+        "value": "Find a local office or call 1-800-852-5770 and set an appointment. The page says only local WIC staff can officially confirm that someone qualifies. Bring the items staff may ask for to the first appointment. No online application form was on this page.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Steps 1 through 3 on the how-to-apply page."
+        }
+      },
+      "officialUrls": {
+        "value": [
+          "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "https://myfamily.wic.ca.gov/Home/AmIEligible"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The how-to-apply page is the application guidance. The eligibility page is linked from it and was fetched separately."
+        }
+      },
+      "submissionMethods": {
+        "value": [
+          "phone",
+          "in_person"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says to set an appointment at a local office or call the toll-free number. It does not list an online application portal."
+        }
+      },
+      "openingStatus": {
+        "value": "As of the page text retrieved on 2026-10-20, WIC offices are open and WIC continues to serve and enroll families. The same banner says a continuing resolution passed on September 2, 2026 would keep the federal government open through December 11, 2026.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Federal budget banner on the how-to-apply page. The eligibility page repeats it."
+        }
+      },
+      "closingStatus": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "waitlistStatus": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactPhone": {
+        "value": "1-800-852-5770",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Toll-free number in the contact block."
+        }
+      },
+      "contactEmail": {
+        "value": "WIC@cdph.ca.gov",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Email in the contact block."
+        }
+      },
+      "contactAddress": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactHours": {
+        "value": "Monday to Friday, 8 a.m. to 5 p.m.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Hours printed with the phone number."
+        }
+      },
+      "accessibility": {
+        "value": "The site offers Google Translate and says the translation may be inexact and is not guaranteed by CDPH. Brochures and a rights-and-responsibilities form are linked in additional languages. Those PDFs were not opened.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Translation disclaimer and additional-language links on the how-to-apply page."
+        }
+      }
+    },
+    {
+      "id": "medi-cal",
+      "publicationStatus": "unpublished",
+      "humanReviewStatus": "extracted_pending_review",
+      "name": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "administeringOrganization": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "state": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "county": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "city": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "serviceArea": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "category": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "subcategory": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "description": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "services": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "applicationInstructions": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "officialUrls": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "submissionMethods": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "openingStatus": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "closingStatus": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "waitlistStatus": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactPhone": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactEmail": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactAddress": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactHours": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "accessibility": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "santa-monica-below-market-housing",
+      "publicationStatus": "unpublished",
+      "humanReviewStatus": "extracted_pending_review",
+      "name": {
+        "value": "Santa Monica Below Market Housing",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The visible heading welcomes people to the City of Santa Monica's Below Market Housing Program. The browser title was OpenCaseware, not the program name."
+        }
+      },
+      "administeringOrganization": {
+        "value": "City of Santa Monica Housing Division",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page states the City of Santa Monica Housing Division's mission and then describes the Below Market Housing program."
+        }
+      },
+      "state": {
+        "value": "California",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The stay-connected address ends in Santa Monica, CA 90401."
+        }
+      },
+      "county": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "city": {
+        "value": "Santa Monica",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The program name and the address name Santa Monica."
+        }
+      },
+      "serviceArea": {
+        "value": "The waitlist is open to households that meet the listed income limits. Priority goes to households that live or work in Santa Monica, with a further priority for certain displacement. The page does not say applicants must already live in Santa Monica.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Who Can Apply, and the three priority categories."
+        }
+      },
+      "category": {
+        "value": "housing",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page describes apartments at lower than market rent."
+        }
+      },
+      "subcategory": {
+        "value": "Below-market rental waitlist",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says this is not a rental subsidy. It offers private-sector apartments below market rate through a waitlist."
+        }
+      },
+      "description": {
+        "value": "Below Market Housing offers Santa Monica residents and workers apartments in the private sector at a rent lower than market rate, for a range of family sizes and incomes. It is not a rental subsidy. The City is partnering with Community Corporation of Santa Monica, and the program incorporates the former AHPP program and Community Corporation vacancies.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Program introduction and the Community Corporation paragraph."
+        }
+      },
+      "services": {
+        "value": [
+          "A waitlist for below-market apartments",
+          "Referral of selected applicants to a property owner",
+          "A combined list with Community Corporation of Santa Monica vacancies"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Those outcomes are described on the homepage. Rent amounts were not listed."
+        }
+      },
+      "applicationInstructions": {
+        "value": "Households that meet the listed conditions can apply for the BMH waitlist. The Sign Up button opens account registration. Waitlist status is checked by logging in and opening Step 3.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Introduction, the Sign Up link, and the how-to-check-status answer. Account questions are recorded only from the registration page."
+        }
+      },
+      "officialUrls": {
+        "value": [
+          "https://santamonicahousing.org/",
+          "https://santamonicahousing.org/users/sign_up"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The homepage is the public FAQ. Sign Up points to /users/sign_up, which was fetched and is an account form."
+        }
+      },
+      "submissionMethods": {
+        "value": [
+          "online_portal"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page offers Sign Up on this website. It does not list mail, phone, or in-person filing."
+        }
+      },
+      "openingStatus": {
+        "value": "The homepage says the waitlist is open.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Italic line under the welcome heading: The Waitlist is Open. This is a point-in-time statement."
+        }
+      },
+      "closingStatus": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "waitlistStatus": {
+        "value": "The waitlist is open. Applicants are contacted when a vacancy fits their income and household composition. Status is checked by logging in and opening Step 3.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Welcome line, the introduction, and the how-to-check-status answer."
+        }
+      },
+      "contactPhone": {
+        "value": "310-458-8411",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Printed in the Stay Connected block with the city address. The page does not label it as the Below Market Housing office line."
+        }
+      },
+      "contactEmail": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "contactAddress": {
+        "value": "1685 Main Street, Santa Monica, CA 90401",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Stay Connected address for the City of Santa Monica. Not labeled as a housing office."
+        }
+      },
+      "contactHours": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "accessibility": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-dpss-calfresh",
+      "programIds": [
+        "la-county-dpss-calfresh"
+      ],
+      "url": "https://dpss.lacounty.gov/en/food/calfresh.html",
+      "role": "program_page",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "https://dpss.lacounty.gov/robots.txt allows all user agents and names a sitemap. The sitemap was not downloaded.",
+      "termsNote": "Footer links County disclaimer and user rights. Those terms pages were fetched separately. They reserve copyright and do not grant a license to site contents. They do not mention robots or scraping.",
+      "apiOrFeed": "No public program API or feed was linked from robots.txt or this page.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "English CalFresh page returned a 30,093-byte HTML document titled CalFresh."
+    },
+    {
+      "id": "src-dpss-forms",
+      "programIds": [
+        "la-county-dpss-calfresh"
+      ],
+      "url": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+      "role": "forms_directory",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Same DPSS robots.txt as the CalFresh page. Allow: /.",
+      "termsNote": "Same County disclaimer and user-rights links as the CalFresh page.",
+      "apiOrFeed": "No public program API or feed was linked from this directory.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Directory of CalFresh form links, fetched at the seed-list URL. The CalFresh page button points at the same filename under /content/dpss/. PDF files were not downloaded. Question text inside the PDFs was not extracted."
+    },
+    {
+      "id": "src-benefitscal",
+      "programIds": [
+        "la-county-dpss-calfresh"
+      ],
+      "url": "https://benefitscal.com/",
+      "role": "application_portal",
+      "fetchOutcome": "blocked",
+      "httpStatus": 403,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "https://benefitscal.com/robots.txt returned HTTP 403 from CloudFront. Robots rules could not be read.",
+      "termsNote": "Terms could not be read because the homepage was blocked.",
+      "apiOrFeed": "No public catalog API was confirmed. The 403 response named application backends in a content-security policy. Those endpoints were not called.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Homepage and robots.txt both returned a CloudFront 403. No BenefitsCal page content was retrieved. The URL is still recorded because the DPSS pages name it."
+    },
+    {
+      "id": "src-lacounty-user-rights",
+      "programIds": [
+        "la-county-dpss-calfresh"
+      ],
+      "url": "https://lacounty.gov/user-rights/",
+      "role": "terms",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Not the program host. Fetched only because the DPSS footer links it.",
+      "termsNote": "User Rights say website contents are owned by the County or its licensors, access does not grant a license, and the County disclaims accuracy and completeness. No robot or scraping clause was visible.",
+      "apiOrFeed": "Not an API.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Terms check only. No eligibility or form field uses this page as provenance."
+    },
+    {
+      "id": "src-lacounty-disclaimer",
+      "programIds": [
+        "la-county-dpss-calfresh"
+      ],
+      "url": "https://lacounty.gov/disclaimer/",
+      "role": "terms",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Not the program host. Fetched only because the DPSS footer links it.",
+      "termsNote": "The visible policy is the County website advertising and hotlink policy. It does not state a robot ban.",
+      "apiOrFeed": "Not an API.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Terms check only. No eligibility or form field uses this page as provenance."
+    },
+    {
+      "id": "src-wic-how",
+      "programIds": [
+        "california-wic"
+      ],
+      "url": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+      "role": "program_page",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "https://myfamily.wic.ca.gov/robots.txt disallows /NoIndex/ and /training/ and allows /. This path is allowed.",
+      "termsNote": "The page shows a Google Translate accuracy disclaimer and a 2024 CDPH WIC copyright line. No terms page titled terms of use was linked from the article. No robot ban was visible.",
+      "apiOrFeed": "No official API or feed was linked from robots.txt or this page. The office search box was not used.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Page title: How Can I Get WIC? Page last updated line: April 23, 2026. Brochure PDFs were not downloaded."
+    },
+    {
+      "id": "src-wic-eligible",
+      "programIds": [
+        "california-wic"
+      ],
+      "url": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+      "role": "eligibility_page",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Same WIC robots.txt. This path is allowed.",
+      "termsNote": "Same Google Translate disclaimer and copyright line as the how-to-apply page.",
+      "apiOrFeed": "No official API or feed was linked. The income chart is in the page, not a separate feed.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Page title: Am I Eligible? Income chart is labeled 185% Federal Poverty Level, effective May 1, 2026 through June 30, 2027. Page last updated line: April 23, 2026."
+    },
+    {
+      "id": "src-wic-data-sharing",
+      "programIds": [
+        "california-wic"
+      ],
+      "url": "https://myfamily.wic.ca.gov/Home/DataSharing",
+      "role": "terms",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Same WIC robots.txt. This path is allowed. Fetched to read the privacy notice linked from the WIC pages.",
+      "termsNote": "Says WIC must protect information and needs written approval before sharing outside WIC except as permitted by law. Federal rules allow sharing with approved government programs. This is a participant-privacy notice, not a license to republish the website.",
+      "apiOrFeed": "Not an API.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Terms check. Page last updated line: November 15, 2024. Not used as an eligibility source."
+    },
+    {
+      "id": "src-dhcs-medi-cal",
+      "programIds": [
+        "medi-cal"
+      ],
+      "url": "https://www.dhcs.ca.gov/Medi-Cal/",
+      "role": "program_page",
+      "fetchOutcome": "blocked",
+      "httpStatus": 200,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "https://www.dhcs.ca.gov/robots.txt returned a 212-byte Incapsula interstitial with a robots noindex meta tag, not a robots.txt policy.",
+      "termsNote": "Terms were not visible. The interstitial was not bypassed.",
+      "apiOrFeed": "No API or feed could be confirmed.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "HTTP 200 body was the Incapsula challenge, 212 bytes, not a Medi-Cal article. No Medi-Cal sentence was retrieved. Do not treat the status code as a successful page retrieval."
+    },
+    {
+      "id": "src-sm-home",
+      "programIds": [
+        "santa-monica-below-market-housing"
+      ],
+      "url": "https://santamonicahousing.org/",
+      "role": "program_page",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "https://santamonicahousing.org/robots.txt is 29 bytes and only comments out User-agent and Disallow. It does not disallow /.",
+      "termsNote": "No terms-of-use or privacy link was visible on this page. The footer copyright line reads OpenCaseware 2026.",
+      "apiOrFeed": "No official API or feed was linked.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Public FAQ was readable without signing in. Browser title was OpenCaseware. The visible heading is the Below Market Housing welcome. Login and owner access-code flows were not used."
+    },
+    {
+      "id": "src-sm-signup",
+      "programIds": [
+        "santa-monica-below-market-housing"
+      ],
+      "url": "https://santamonicahousing.org/users/sign_up",
+      "role": "account_signup",
+      "fetchOutcome": "fetched",
+      "httpStatus": 200,
+      "contentRetrieved": true,
+      "retrievedOn": "2026-10-20",
+      "robots": "Same commented robots.txt. This path is not disallowed.",
+      "termsNote": "No terms link was visible. The form posts to /users and includes a CAPTCHA script. The form was not submitted and the CAPTCHA was not solved.",
+      "apiOrFeed": "No official API or feed was linked. This HTML form is an account registration page.",
+      "reviewStatus": "extracted_pending_review",
+      "notes": "Visible labels are First Name, Last Name, Email, Create Password, and Confirm Password. Password text says at least 6 characters. Inputs have no HTML required attribute. The waitlist application behind an account was not opened."
+    },
+    {
+      "id": "src-sm-hhs",
+      "programIds": [],
+      "url": "https://www.santamonica.gov/departments/housing-and-human-services",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "Santa Monica Housing and Human Services. Not fetched."
+    },
+    {
+      "id": "src-la-city-housing",
+      "programIds": [],
+      "url": "https://housing.lacity.gov/",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "City of Los Angeles Housing. Not fetched."
+    },
+    {
+      "id": "src-la-city-housing-registry",
+      "programIds": [],
+      "url": "https://housing.lacity.gov/housing/search-for-housing",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "LA City housing search. Not fetched."
+    },
+    {
+      "id": "src-lacounty-housing",
+      "programIds": [],
+      "url": "https://housing.lacounty.gov/",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "LA County Housing Resource Center. Not fetched."
+    },
+    {
+      "id": "src-lahsa",
+      "programIds": [],
+      "url": "https://www.lahsa.org/get-help",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "LAHSA get-help page. Not fetched."
+    },
+    {
+      "id": "src-dpss-home",
+      "programIds": [],
+      "url": "https://dpss.lacounty.gov/",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "LA County DPSS home. Not fetched. The two CalFresh paths were fetched separately."
+    },
+    {
+      "id": "src-211-la",
+      "programIds": [],
+      "url": "https://211la.org/",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "211 LA. Not fetched. No partner API was requested."
+    },
+    {
+      "id": "src-ladwp",
+      "programIds": [],
+      "url": "https://www.ladwp.com/",
+      "role": "discovery_seed",
+      "fetchOutcome": "not_fetched",
+      "httpStatus": null,
+      "contentRetrieved": false,
+      "retrievedOn": null,
+      "robots": "Not checked in this pass.",
+      "termsNote": "Not checked in this pass.",
+      "apiOrFeed": "Not checked in this pass.",
+      "reviewStatus": "not_yet_reviewed",
+      "notes": "LADWP. Not fetched."
+    }
+  ],
+  "eligibilityRules": [
+    {
+      "id": "rule-calfresh-general",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "The page says a person generally may be eligible if they receive CalWORKs or General Relief, have low or no income, have limited property, receive SSI/SSP, are a U.S. citizen or a legal resident, or are an immigrant who meets certain criteria.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Basic Eligibility bullets. They are introduced with 'generally' and do not include dollar limits."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "The page says 'generally' and 'may'. It does not say these bullets alone approve an application."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The word generally introduces the list."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Income level, property, receipt of CalWORKs, General Relief, or SSI/SSP, and citizenship or immigration criteria.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Those are the bullets. Numeric income and property limits are not on this page."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-ssi",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "Effective June 1, 2019, SSI/SSP recipients in California are also eligible for CalFresh if all other eligibility requirements are met.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Sentence in the opening section."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "All other eligibility requirements still have to be met."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence includes that proviso."
+        }
+      },
+      "effectiveFrom": {
+        "value": "2019-06-01",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says effective June 1, 2019."
+        }
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Receipt of SSI/SSP in California.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence names SSI/SSP recipients."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-expedited",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "Expedited CalFresh may be available within three days, or the same day the application is received, if one of three tests is met: combined gross monthly income and cash resources are less than monthly rent or mortgage and utility costs; or the household has less than $150 in gross monthly income and cash resources of $100 or less; or the household includes a migrant or seasonal farmworker who is destitute and cash resources are $100 or less.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Expedited CalFresh section, including the three tests and the three-day timing."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "Identity must be verified. A photo ID is not required.",
+          "An interview is required. It may be the same day or a telephone interview within three days."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The interview and identity sentences follow the three tests."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": "Less than $150 gross monthly income with cash resources of $100 or less; or cash resources of $100 or less for a destitute migrant or seasonal farmworker; or gross monthly income plus cash resources below rent or mortgage plus utilities.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The three dollar and cost tests are printed in the expedited section. They are not the regular income limit."
+        }
+      },
+      "householdFactor": {
+        "value": "Gross monthly income, cash resources, shelter and utility costs, or migrant or seasonal farmworker status.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Those are the factors in the three tests."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-cfap",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "If someone does not meet federal eligibility solely because of immigration status, the page says they may be eligible for the California Food Assistance Program. It says CFAP benefits are the same as CalFresh and the funding source differs.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "CFAP paragraph on the CalFresh page. The linked CFAP information page was not fetched, so CFAP is not a separate seeded program."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "The page limits this path to people who miss federal CalFresh solely because of immigration status."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence says solely due to their immigration status."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Immigration status that is the only bar to federal CalFresh.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The CFAP paragraph."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-tcvap",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "The page says T-Visa and U-Visa non-citizens and VAWA self-petitioners are not required to provide a Social Security number to apply for CalFresh, and that they must still meet other CalFresh requirements such as income. It also describes TCVAP cash, food, employment, and health assistance for eligible non-citizen victims of trafficking who have applied or intend to apply for a T-Visa, and victims of domestic violence and other serious crimes who have applied for a U-Visa.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "TCVAP Criteria paragraph. No further TCVAP page was fetched."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "Other CalFresh eligibility requirements, such as income, still apply."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The paragraph says they must meet other requirements such as income."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "T-Visa, U-Visa, or VAWA self-petition status, and income.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The TCVAP paragraph names those statuses."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-work",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "Beginning June 1, 2026, some adults ages 18 through 64 who get CalFresh may need to meet work requirements to keep benefits for more than 3 months in a 36-month period, unless they are exempt.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "CalFresh Work Rules paragraph. The linked work-rules and work-requirements pages were not fetched."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "The page says unless they are exempt. The exemption list is on a linked page that was not fetched."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence includes unless they are exempt and points to another page for exemptions."
+        }
+      },
+      "effectiveFrom": {
+        "value": "2026-06-01",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The paragraph says beginning June 1, 2026."
+        }
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": "More than 3 months of benefits in a 36-month period for some adults ages 18 through 64.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The time limit in the work-rules paragraph. It is not an income threshold."
+        }
+      },
+      "householdFactor": {
+        "value": "Age 18 through 64 and exemption status.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The paragraph names that age range."
+        }
+      }
+    },
+    {
+      "id": "rule-calfresh-cf485-household",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "The elderly simplified application, CF 485, is only for a household in which everyone is at least 60 or older and/or disabled, no one gets income from work, and the household purchases and prepares food together.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "CF 485 introduction on the forms directory. The PDF was not opened."
+        }
+      },
+      "exceptions": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": "For this form only: everyone is at least 60 or older and/or disabled, no one has income from work, and they purchase and prepare food together.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The three conditions are printed above the CF 485 links. This is a different household test from the expedited tests."
+        }
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Age or disability of every household member, absence of work income, and purchasing and preparing food together.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The three CF 485 conditions."
+        }
+      }
+    },
+    {
+      "id": "rule-wic-confirm",
+      "programId": "california-wic",
+      "statement": {
+        "value": "Only staff at a local WIC office can officially confirm that a person qualifies for WIC. This page says a person may qualify.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The how-to-apply page says only local staff can officially confirm qualification."
+        }
+      },
+      "exceptions": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "rule-wic-category-howto",
+      "programId": "california-wic",
+      "statement": {
+        "value": "The how-to-apply page says a person may qualify if they are pregnant, breastfeeding or chestfeeding, just had a baby or a recent pregnancy loss in the last six months, or have or care for a child under age 5; and have low-to-medium income or receive Medi-Cal, CalWORKs (TANF), or CalFresh (SNAP); and live in California. Working families and families of farm workers may apply.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Who is WIC for section. It uses 'and' between category, income, and California residence."
+        }
+      },
+      "exceptions": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Pregnancy, breastfeeding or chestfeeding, recent birth or pregnancy loss, a child under 5, income or adjunctive benefits, and California residence.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Who is WIC for section."
+        }
+      }
+    },
+    {
+      "id": "rule-wic-category-tool",
+      "programId": "california-wic",
+      "statement": {
+        "value": "The eligibility tool asks the person to select: pregnant; breastfeeding an infant less than 12 months old; just had a baby or had been pregnant within the last six months; a child under age five, including foster children and children cared for by fathers or grandparents; currently receiving WIC from another state; or none of these.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Category Selection choices. Wording differs from the how-to-apply page, which also says chestfeeding and recent pregnancy loss."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "Choosing none of the category options leads to a result that the person may not be eligible for the listed reasons, and still tells them to call or visit a local office."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The none-of-the-above result text lists the category reasons and still offers the phone number."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Pregnancy, breastfeeding an infant under 12 months, a birth or pregnancy within six months, a child under five including foster and kinship care, or a transfer from another state's WIC.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Category choices on the eligibility page."
+        }
+      }
+    },
+    {
+      "id": "rule-wic-residency",
+      "programId": "california-wic",
+      "statement": {
+        "value": "The eligibility page says a person needs to live in California to receive WIC benefits in California, and points people in other states to the national WIC site.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Result text for not living in California, plus the link to www.fns.usda.gov/WIC. The 'I plan to move to California' path is a choice on the page, and its outcome is not stated separately, so it is not recorded as eligible or ineligible."
+        }
+      },
+      "exceptions": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "California residence.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The residency result text."
+        }
+      }
+    },
+    {
+      "id": "rule-wic-income",
+      "programId": "california-wic",
+      "statement": {
+        "value": "The eligibility page prints a 185% of the federal poverty level income chart, effective May 1, 2026 through June 30, 2027. It says some exceptions to the standard guidelines may qualify a family, and that income slightly above the chart should be discussed with a local office.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Income Guidelines section, including the exception sentence above the chart."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "Income slightly above the chart may still be discussed with a local office.",
+          "A household receiving Medi-Cal, CalFresh, CalWORKs, and/or FDPIR is given a separate may-be-eligible result instead of the dollar chart."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The exception sentence and the adjunctive-eligibility choice are on the eligibility page."
+        }
+      },
+      "effectiveFrom": {
+        "value": "2026-05-01",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The chart says effective May 1, 2026."
+        }
+      },
+      "effectiveTo": {
+        "value": "2027-06-30",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The chart says through June 30, 2027."
+        }
+      },
+      "householdDefinition": {
+        "value": "Household size is the number the applicant selects. A pregnant applicant can count an expected birth in the household size if they do not meet the income test at the current size. Each foster child is counted as a family of one.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "The two notes under Select number of people in household. This definition is not the CalFresh or Below Market Housing definition."
+        }
+      },
+      "threshold": {
+        "value": "185% of the federal poverty level. 1 person: annual $29,526, monthly $2,461, twice-monthly $1,231, bi-weekly $1,136, weekly $568. 2: $40,034 / $3,337 / $1,669 / $1,540 / $770. 3: $50,542 / $4,212 / $2,106 / $1,944 / $972. 4: $61,050 / $5,088 / $2,544 / $2,349 / $1,175. 5: $71,558 / $5,964 / $2,982 / $2,753 / $1,377. 6: $82,066 / $6,839 / $3,420 / $3,157 / $1,579. 7: $92,574 / $7,715 / $3,858 / $3,561 / $1,781. 8: $103,082 / $8,591 / $4,296 / $3,965 / $1,983. 9: $113,590 / $9,467 / $4,743 / $4,370 / $2,186. Added member after that chart: annual $10,508, monthly $876, twice-monthly $438, bi-weekly $405, weekly $203. The button says More than 9 and the dialog title says More than 10 Members In Household.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Figures are the maximum allowable income amounts printed for each household size. The more-than-9 button and the more-than-10 dialog title disagree; both strings are on the page."
+        }
+      },
+      "householdFactor": {
+        "value": "Household size, income by pay frequency, pregnancy with an expected birth, foster-child counting, or current Medi-Cal, CalFresh, CalWORKs, or FDPIR.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-eligible",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
+          "retrievedOn": "2026-10-20",
+          "basis": "Income chart controls and the adjunctive choice."
+        }
+      }
+    },
+    {
+      "id": "rule-bmh-income",
+      "programId": "santa-monica-below-market-housing",
+      "statement": {
+        "value": "To be eligible for the BMH waitlist, total household income before taxes must not exceed the listed amounts. The waitlist is open to everyone who meets the income requirements. Living or working in Santa Monica gives priority; it is not written as a requirement to apply.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Who Can Apply section."
+        }
+      },
+      "exceptions": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": "2025-04-23",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The income list says effective April 23, 2025."
+        }
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": "The page says total household income, before taxes, and gives a limit by person count. It does not say who counts as a household member.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The income sentence uses household and person counts without a member definition. This is not the WIC or CalFresh household definition."
+        }
+      },
+      "threshold": {
+        "value": "Before-tax household income. 1 person $127,200. 2 people $145,400. 3 people $163,600. 4 people $181,800. 5 people $196,300. No amount for 6 or more people is printed.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The five list items under the April 23, 2025 effective date. The HTML list ends at 5 people."
+        }
+      },
+      "householdFactor": {
+        "value": "Household size from 1 to 5, and total before-tax income.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The printed brackets stop at 5 people."
+        }
+      }
+    },
+    {
+      "id": "rule-bmh-priority",
+      "programId": "santa-monica-below-market-housing",
+      "statement": {
+        "value": "Priority, not the income gate: first, Santa Monica households displaced or to be displaced within 12 months because of a natural disaster, a government-ordered eviction, demolition, owner or relative occupancy, the Ellis Act, or a mobile-home closure. Second, other households who live in Santa Monica or work at least 25 hours a week in Santa Monica, or who previously worked in Santa Monica and now receive retirement, workers' compensation, unemployment, disability, or vocational rehabilitation benefits from the City. Third, by the date and time the application is submitted. A separate preference sentence says the head of household must live in Santa Monica, participate in an approved job-training program in Santa Monica, or have last worked at least 25 hours a week in Santa Monica and now receive those benefits.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The preference bullets and the later three-category selection answer. The two passages are both on the page and are not identical."
+        }
+      },
+      "exceptions": {
+        "value": [
+          "These are priority categories. The income section says the waitlist is open to everyone who meets the income requirements."
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The income paragraph distinguishes eligibility from priority."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdDefinition": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "threshold": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "householdFactor": {
+        "value": "Displacement, Santa Monica residence, Santa Monica work of at least 25 hours a week, approved job training, specified benefits from the City, and application date and time.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Priority and preference passages."
+        }
+      }
+    }
+  ],
+  "benefitDetails": [
+    {
+      "id": "benefit-calfresh-ebt",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "Benefits are issued on an EBT card and can be used in grocery stores and participating farmers markets. Homeless, elderly, or disabled persons may buy prepared meals at participating restaurants.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Opening benefit sentences."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "benefit-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "statement": {
+        "value": "The minimum allotment for Federal Fiscal Year 2026-2027 is $25 for a household with 1 or 2 individuals. The page says the cost-of-living adjustment is adjusted every year on October 1. Allotments for larger households were not on this page.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "CalFresh Benefit Minimum Allotment paragraph. The linked program sheet was not fetched."
+        }
+      },
+      "effectiveFrom": {
+        "value": "Federal Fiscal Year 2026-2027",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page names that fiscal year and says the COLA is adjusted every October 1. It does not print a calendar start date, so the fiscal-year label is stored as written."
+        }
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "benefit-wic-foods",
+      "programId": "california-wic",
+      "statement": {
+        "value": "WIC benefits can buy healthy foods such as fruits and vegetables, whole grains, milk, eggs, bread, cereal, juice, peanut butter, soy milk, and tofu. Qualifying family members' benefits are loaded onto a California WIC Card that can be used after the first appointment. Package sizes and dollar amounts were not on the fetched pages.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Services list and the first-appointment paragraph. The fruits-and-vegetables update page was not fetched."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "benefit-bmh-rent",
+      "programId": "santa-monica-below-market-housing",
+      "statement": {
+        "value": "The program offers private-sector apartments at a rent lower than market rate. It does not provide a rental subsidy. The page does not list the rent for any apartment.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Program introduction. No rent table was on the page."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    }
+  ],
+  "requiredDocuments": [
+    {
+      "id": "doc-calfresh-expedited-identity",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "Identity verification for Expedited CalFresh",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The expedited section says identity must be verified and a photo ID is not required."
+        }
+      },
+      "alternatives": {
+        "value": [
+          "A call to a third party the applicant knows",
+          "Readily available documentary or electronic information",
+          "A photo ID is not required"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The identity sentence lists those methods."
+        }
+      },
+      "requirementStrength": {
+        "value": "Required to receive Expedited CalFresh benefits. Not stated as the rule for every CalFresh application.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence is inside the expedited section."
+        }
+      }
+    },
+    {
+      "id": "doc-wic-id",
+      "programId": "california-wic",
+      "name": {
+        "value": "Identification for the applicant and any children under age 5",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "First-appointment list. The verb is may ask."
+        }
+      },
+      "alternatives": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "requirementStrength": {
+        "value": "Staff may ask for it. The page does not say it is required in every case.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The sentence says they may also ask you to provide."
+        }
+      }
+    },
+    {
+      "id": "doc-wic-address",
+      "programId": "california-wic",
+      "name": {
+        "value": "Proof of address",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "First-appointment list."
+        }
+      },
+      "alternatives": {
+        "value": [
+          "ID",
+          "paycheck with address",
+          "rent document",
+          "utility bill"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Examples in parentheses after proof of address."
+        }
+      },
+      "requirementStrength": {
+        "value": "Staff may ask for it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The may-ask wording covers the list."
+        }
+      }
+    },
+    {
+      "id": "doc-wic-income",
+      "programId": "california-wic",
+      "name": {
+        "value": "Proof of the family's household income",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "First-appointment list."
+        }
+      },
+      "alternatives": {
+        "value": [
+          "Paycheck",
+          "tax return",
+          "letter from employer",
+          "Medi-Cal card",
+          "An active Medi-Cal card may be used as proof of income if the person or child receives Medi-Cal"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "Examples in parentheses, plus the later Medi-Cal card sentence."
+        }
+      },
+      "requirementStrength": {
+        "value": "Staff may ask for it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The may-ask wording covers the list."
+        }
+      }
+    },
+    {
+      "id": "doc-wic-pregnancy",
+      "programId": "california-wic",
+      "name": {
+        "value": "Proof of pregnancy",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "First-appointment list."
+        }
+      },
+      "alternatives": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "requirementStrength": {
+        "value": "Staff may ask for it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The may-ask wording covers the list."
+        }
+      }
+    },
+    {
+      "id": "doc-wic-medical",
+      "programId": "california-wic",
+      "name": {
+        "value": "Medical forms filled out by a health care provider",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "First-appointment list."
+        }
+      },
+      "alternatives": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "requirementStrength": {
+        "value": "Staff may ask for it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-wic-how",
+          "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
+          "retrievedOn": "2026-10-20",
+          "basis": "The may-ask wording covers the list."
+        }
+      }
+    },
+    {
+      "id": "doc-bmh-email",
+      "programId": "santa-monica-below-market-housing",
+      "name": {
+        "value": "A valid email address",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "What Do I Need to Apply, first item."
+        }
+      },
+      "alternatives": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "requirementStrength": {
+        "value": "The page says you will need it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The section is headed What Do I Need to Apply."
+        }
+      }
+    },
+    {
+      "id": "doc-bmh-income-residence",
+      "programId": "santa-monica-below-market-housing",
+      "name": {
+        "value": "Documentation verifying income and employment or residence in Santa Monica",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "Second item under What Do I Need to Apply."
+        }
+      },
+      "alternatives": {
+        "value": [
+          "Tax forms",
+          "bank statements",
+          "paystubs",
+          "documentation of any other income, assets, or benefits",
+          "Pictures are accepted if they are clearly readable"
+        ],
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The acceptable-documents sentence."
+        }
+      },
+      "requirementStrength": {
+        "value": "The page says you will need it.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-home",
+          "sourceUrl": "https://santamonicahousing.org/",
+          "retrievedOn": "2026-10-20",
+          "basis": "The section is headed What Do I Need to Apply."
+        }
+      }
+    }
+  ],
+  "applicationForms": [
+    {
+      "id": "form-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "Minimum information to file a CalFresh application",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page has a heading for minimum requirements to file. This is not the full CF 285 question list."
+        }
+      },
+      "url": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "instructions": {
+        "value": "These three items are the minimum the page says an application must include. They are not the full application.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says applications must include at minimum the following information."
+        }
+      },
+      "schemaCompleteness": "partial_page"
+    },
+    {
+      "id": "form-cf303",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "CF 303 - Replacement or Disaster Supplement Affidavit",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The forms directory names CF 303."
+        }
+      },
+      "url": {
+        "value": "https://www.cdss.ca.gov/Portals/9/Additional-Resources/Forms-and-Brochures/2020/A-D/CF303.pdf?ver=2021-10-21-083524-990",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "English link on the forms directory. Translated links exist on the same page and were not fetched. The query string is part of the href and is not treated as a revision date."
+        }
+      },
+      "instructions": {
+        "value": "The directory names this affidavit. It does not say when a household must use it. The PDF was not opened.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Wording next to the form's links."
+        }
+      },
+      "schemaCompleteness": "directory_only"
+    },
+    {
+      "id": "form-cf385",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "CF 385 - CalFresh Disaster Application",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The forms directory names CF 385."
+        }
+      },
+      "url": {
+        "value": "https://www.cdss.ca.gov/Portals/9/Additional-Resources/Forms-and-Brochures/2020/A-D/CF385.pdf?ver=2023-10-20-153245-623",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "English link on the forms directory. Translated links exist on the same page and were not fetched. The query string is part of the href and is not treated as a revision date."
+        }
+      },
+      "instructions": {
+        "value": "The directory says emergency use only. The PDF was not opened.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Wording next to the form's links."
+        }
+      },
+      "schemaCompleteness": "directory_only"
+    },
+    {
+      "id": "form-cf285",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "CF 285 - Application for CalFresh Benefits",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The forms directory names CF 285."
+        }
+      },
+      "url": {
+        "value": "https://www.cdss.ca.gov/Portals/9/Additional-Resources/Forms-and-Brochures/2020/A-D/CF285.pdf?ver=2023-03-08-155331-893",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "English link on the forms directory. Translated links exist on the same page and were not fetched. The query string is part of the href and is not treated as a revision date."
+        }
+      },
+      "instructions": {
+        "value": "The directory calls this the general CalFresh application and says to complete and submit it online, in person, or by mail. It also links large-print English, Russian, and Chinese files. Those PDFs were not opened, so the questions are not in this catalog.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Wording next to the form's links."
+        }
+      },
+      "schemaCompleteness": "directory_only"
+    },
+    {
+      "id": "form-cf37",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "CF 37 - Recertification/Renewal for CalFresh Benefits Application",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The forms directory names CF 37."
+        }
+      },
+      "url": {
+        "value": "https://cdss.ca.gov/cdssweb/entres/forms/english/cf37.pdf",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "English link on the forms directory. Translated links exist on the same page and were not fetched. The query string is part of the href and is not treated as a revision date."
+        }
+      },
+      "instructions": {
+        "value": "The directory says to complete this when the household needs to renew CalFresh. The PDF was not opened.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Wording next to the form's links."
+        }
+      },
+      "schemaCompleteness": "directory_only"
+    },
+    {
+      "id": "form-cf485",
+      "programId": "la-county-dpss-calfresh",
+      "name": {
+        "value": "CF 485 - CalFresh Elderly Simplified Application",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The forms directory names CF 485."
+        }
+      },
+      "url": {
+        "value": "https://www.cdss.ca.gov/Portals/9/Additional-Resources/Forms-and-Brochures/2020/A-D/CF485.pdf?ver=2023-10-10-073009-990",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "English link on the forms directory. Translated links exist on the same page and were not fetched. The query string is part of the href and is not treated as a revision date."
+        }
+      },
+      "instructions": {
+        "value": "Use only if everyone in the household is at least 60 or older and/or disabled, no one gets income from work, and they purchase and prepare food together. The PDF was not opened.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Wording next to the form's links."
+        }
+      },
+      "schemaCompleteness": "directory_only"
+    },
+    {
+      "id": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "name": {
+        "value": "Below Market Housing account registration",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page heading is Registration under City of Santa Monica. It is the Sign Up link from the homepage. It is not the waitlist application."
+        }
+      },
+      "url": {
+        "value": "https://santamonicahousing.org/users/sign_up",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Fetched URL of the registration form."
+        }
+      },
+      "instructions": {
+        "value": "Account fields only. Password must be at least 6 characters. A CAPTCHA is present and was not solved. Fields after login are not known.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Password Requirements list and the CAPTCHA script. No HTML required attribute is on the inputs."
+        }
+      },
+      "schemaCompleteness": "partial_page"
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "field-calfresh-name",
+      "formId": "form-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "label": {
+        "value": "Applicant's full name",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "First minimum filing item."
+        }
+      },
+      "required": {
+        "value": true,
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says applications must include it at minimum."
+        }
+      },
+      "conditionalLogic": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "field-calfresh-address",
+      "formId": "form-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "label": {
+        "value": "Household address",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Second minimum filing item."
+        }
+      },
+      "required": {
+        "value": true,
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says applications must include it at minimum, with the homeless exception."
+        }
+      },
+      "conditionalLogic": {
+        "value": "Unless the household is homeless, in which case a district address is acceptable.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The parenthetical on the address item."
+        }
+      }
+    },
+    {
+      "id": "field-calfresh-signature",
+      "formId": "form-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "label": {
+        "value": "Signature",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "Third minimum filing item."
+        }
+      },
+      "required": {
+        "value": true,
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The page says applications must include a signature at minimum."
+        }
+      },
+      "conditionalLogic": {
+        "value": "The signature may be from the head of household, any adult household member, an authorized representative, or a responsible household member.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-calfresh",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The signature item names those signers."
+        }
+      }
+    },
+    {
+      "id": "field-bmh-first-name",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "label": {
+        "value": "First Name",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Label on the registration form."
+        }
+      },
+      "required": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "conditionalLogic": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "field-bmh-last-name",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "label": {
+        "value": "Last Name",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Label on the registration form."
+        }
+      },
+      "required": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "conditionalLogic": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "field-bmh-email",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "label": {
+        "value": "Email",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Label on the registration form."
+        }
+      },
+      "required": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "conditionalLogic": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "field-bmh-password",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "label": {
+        "value": "Create Password",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Label on the registration form."
+        }
+      },
+      "required": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "conditionalLogic": {
+        "value": "The page says the password must be at least 6 characters. It does not say whether the field can be left blank.",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Password Requirements list."
+        }
+      }
+    },
+    {
+      "id": "field-bmh-password-confirm",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "label": {
+        "value": "Confirm Password",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-sm-signup",
+          "sourceUrl": "https://santamonicahousing.org/users/sign_up",
+          "retrievedOn": "2026-10-20",
+          "basis": "Label on the registration form."
+        }
+      },
+      "required": {
+        "value": null,
+        "support": "requires_verification",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "conditionalLogic": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    }
+  ],
+  "applicationVersions": [
+    {
+      "id": "version-calfresh-minimum",
+      "formId": "form-calfresh-minimum",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-form-cf303",
+      "formId": "form-cf303",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": "CF 303",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The directory uses this form number. It does not print a revision date. CDN query dates were not treated as versions."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-form-cf385",
+      "formId": "form-cf385",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": "CF 385",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The directory uses this form number. It does not print a revision date. CDN query dates were not treated as versions."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-form-cf285",
+      "formId": "form-cf285",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": "CF 285",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The directory uses this form number. It does not print a revision date. CDN query dates were not treated as versions."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-form-cf37",
+      "formId": "form-cf37",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": "CF 37",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The directory uses this form number. It does not print a revision date. CDN query dates were not treated as versions."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-form-cf485",
+      "formId": "form-cf485",
+      "programId": "la-county-dpss-calfresh",
+      "versionLabel": {
+        "value": "CF 485",
+        "support": "supported",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": {
+          "sourceId": "src-dpss-forms",
+          "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "retrievedOn": "2026-10-20",
+          "basis": "The directory uses this form number. It does not print a revision date. CDN query dates were not treated as versions."
+        }
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    },
+    {
+      "id": "version-bmh-signup",
+      "formId": "form-bmh-signup",
+      "programId": "santa-monica-below-market-housing",
+      "versionLabel": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveFrom": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      },
+      "effectiveTo": {
+        "value": null,
+        "support": "not_found",
+        "reviewStatus": "extracted_pending_review",
+        "provenance": null
+      }
+    }
+  ]
+}

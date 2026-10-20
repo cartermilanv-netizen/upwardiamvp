@@ -2,7 +2,7 @@
 
 A public homepage, resource browsing, and a resident household assessment. The assessment walks through seven sections, then shows matches, today’s actions, and four progress counts. Answers stay on this device. Nothing is uploaded.
 
-There is no county dashboard, reward ledger, document upload, or seeded program catalog. Until a verified catalog is supplied, category lists and the plan stay empty and say so.
+There is no county dashboard, reward ledger, or document upload. Category browsing, matching, and Ask Upwardia still read `residentCatalog`, which is empty. An unpublished resource-database seed in `lib/resource-database/` holds four official programs pending human review. Those records are not facts, and this app does not show them.
 
 ## Routes
 
