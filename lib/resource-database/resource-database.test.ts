@@ -4,9 +4,24 @@ import { describe, expect, it } from "vitest";
 import { residentCatalog } from "@/lib/catalog";
 import { collectFields, isFact, missingSupport, publishedFacts } from "@/lib/resource-database/facts";
 import { loadPublishedFacts, loadResourceCatalog } from "@/lib/resource-database/load";
+import { parseIncomeChart } from "@/lib/resource-database/resident";
 import type { Provenance, Sourced } from "@/lib/resource-database/types";
 
 const catalog = loadResourceCatalog();
+
+function belongsToPublished(recordId: string): boolean {
+  if (recordId === "la-county-dpss-calfresh" || recordId === "california-wic") return true;
+  const rows = [
+    ...catalog.eligibilityRules,
+    ...catalog.benefitDetails,
+    ...catalog.requiredDocuments,
+    ...catalog.applicationForms,
+    ...catalog.applicationFields,
+    ...catalog.applicationVersions,
+  ];
+  const row = rows.find((item) => item.id === recordId);
+  return row?.programId === "la-county-dpss-calfresh" || row?.programId === "california-wic";
+}
 
 function filesUnder(dir: string): string[] {
   const entries = readdirSync(dir);
@@ -24,15 +39,32 @@ function filesUnder(dir: string): string[] {
 }
 
 describe("resource database seed", () => {
-  it("keeps the resident catalog empty and unwired", () => {
-    expect(residentCatalog).toEqual([]);
+  it("publishes only the reviewed programs", () => {
+    expect(residentCatalog.map((entry) => entry.id)).toEqual(["la-county-dpss-calfresh", "california-wic"]);
     const roots = ["app", "components", "lib"].map((root) => path.join(process.cwd(), root));
     const hits: string[] = [];
     for (const file of roots.flatMap((root) => filesUnder(root))) {
+      if (file.endsWith(`${path.sep}lib${path.sep}catalog.ts`)) continue;
       const text = readFileSync(file, "utf8");
       if (text.includes("resource-database")) hits.push(file);
     }
     expect(hits).toEqual([]);
+    const facts = loadPublishedFacts();
+    const publishedIds = new Set(["la-county-dpss-calfresh", "california-wic"]);
+    expect(facts.length).toBeGreaterThan(0);
+    expect(facts.every((fact) => publishedIds.has(fact.recordId) || belongsToPublished(fact.recordId))).toBe(true);
+    const packed = JSON.stringify(facts);
+    expect(packed).not.toContain("$10,508");
+    expect(packed).not.toContain("$127,200");
+    expect(packed).not.toContain("1685 Main Street");
+    expect(packed).not.toContain("Create Password");
+    expect(facts.some((fact) => fact.recordId === "medi-cal" || fact.recordId.startsWith("rule-bmh") || fact.recordId.startsWith("doc-bmh"))).toBe(false);
+    const chart = residentCatalog.find((entry) => entry.incomeChart)?.incomeChart;
+    expect(chart?.rows).toHaveLength(9);
+    expect(chart?.effectiveFrom).toBe("2026-05-01");
+    expect(chart?.effectiveTo).toBe("2027-06-30");
+    const ten = Array.from({ length: 10 }, (_, index) => `${index + 1} | $1 | $1 | $1 | $1 | $1`).join("\n");
+    expect(parseIncomeChart(ten)).toBeNull();
   });
 
   it("attaches a retrieved source to every supported value", () => {
@@ -90,7 +122,6 @@ describe("resource database seed", () => {
   });
 
   it("does not treat unpublished or unverified fields as facts", () => {
-    expect(loadPublishedFacts()).toEqual([]);
     const provenance: Provenance = {
       sourceId: "src-example",
       sourceUrl: "https://example.com/program",
@@ -115,12 +146,16 @@ describe("resource database seed", () => {
       provenance: null,
     };
     expect(isFact(unknown, "published")).toBe(false);
-    const publishedProgram = {
-      ...catalog.programs[0],
-      publicationStatus: "published" as const,
-      humanReviewStatus: "human_verified" as const,
-    };
+    const publishedProgram = structuredClone(catalog.programs[0]);
+    publishedProgram.publicationStatus = "published";
+    publishedProgram.humanReviewStatus = "human_verified";
+    for (const field of collectFields(publishedProgram, publishedProgram.id, "published")) {
+      field.sourced.reviewStatus = "extracted_pending_review";
+    }
     expect(publishedFacts([publishedProgram])).toEqual([]);
+    expect(loadPublishedFacts().some((fact) => fact.recordId === "form-cf285" && fact.field === "url")).toBe(false);
+    expect(loadPublishedFacts().some((fact) => fact.recordId === "benefit-calfresh-minimum")).toBe(false);
+    expect(loadPublishedFacts().some((fact) => fact.recordId === "rule-calfresh-general" && fact.field === "threshold")).toBe(false);
   });
 
   it("records blocked pages and discovery seeds without pretending they were read", () => {

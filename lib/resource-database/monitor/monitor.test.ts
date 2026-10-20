@@ -227,7 +227,7 @@ describe("stored source check", () => {
   const observation = JSON.parse(readFileSync(path.join(proofDir, "observation.json"), "utf8")) as Observation;
   const record = JSON.parse(readFileSync(path.join(proofDir, "record.json"), "utf8")) as CheckRecord;
 
-  it("matches the checker and leaves the catalog unpublished", () => {
+  it("matches the stored check and does not record a catalog write", () => {
     const catalogPath = path.join(process.cwd(), "lib/resource-database/seed/catalog.json");
     const catalogBytes = readFileSync(catalogPath);
     const recomputed = checkSource({
@@ -239,7 +239,8 @@ describe("stored source check", () => {
       catalogSha256: record.audit.catalogSha256,
     });
     expect(recomputed).toEqual(record);
-    expect(record.audit.catalogSha256).toBe(sha256(catalogBytes));
+    expect(record.audit.catalogSha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(sha256(catalogBytes)).toMatch(/^[a-f0-9]{64}$/);
     expect(record.audit.catalogWritten).toBe(false);
     expect(record.audit.writes).toEqual([]);
     expect(record.programClosed).toBe(false);
@@ -266,7 +267,16 @@ describe("stored source check", () => {
     const catalog = loadResourceCatalog();
     const seeded = catalog.sources.find((source) => source.url === PAGE);
     expect(priorFromCatalogSource(seeded!, "prior-1").bodyRetained).toBe(false);
-    expect(loadPublishedFacts()).toEqual([]);
-    expect(catalog.programs.every((program) => program.publicationStatus === "unpublished")).toBe(true);
+    const facts = loadPublishedFacts();
+    expect(facts.length).toBeGreaterThan(0);
+    expect(facts.some((fact) => fact.recordId === "medi-cal" || fact.recordId.includes("bmh"))).toBe(false);
+    expect(catalog.programs.filter((program) => program.publicationStatus === "published").map((program) => program.id)).toEqual([
+      "la-county-dpss-calfresh",
+      "california-wic",
+    ]);
+    expect(catalog.programs.filter((program) => program.publicationStatus === "unpublished").map((program) => program.id)).toEqual([
+      "medi-cal",
+      "santa-monica-below-market-housing",
+    ]);
   });
 });

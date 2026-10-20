@@ -5,6 +5,7 @@ import { useSyncExternalStore } from "react";
 import { missingFieldIds, requiredProgress } from "@/lib/applications/logic";
 import { getApplicationSnapshot, getServerApplicationSnapshot, subscribeApplications } from "@/lib/applications/store";
 import type { ApplicationStatus } from "@/lib/applications/types";
+import { residentCatalog } from "@/lib/catalog";
 import { routes } from "@/lib/site";
 
 const statusLabel: Record<ApplicationStatus, string> = {
@@ -26,6 +27,36 @@ export function ApplicationsDashboard() {
           Harbor Pantry Box and Northline Utility Pause are made-up programs. They are not government forms, and nothing here is submitted.
         </p>
       </div>
+      {residentCatalog.length > 0 && (
+        <section className="rounded-2xl border border-[#e4e0d8] bg-white p-5">
+          <h2 className="text-xl font-semibold text-[#092451]">Official application instructions</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-700">
+            These published listings link to the official instructions. Upwardia prepares an application. It does not submit one. The made-up forms below are still only a demonstration.
+          </p>
+          <ul className="mt-4 flex flex-col gap-3">
+            {residentCatalog.map((entry) => (
+              <li key={entry.id} className="flex flex-col gap-2 border-t border-[#f4f1ea] pt-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="font-semibold text-stone-950">{entry.name}</h3>
+                  <p className="text-sm text-stone-600">
+                    {entry.sourceName}. Last verified {entry.lastVerified}.
+                  </p>
+                </div>
+                {entry.applicationUrl && (
+                  <a
+                    href={entry.applicationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-11 items-center justify-center rounded-lg bg-[#092451] px-4 text-sm font-medium text-white focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:ring-offset-2 focus-visible:outline-none"
+                  >
+                    Open the official application instructions
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <ul className="grid gap-4 lg:grid-cols-2">
         {snapshot.drafts.map((draft) => {
           const program = snapshot.programs.find((item) => item.id === draft.programId);

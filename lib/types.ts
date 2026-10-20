@@ -254,6 +254,27 @@ export type CatalogCategory =
 
 export type Channel = "phone" | "in_person" | "online" | "mail";
 
+export type OfficialLink = {
+  url: string;
+  note: string | null;
+};
+
+export type IncomeChartRow = {
+  people: number;
+  annual: string;
+  monthly: string;
+  twiceMonthly: string;
+  biweekly: string;
+  weekly: string;
+};
+
+export type IncomeChart = {
+  effectiveFrom: string;
+  effectiveTo: string;
+  sourceUrl: string;
+  rows: IncomeChartRow[];
+};
+
 export type VerifiedCatalogEntry = {
   id: string;
   name: string;
@@ -272,6 +293,15 @@ export type VerifiedCatalogEntry = {
     statedRequirements: string[];
   };
   claimText: string;
+  officialLinks?: OfficialLink[];
+  applicationUrl?: string | null;
+  applicationInstructions?: string | null;
+  contactEmail?: string | null;
+  contactHours?: string | null;
+  documents?: string[];
+  services?: string[];
+  incomeChart?: IncomeChart | null;
+  preparationNote?: string | null;
 };
 
 export type MissingFact =

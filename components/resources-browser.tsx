@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { residentCatalog } from "@/lib/catalog";
+import { PublishedListing } from "@/components/published-listing";
 import { resourceCategories, resourceCategory, resourceCategoryHref, resourcesForCategory } from "@/lib/resources";
 import { hero, routes } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -47,14 +48,10 @@ export function ResourcesBrowser() {
               No verified resources are listed for {selected.title}. We will not guess programs.
             </p>
           ) : (
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 flex flex-col gap-4">
               {rows.map((entry) => (
-                <li key={entry.id} className="rounded-xl border border-[#e4e0d8] p-4">
-                  <h3 className="text-base font-semibold text-stone-950">{entry.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-stone-700">{entry.claimText}</p>
-                  <p className="mt-2 text-sm text-stone-600">
-                    Source: {entry.sourceName}, last verified {entry.lastVerified}.
-                  </p>
+                <li key={entry.id}>
+                  <PublishedListing entry={entry} />
                 </li>
               ))}
             </ul>

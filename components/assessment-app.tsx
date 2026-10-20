@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { actionNotes, actionTitle, rebuildToday } from "@/lib/actions";
 import { residentCatalog } from "@/lib/catalog";
+import { PublishedListing } from "@/components/published-listing";
 import { formatLocalDate } from "@/lib/dates";
 import {
   advance,
@@ -837,6 +838,9 @@ function MatchGroup({
               {line}
             </p>
           ))}
+          <div className="mt-4">
+            <PublishedListing entry={row.entry} compact />
+          </div>
         </article>
       ))}
     </div>

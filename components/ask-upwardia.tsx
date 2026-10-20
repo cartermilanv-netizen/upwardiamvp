@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { residentCatalog } from "@/lib/catalog";
+import { PublishedListing } from "@/components/published-listing";
 import { MAX_MESSAGE_LENGTH } from "@/lib/chat/limits";
 import { withAssistantReply, withUserMessage } from "@/lib/chat/thread";
 import type { ChatMessage } from "@/lib/chat/validate";
@@ -82,7 +84,9 @@ export function AskUpwardia() {
         <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#092451] sm:text-3xl">Ask Upwardia</h1>
         <div className="mt-2 h-1.5 w-16 rounded-full bg-[#FFC928]" aria-hidden />
         <p className="mt-3 text-sm leading-relaxed text-stone-700 sm:text-base">
-          Ask about resources. The assistant can mention a program only when it is in the verified catalog. No verified resources are loaded right now, so it should say when a listing is missing. Your household assessment, profile, and application drafts are not sent. Nothing is submitted.
+          {residentCatalog.length === 0
+            ? "Ask about resources. The assistant can mention a program only when it is in the verified catalog. No verified resources are loaded right now, so it should say when a listing is missing. Your household assessment, profile, and application drafts are not sent. Nothing is submitted."
+            : "Ask about a published listing. The assistant uses only the verified facts below, cites the official source, and links to the application instructions. Upwardia prepares an application. It does not submit one. Your household assessment, profile, and application drafts are not sent."}
         </p>
       </header>
       <div
@@ -95,7 +99,15 @@ export function AskUpwardia() {
         tabIndex={0}
         className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-4 pb-4 focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none"
       >
-        {messages.length === 0 && status === "idle" && (
+        {residentCatalog.length > 0 && (
+          <div className="flex flex-col gap-3">
+            <p className="text-sm font-semibold text-[#092451]">Published facts the assistant can use</p>
+            {residentCatalog.map((entry) => (
+              <PublishedListing key={entry.id} entry={entry} />
+            ))}
+          </div>
+        )}
+        {messages.length === 0 && status === "idle" && residentCatalog.length === 0 && (
           <p className="rounded-2xl border border-[#e4e0d8] bg-white px-4 py-3 text-sm text-stone-700">
             Try a question such as what food help is listed. Your questions stay in this thread, so you can ask a follow-up. If nothing is verified, the answer will say so.
           </p>

@@ -1,14 +1,18 @@
 {
   "schemaVersion": 1,
+  "publishedProgramIds": [
+    "la-county-dpss-calfresh",
+    "california-wic"
+  ],
   "programs": [
     {
       "id": "la-county-dpss-calfresh",
-      "publicationStatus": "unpublished",
-      "humanReviewStatus": "extracted_pending_review",
+      "publicationStatus": "published",
+      "humanReviewStatus": "human_verified",
       "name": {
         "value": "CalFresh",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -19,7 +23,7 @@
       "administeringOrganization": {
         "value": "Los Angeles County Department of Public Social Services (DPSS)",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -30,7 +34,7 @@
       "state": {
         "value": "California",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -41,7 +45,7 @@
       "county": {
         "value": "Los Angeles County",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -58,7 +62,7 @@
       "serviceArea": {
         "value": "LA County DPSS takes applications online, by phone, at district offices and outreach sites, by drop box, by mail, and by fax. The page does not state a ZIP-code residency rule.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -69,7 +73,7 @@
       "category": {
         "value": "food",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -80,7 +84,7 @@
       "subcategory": {
         "value": "CalFresh food benefits",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -89,55 +93,55 @@
         }
       },
       "description": {
-        "value": "CalFresh, formerly Food Stamps, helps low-income households increase their food-buying power. Benefits are issued on an EBT card.",
+        "value": "CalFresh, formerly known as Food Stamps, helps low-income households increase their food-buying power to meet their household's nutritional needs. Benefits are issued on an EBT card and can be used in grocery stores and participating farmers markets. Homeless, elderly, or disabled persons may purchase prepared meals from participating restaurants with their EBT card.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
           "retrievedOn": "2026-10-20",
-          "basis": "Opening description on the CalFresh page."
+          "basis": "Opening paragraph on the CalFresh page, re-read on 2026-10-20."
         }
       },
       "services": {
         "value": [
           "EBT benefits that can be used in grocery stores and participating farmers markets",
-          "Prepared meals from participating restaurants for homeless, elderly, or disabled persons",
-          "Expedited CalFresh when the page's three expedited tests are met"
+          "Prepared meals from participating restaurants for homeless, elderly, or disabled persons"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
           "retrievedOn": "2026-10-20",
-          "basis": "Those three uses are stated on the CalFresh page. Benefit amounts other than the stated minimum were not on the page."
+          "basis": "The opening paragraph states both uses. Re-read on 2026-10-20."
         }
       },
       "applicationInstructions": {
-        "value": "Apply online at https://benefitscal.com, by phone at (866) 613-3777, in person at a DPSS district office or outreach site, by drop box at a district office, by mail to a local DPSS district office, or by fax at (310) 215-8220. A filing must include, at minimum, the applicant's full name, a household address unless the household is homeless, and a signature from the head of household, any adult household member, an authorized representative, or a responsible household member. The page encourages applicants to disclose immigration status on the application or in the interview. The BenefitsCal site itself was not retrieved.",
+        "value": "Apply online at the BenefitsCal address printed on the page, https://benefitscal.com, by phone at (866) 613-3777, in person at a DPSS district office or outreach site, by drop box at a district office, through CalFresh outreach partners, by mail to a local DPSS district office, or by fax at (310) 215-8220. An application must include, at minimum, the applicant's full name, a household address unless the household is homeless (a district address is then acceptable), and a signature from the head of household, any adult household member, an authorized representative, or a responsible household member. The apply button also prints https://www.benefitscal.com. The BenefitsCal site itself was not read.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
           "retrievedOn": "2026-10-20",
-          "basis": "Minimum filing items and the listed submission channels are on the CalFresh page."
+          "basis": "Apply channels, minimum filing items, and the printed BenefitsCal addresses on the CalFresh page. Re-read on 2026-10-20. The BenefitsCal site was not opened."
         }
       },
       "officialUrls": {
         "value": [
           "https://dpss.lacounty.gov/en/food/calfresh.html",
-          "https://dpss.lacounty.gov/content/dpss/en/food/calfresh/calfresh-applications-and-forms0.html",
-          "https://benefitscal.com/"
+          "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
+          "https://benefitscal.com",
+          "https://www.benefitscal.com"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
           "retrievedOn": "2026-10-20",
-          "basis": "This page's address, the forms button href (/content/dpss/en/food/calfresh/calfresh-applications-and-forms0.html), and the printed BenefitsCal URL. BenefitsCal content was not retrieved."
+          "basis": "The program page, the forms button path which redirects to the forms article, the BenefitsCal address in the apply paragraph, and the BenefitsCal address on the apply button. Re-read on 2026-10-20. The BenefitsCal site was not opened."
         }
       },
       "submissionMethods": {
@@ -151,7 +155,7 @@
           "fax"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -185,7 +189,7 @@
       "contactPhone": {
         "value": "(866) 613-3777",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -208,7 +212,7 @@
       "contactHours": {
         "value": "Monday through Friday, 7:30 a.m. to 5:30 p.m. Closed weekends and County holidays.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -219,7 +223,7 @@
       "accessibility": {
         "value": "The English page links a Spanish version. People without internet are pointed to the LA County hotspot locator. The County accessibility policy page was not fetched.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -230,12 +234,12 @@
     },
     {
       "id": "california-wic",
-      "publicationStatus": "unpublished",
-      "humanReviewStatus": "extracted_pending_review",
+      "publicationStatus": "published",
+      "humanReviewStatus": "human_verified",
       "name": {
         "value": "California WIC",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -246,7 +250,7 @@
       "administeringOrganization": {
         "value": "California Department of Public Health, Women, Infants and Children Program",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -257,7 +261,7 @@
       "state": {
         "value": "California",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -280,7 +284,7 @@
       "serviceArea": {
         "value": "California. Local offices are found with the on-page office search or by calling 1-800-852-5770. The fetched pages do not list ZIP codes.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -291,7 +295,7 @@
       "category": {
         "value": "food",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -302,7 +306,7 @@
       "subcategory": {
         "value": "Nutrition program for pregnant people, infants, and children under 5",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -313,7 +317,7 @@
       "description": {
         "value": "California WIC is a food and nutrition program for growing families. It provides nutrition education, breastfeeding and chestfeeding support, benefits to buy healthy foods, and referrals.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -329,7 +333,7 @@
           "Referrals to health care and other community services"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -338,14 +342,14 @@
         }
       },
       "applicationInstructions": {
-        "value": "Find a local office or call 1-800-852-5770 and set an appointment. The page says only local WIC staff can officially confirm that someone qualifies. Bring the items staff may ask for to the first appointment. No online application form was on this page.",
+        "value": "Find a local office on the how-to-apply page or call 1-800-852-5770 and set an appointment. The contact block lists Monday to Friday, 8 a.m. to 5 p.m., and WIC@cdph.ca.gov. Staff may ask for documents at the first appointment. No online application form was on the reviewed page. Only staff at a local WIC office determine eligibility.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
           "retrievedOn": "2026-10-20",
-          "basis": "Steps 1 through 3 on the how-to-apply page."
+          "basis": "How to apply, the contact block, and the staff sentence on the how-to-apply page. Re-read on 2026-10-20."
         }
       },
       "officialUrls": {
@@ -354,7 +358,7 @@
           "https://myfamily.wic.ca.gov/Home/AmIEligible"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -368,7 +372,7 @@
           "in_person"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -402,7 +406,7 @@
       "contactPhone": {
         "value": "1-800-852-5770",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -413,7 +417,7 @@
       "contactEmail": {
         "value": "WIC@cdph.ca.gov",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -430,7 +434,7 @@
       "contactHours": {
         "value": "Monday to Friday, 8 a.m. to 5 p.m.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -1118,7 +1122,7 @@
       "statement": {
         "value": "The page says a person generally may be eligible if they receive CalWORKs or General Relief, have low or no income, have limited property, receive SSI/SSP, are a U.S. citizen or a legal resident, or are an immigrant who meets certain criteria.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1131,7 +1135,7 @@
           "The page says 'generally' and 'may'. It does not say these bullets alone approve an application."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1166,7 +1170,7 @@
       "householdFactor": {
         "value": "Income level, property, receipt of CalWORKs, General Relief, or SSI/SSP, and citizenship or immigration criteria.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1181,7 +1185,7 @@
       "statement": {
         "value": "Effective June 1, 2019, SSI/SSP recipients in California are also eligible for CalFresh if all other eligibility requirements are met.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1194,7 +1198,7 @@
           "All other eligibility requirements still have to be met."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1205,7 +1209,7 @@
       "effectiveFrom": {
         "value": "2019-06-01",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1234,7 +1238,7 @@
       "householdFactor": {
         "value": "Receipt of SSI/SSP in California.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1249,7 +1253,7 @@
       "statement": {
         "value": "Expedited CalFresh may be available within three days, or the same day the application is received, if one of three tests is met: combined gross monthly income and cash resources are less than monthly rent or mortgage and utility costs; or the household has less than $150 in gross monthly income and cash resources of $100 or less; or the household includes a migrant or seasonal farmworker who is destitute and cash resources are $100 or less.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1263,7 +1267,7 @@
           "An interview is required. It may be the same day or a telephone interview within three days."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1290,20 +1294,20 @@
         "provenance": null
       },
       "threshold": {
-        "value": "Less than $150 gross monthly income with cash resources of $100 or less; or cash resources of $100 or less for a destitute migrant or seasonal farmworker; or gross monthly income plus cash resources below rent or mortgage plus utilities.",
+        "value": "Expedited tests only. These are not a regular income limit or a property limit. Less than $150 gross monthly income with cash resources of $100 or less; or cash resources of $100 or less for a destitute migrant or seasonal farmworker; or gross monthly income plus cash resources below rent or mortgage plus utilities.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
           "retrievedOn": "2026-10-20",
-          "basis": "The three dollar and cost tests are printed in the expedited section. They are not the regular income limit."
+          "basis": "The three expedited tests on the CalFresh page. Re-read on 2026-10-20. They are not a regular income or property limit."
         }
       },
       "householdFactor": {
         "value": "Gross monthly income, cash resources, shelter and utility costs, or migrant or seasonal farmworker status.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1318,7 +1322,7 @@
       "statement": {
         "value": "If someone does not meet federal eligibility solely because of immigration status, the page says they may be eligible for the California Food Assistance Program. It says CFAP benefits are the same as CalFresh and the funding source differs.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1331,7 +1335,7 @@
           "The page limits this path to people who miss federal CalFresh solely because of immigration status."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1366,7 +1370,7 @@
       "householdFactor": {
         "value": "Immigration status that is the only bar to federal CalFresh.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1381,7 +1385,7 @@
       "statement": {
         "value": "The page says T-Visa and U-Visa non-citizens and VAWA self-petitioners are not required to provide a Social Security number to apply for CalFresh, and that they must still meet other CalFresh requirements such as income. It also describes TCVAP cash, food, employment, and health assistance for eligible non-citizen victims of trafficking who have applied or intend to apply for a T-Visa, and victims of domestic violence and other serious crimes who have applied for a U-Visa.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1394,7 +1398,7 @@
           "Other CalFresh eligibility requirements, such as income, still apply."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1429,7 +1433,7 @@
       "householdFactor": {
         "value": "T-Visa, U-Visa, or VAWA self-petition status, and income.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1444,7 +1448,7 @@
       "statement": {
         "value": "Beginning June 1, 2026, some adults ages 18 through 64 who get CalFresh may need to meet work requirements to keep benefits for more than 3 months in a 36-month period, unless they are exempt.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1457,7 +1461,7 @@
           "The page says unless they are exempt. The exemption list is on a linked page that was not fetched."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1468,7 +1472,7 @@
       "effectiveFrom": {
         "value": "2026-06-01",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -1576,14 +1580,14 @@
       "id": "rule-wic-confirm",
       "programId": "california-wic",
       "statement": {
-        "value": "Only staff at a local WIC office can officially confirm that a person qualifies for WIC. This page says a person may qualify.",
+        "value": "Only staff at a local WIC office can officially determine eligibility.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
           "retrievedOn": "2026-10-20",
-          "basis": "The how-to-apply page says only local staff can officially confirm qualification."
+          "basis": "The how-to-apply page says only local staff can officially confirm eligibility. Re-read on 2026-10-20."
         }
       },
       "exceptions": {
@@ -1629,7 +1633,7 @@
       "statement": {
         "value": "The how-to-apply page says a person may qualify if they are pregnant, breastfeeding or chestfeeding, just had a baby or a recent pregnancy loss in the last six months, or have or care for a child under age 5; and have low-to-medium income or receive Medi-Cal, CalWORKs (TANF), or CalFresh (SNAP); and live in California. Working families and families of farm workers may apply.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -1670,7 +1674,7 @@
       "householdFactor": {
         "value": "Pregnancy, breastfeeding or chestfeeding, recent birth or pregnancy loss, a child under 5, income or adjunctive benefits, and California residence.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -1685,7 +1689,7 @@
       "statement": {
         "value": "The eligibility tool asks the person to select: pregnant; breastfeeding an infant less than 12 months old; just had a baby or had been pregnant within the last six months; a child under age five, including foster children and children cared for by fathers or grandparents; currently receiving WIC from another state; or none of these.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1698,7 +1702,7 @@
           "Choosing none of the category options leads to a result that the person may not be eligible for the listed reasons, and still tells them to call or visit a local office."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1733,7 +1737,7 @@
       "householdFactor": {
         "value": "Pregnancy, breastfeeding an infant under 12 months, a birth or pregnancy within six months, a child under five including foster and kinship care, or a transfer from another state's WIC.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1748,7 +1752,7 @@
       "statement": {
         "value": "The eligibility page says a person needs to live in California to receive WIC benefits in California, and points people in other states to the national WIC site.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1789,7 +1793,7 @@
       "householdFactor": {
         "value": "California residence.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1802,14 +1806,14 @@
       "id": "rule-wic-income",
       "programId": "california-wic",
       "statement": {
-        "value": "The eligibility page prints a 185% of the federal poverty level income chart, effective May 1, 2026 through June 30, 2027. It says some exceptions to the standard guidelines may qualify a family, and that income slightly above the chart should be discussed with a local office.",
+        "value": "The eligibility page prints a 185% of the federal poverty level income chart for 1 through 9 people, effective May 1, 2026 through June 30, 2027. It says some exceptions to the standard guidelines may qualify a family, and that income slightly above the chart should be discussed with a local office.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
           "retrievedOn": "2026-10-20",
-          "basis": "Income Guidelines section, including the exception sentence above the chart."
+          "basis": "Income guidelines heading, effective dates, and the exception sentence. Re-read on 2026-10-20. The chart published here stops at 9 people."
         }
       },
       "exceptions": {
@@ -1818,7 +1822,7 @@
           "A household receiving Medi-Cal, CalFresh, CalWORKs, and/or FDPIR is given a separate may-be-eligible result instead of the dollar chart."
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1829,7 +1833,7 @@
       "effectiveFrom": {
         "value": "2026-05-01",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1840,7 +1844,7 @@
       "effectiveTo": {
         "value": "2027-06-30",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1851,7 +1855,7 @@
       "householdDefinition": {
         "value": "Household size is the number the applicant selects. A pregnant applicant can count an expected birth in the household size if they do not meet the income test at the current size. Each foster child is counted as a family of one.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -1860,20 +1864,20 @@
         }
       },
       "threshold": {
-        "value": "185% of the federal poverty level. 1 person: annual $29,526, monthly $2,461, twice-monthly $1,231, bi-weekly $1,136, weekly $568. 2: $40,034 / $3,337 / $1,669 / $1,540 / $770. 3: $50,542 / $4,212 / $2,106 / $1,944 / $972. 4: $61,050 / $5,088 / $2,544 / $2,349 / $1,175. 5: $71,558 / $5,964 / $2,982 / $2,753 / $1,377. 6: $82,066 / $6,839 / $3,420 / $3,157 / $1,579. 7: $92,574 / $7,715 / $3,858 / $3,561 / $1,781. 8: $103,082 / $8,591 / $4,296 / $3,965 / $1,983. 9: $113,590 / $9,467 / $4,743 / $4,370 / $2,186. Added member after that chart: annual $10,508, monthly $876, twice-monthly $438, bi-weekly $405, weekly $203. The button says More than 9 and the dialog title says More than 10 Members In Household.",
+        "value": "1 | $29,526 | $2,461 | $1,231 | $1,136 | $568\n2 | $40,034 | $3,337 | $1,669 | $1,540 | $770\n3 | $50,542 | $4,212 | $2,106 | $1,944 | $972\n4 | $61,050 | $5,088 | $2,544 | $2,349 | $1,175\n5 | $71,558 | $5,964 | $2,982 | $2,753 | $1,377\n6 | $82,066 | $6,839 | $3,420 | $3,157 | $1,579\n7 | $92,574 | $7,715 | $3,858 | $3,561 | $1,781\n8 | $103,082 | $8,591 | $4,296 | $3,965 | $1,983\n9 | $113,590 | $9,467 | $4,743 | $4,370 | $2,186",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
           "retrievedOn": "2026-10-20",
-          "basis": "Figures are the maximum allowable income amounts printed for each household size. The more-than-9 button and the more-than-10 dialog title disagree; both strings are on the page."
+          "basis": "Maximum allowable income printed for households of 1 through 9 people. Re-read on 2026-10-20. A larger-household control was on the page with two different size labels, so those amounts are not stored."
         }
       },
       "householdFactor": {
         "value": "Household size, income by pay frequency, pregnancy with an expected birth, foster-child counting, or current Medi-Cal, CalFresh, CalWORKs, or FDPIR.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-eligible",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/AmIEligible",
@@ -2024,7 +2028,7 @@
       "statement": {
         "value": "Benefits are issued on an EBT card and can be used in grocery stores and participating farmers markets. Homeless, elderly, or disabled persons may buy prepared meals at participating restaurants.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -2083,7 +2087,7 @@
       "statement": {
         "value": "WIC benefits can buy healthy foods such as fruits and vegetables, whole grains, milk, eggs, bread, cereal, juice, peanut butter, soy milk, and tofu. Qualifying family members' benefits are loaded onto a California WIC Card that can be used after the first appointment. Package sizes and dollar amounts were not on the fetched pages.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2139,7 +2143,7 @@
       "name": {
         "value": "Identity verification for Expedited CalFresh",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -2154,7 +2158,7 @@
           "A photo ID is not required"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -2165,7 +2169,7 @@
       "requirementStrength": {
         "value": "Required to receive Expedited CalFresh benefits. Not stated as the rule for every CalFresh application.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-calfresh",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh.html",
@@ -2180,7 +2184,7 @@
       "name": {
         "value": "Identification for the applicant and any children under age 5",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2197,7 +2201,7 @@
       "requirementStrength": {
         "value": "Staff may ask for it. The page does not say it is required in every case.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2212,7 +2216,7 @@
       "name": {
         "value": "Proof of address",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2228,7 +2232,7 @@
           "utility bill"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2239,7 +2243,7 @@
       "requirementStrength": {
         "value": "Staff may ask for it.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2254,7 +2258,7 @@
       "name": {
         "value": "Proof of the family's household income",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2271,7 +2275,7 @@
           "An active Medi-Cal card may be used as proof of income if the person or child receives Medi-Cal"
         ],
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2282,7 +2286,7 @@
       "requirementStrength": {
         "value": "Staff may ask for it.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2297,7 +2301,7 @@
       "name": {
         "value": "Proof of pregnancy",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2314,7 +2318,7 @@
       "requirementStrength": {
         "value": "Staff may ask for it.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2329,7 +2333,7 @@
       "name": {
         "value": "Medical forms filled out by a health care provider",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2346,7 +2350,7 @@
       "requirementStrength": {
         "value": "Staff may ask for it.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-wic-how",
           "sourceUrl": "https://myfamily.wic.ca.gov/Home/HowCanIGetWIC",
@@ -2547,7 +2551,7 @@
       "name": {
         "value": "CF 285 - Application for CalFresh Benefits",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-forms",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
@@ -2567,14 +2571,14 @@
         }
       },
       "instructions": {
-        "value": "The directory calls this the general CalFresh application and says to complete and submit it online, in person, or by mail. It also links large-print English, Russian, and Chinese files. Those PDFs were not opened, so the questions are not in this catalog.",
+        "value": "The forms page calls this the general application and says to complete and submit it online, in person, or by mail.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-forms",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
           "retrievedOn": "2026-10-20",
-          "basis": "Wording next to the form's links."
+          "basis": "The forms page sentence for this form. Re-read on 2026-10-20. The PDF was not opened."
         }
       },
       "schemaCompleteness": "directory_only"
@@ -2623,7 +2627,7 @@
       "name": {
         "value": "CF 485 - CalFresh Elderly Simplified Application",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-forms",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
@@ -2643,14 +2647,14 @@
         }
       },
       "instructions": {
-        "value": "Use only if everyone in the household is at least 60 or older and/or disabled, no one gets income from work, and they purchase and prepare food together. The PDF was not opened.",
+        "value": "Use this form only if everyone in the household is at least 60 or older and/or disabled, no one gets income from work, and the household purchases and prepares food together.",
         "support": "supported",
-        "reviewStatus": "extracted_pending_review",
+        "reviewStatus": "human_verified",
         "provenance": {
           "sourceId": "src-dpss-forms",
           "sourceUrl": "https://dpss.lacounty.gov/en/food/calfresh/calfresh-applications-and-forms0.html",
           "retrievedOn": "2026-10-20",
-          "basis": "Wording next to the form's links."
+          "basis": "The three use conditions on the forms page. Re-read on 2026-10-20. The PDF was not opened."
         }
       },
       "schemaCompleteness": "directory_only"

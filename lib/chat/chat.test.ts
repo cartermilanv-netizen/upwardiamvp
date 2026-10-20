@@ -98,19 +98,32 @@ describe("ask upwardia chat", () => {
   });
 
   it("grounds the request on the verified catalog and says when a listing is missing", () => {
-    expect(residentCatalog).toEqual([]);
-    const instructions = catalogInstructions(residentCatalog);
-    expect(instructions).toContain("Verified catalog JSON: []");
-    expect(instructions).toContain("no verified resources are loaded");
-    expect(instructions).toContain("If a verified listing is missing");
-    expect(instructions).toContain("Do not invent programs");
+    const empty = catalogInstructions([]);
+    expect(empty).toContain("Verified catalog JSON: []");
+    expect(empty).toContain("no verified resources are loaded");
+    expect(empty).toContain("If a detail is not written");
+    expect(empty).toContain("Do not invent programs");
+    expect(empty).toContain("Do not say a person is approved");
     const withListing = catalogInstructions([sampleListing]);
     expect(withListing).toContain("https://example.com/sample-pantry");
     expect(withListing).toContain("Sample Pantry");
     expect(withListing).not.toContain("Verified catalog JSON: []");
+    expect(residentCatalog.map((entry) => entry.id)).toEqual(["la-county-dpss-calfresh", "california-wic"]);
+    const live = catalogInstructions(residentCatalog);
+    expect(live).toContain("does not submit");
+    expect(live).toContain("https://benefitscal.com");
+    expect(live).toContain("That site itself was not read");
+    expect(live).toContain("Only staff at a local WIC office can officially determine eligibility.");
+    expect(live).toContain("$29,526");
+    expect(live).not.toContain("$10,508");
+    expect(live).not.toContain("$127,200");
+    expect(live).not.toContain("santa-monica");
+    expect(live).not.toContain("\"id\":\"medi-cal\"");
+    expect(live).not.toContain("Create Password");
+    expect(live).not.toContain("CF 303");
     const request = buildResponsesRequest([{ role: "user", content: "What food help is listed?" }]);
     expect(request.model).toBe(CHAT_MODEL);
-    expect(request.instructions).toBe(instructions);
+    expect(request.instructions).toBe(live);
     expect(request.input).toEqual([{ role: "user", content: "What food help is listed?" }]);
   });
 

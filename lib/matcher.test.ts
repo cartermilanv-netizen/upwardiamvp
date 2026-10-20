@@ -457,7 +457,22 @@ describe("why copy and unverified rows", () => {
 });
 
 describe("resident catalog", () => {
-  it("ships empty", () => {
-    expect(residentCatalog).toEqual([]);
+  it("recommends the published listings and does not say you qualify", () => {
+    expect(residentCatalog.map((entry) => entry.id)).toEqual(["la-county-dpss-calfresh", "california-wic"]);
+    const assessment = draft({
+      financial: { consent: "granted", foodSecurity: { status: "answered", value: "often_not_enough" } },
+    });
+    const rows = matchCatalog(assessment, residentCatalog).filter((row) => row.decision.kind !== "not_applicable");
+    expect(rows.map((row) => row.entry.id)).toEqual(["la-county-dpss-calfresh", "california-wic"]);
+    for (const row of rows) {
+      expect(row.why.heading).toBe("Why this resource may help you");
+      expect(row.why.text).toContain("Why this resource may help you");
+      expect(row.why.text.toLowerCase()).not.toContain("you qualify");
+      expect(row.decision.kind).toBe("possible_help");
+    }
+    const packed = JSON.stringify(residentCatalog);
+    expect(packed).not.toContain("127,200");
+    expect(packed).not.toContain("10,508");
+    expect(packed).not.toContain("santa-monica");
   });
 });

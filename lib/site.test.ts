@@ -84,7 +84,10 @@ describe("resource categories", () => {
   it("lists the six browse categories and selects one without inventing rows", () => {
     expect(resourceCategories).toHaveLength(6);
     expect(resourceCategoryHref("housing-food")).toBe("/resources?category=housing-food");
-    expect(resourcesForCategory(residentCatalog, "housing-food")).toEqual([]);
+    expect(resourcesForCategory(residentCatalog, "housing-food").map((entry) => entry.id)).toEqual([
+      "la-county-dpss-calfresh",
+      "california-wic",
+    ]);
     expect(resourcesForCategory(residentCatalog, "health-wellness")).toEqual([]);
     expect(resourcesForCategory([housing], "housing-food").map((entry) => entry.id)).toEqual(["housing-1"]);
     expect(resourcesForCategory([housing], "transportation")).toEqual([]);

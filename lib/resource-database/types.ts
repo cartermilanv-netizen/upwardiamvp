@@ -143,6 +143,8 @@ export type ApplicationVersion = {
 
 export type ResourceCatalog = {
   schemaVersion: 1;
+  /** Program ids cleared for the resident catalog. Every other program stays unpublished. */
+  publishedProgramIds: string[];
   programs: Program[];
   sources: OfficialSource[];
   eligibilityRules: EligibilityRule[];

@@ -17,6 +17,9 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/;
 export function assertCatalog(input: unknown): ResourceCatalog {
   const catalog = input as ResourceCatalog;
   if (!catalog || catalog.schemaVersion !== 1) throw new Error("schemaVersion must be 1");
+  if (!Array.isArray(catalog.publishedProgramIds) || catalog.publishedProgramIds.some((id) => typeof id !== "string" || id.trim() === "")) {
+    throw new Error("publishedProgramIds must list program ids");
+  }
   const programs = requireArray<Program>(catalog.programs, "programs");
   const sources = requireArray<OfficialSource>(catalog.sources, "sources");
   const programIds = new Set(programs.map((program) => program.id));
@@ -118,11 +121,23 @@ export function assertCatalog(input: unknown): ResourceCatalog {
   return catalog;
 }
 
-/** This seed is pending human review. Loading it must not yield published facts. */
-export function assertUnpublishedSeed(catalog: ResourceCatalog): ResourceCatalog {
+/**
+ * A program is published only when its id is cleared and a person has verified the fields.
+ * Cleared ids that are still unpublished, and verified fields on any other program, are rejected.
+ */
+export function assertPublicationBoundary(catalog: ResourceCatalog): ResourceCatalog {
+  const allowed = new Set(catalog.publishedProgramIds);
+  if (allowed.size !== catalog.publishedProgramIds.length) throw new Error("publishedProgramIds must be unique");
+  const programs = new Map(catalog.programs.map((program) => [program.id, program]));
+  for (const id of allowed) {
+    if (!programs.has(id)) throw new Error(`${id} is cleared but missing`);
+  }
   for (const program of catalog.programs) {
-    if (program.publicationStatus !== "unpublished") throw new Error(`${program.id} is not unpublished`);
-    if (program.humanReviewStatus === "human_verified") throw new Error(`${program.id} is not human verified`);
+    const cleared = allowed.has(program.id);
+    if (cleared && program.publicationStatus !== "published") throw new Error(`${program.id} is cleared but unpublished`);
+    if (!cleared && program.publicationStatus !== "unpublished") throw new Error(`${program.id} is not cleared for publication`);
+    if (cleared && program.humanReviewStatus !== "human_verified") throw new Error(`${program.id} is published without review`);
+    if (!cleared && program.humanReviewStatus === "human_verified") throw new Error(`${program.id} is verified while unpublished`);
   }
   const records = [
     ...catalog.programs,
@@ -134,9 +149,14 @@ export function assertUnpublishedSeed(catalog: ResourceCatalog): ResourceCatalog
     ...catalog.applicationVersions,
   ];
   for (const record of records) {
-    for (const field of collectFields(record, record.id, "unpublished")) {
-      if (field.sourced.reviewStatus === "human_verified") {
-        throw new Error(`${record.id}.${field.field} is marked human verified before review`);
+    const programId = "programId" in record && typeof record.programId === "string" ? record.programId : record.id;
+    const program = programs.get(programId);
+    const published = program?.publicationStatus === "published";
+    for (const field of collectFields(record, record.id, published ? "published" : "unpublished")) {
+      if (field.sourced.reviewStatus !== "human_verified") continue;
+      if (!published) throw new Error(`${record.id}.${field.field} is verified on an unpublished program`);
+      if (field.sourced.support !== "supported" || field.sourced.value == null) {
+        throw new Error(`${record.id}.${field.field} is verified without support`);
       }
     }
   }

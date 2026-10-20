@@ -180,5 +180,6 @@ export function actionNotes(action: MicroAction, draft: DraftAssessment, catalog
   if (action.channel === "phone" && typeof entry?.phone === "string" && entry.phone.trim()) {
     notes.push(t("assessment.results.phoneNumber", { phone: entry.phone }));
   }
+  if (typeof entry?.preparationNote === "string" && entry.preparationNote.trim()) notes.push(entry.preparationNote);
   return notes;
 }

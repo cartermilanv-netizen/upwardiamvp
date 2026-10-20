@@ -1,13 +1,13 @@
 import raw from "@/lib/resource-database/seed/catalog.json";
 import { publishedFacts } from "@/lib/resource-database/facts";
 import type { ResourceCatalog } from "@/lib/resource-database/types";
-import { assertCatalog, assertUnpublishedSeed } from "@/lib/resource-database/validate";
+import { assertCatalog, assertPublicationBoundary } from "@/lib/resource-database/validate";
 
 export function loadResourceCatalog(): ResourceCatalog {
-  return assertUnpublishedSeed(assertCatalog(raw));
+  return assertPublicationBoundary(assertCatalog(raw));
 }
 
-/** Facts cleared for the resident catalog, matcher, and chatbot. This seed has none. */
+/** Facts cleared for the resident catalog, matcher, and chatbot. Unpublished fields are omitted. */
 export function loadPublishedFacts() {
   const catalog = loadResourceCatalog();
   const publication = new Map(catalog.programs.map((program) => [program.id, program.publicationStatus]));
