@@ -14,6 +14,11 @@ const mobileIcons = [Home, Library, ClipboardList, ListChecks] as const;
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  if (pathname.startsWith("/impact")) return children;
+  return <ResidentChrome pathname={pathname}>{children}</ResidentChrome>;
+}
+
+function ResidentChrome({ pathname, children }: { pathname: string; children: React.ReactNode }) {
   const chatLayout = pathname === routes.ask;
   return (
     <div className="flex h-dvh flex-col overflow-hidden">

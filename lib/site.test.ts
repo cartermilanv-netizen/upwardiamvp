@@ -66,6 +66,8 @@ describe("public site navigation", () => {
     ]);
     expect(mobileNav.map((item) => item.label)).toEqual(["Home", "Resources", "Assessment", "My Plan"]);
     expect(mobileMenuLinks().map((item) => item.href)).toEqual(["/applications", "/profile", "/ask", "/#about"]);
+    const residentHrefs = [...desktopNav, ...mobileNav, ...mobileMenuLinks()].map((item) => item.href);
+    expect(residentHrefs.some((href) => href.startsWith("/impact"))).toBe(false);
   });
 
   it("offers Get Started until an assessment is saved, then Continue", () => {
