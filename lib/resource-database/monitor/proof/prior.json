@@ -1,0 +1,13 @@
+{
+  "id": "prior-1",
+  "sourceId": "src-dpss-calfresh",
+  "url": "https://dpss.lacounty.gov/en/food/calfresh.html",
+  "retrievedOn": "2026-10-20",
+  "httpStatus": 200,
+  "contentRetrieved": true,
+  "bodyRetained": false,
+  "cleanedText": null,
+  "byteLength": null,
+  "sha256": null,
+  "notes": "English CalFresh page returned a 30,093-byte HTML document titled CalFresh. The catalog row does not retain the page body."
+}

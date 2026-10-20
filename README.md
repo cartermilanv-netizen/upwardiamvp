@@ -47,3 +47,15 @@ npm run build
 Choose “Save on this device” to keep one browser key, `upwardia.householdAssessment.v1`. Choose “Keep on screen only until I leave” to keep the draft in memory. “Delete everything on this device” removes the key and the memory copy.
 
 This on-device storage is a prototype. It is not a production place to keep resident data.
+
+## Source check
+
+`lib/resource-database/monitor/` compares one official page with a stored snapshot. The only target is the page named in `lib/resource-database/monitor/proof/target.json`. The check reads `robots.txt` for that host, then fetches the page if the path is allowed. It does not follow links, and it does not change the unpublished catalog.
+
+`npm test` does not use the network. To repeat the one fetch:
+
+```bash
+npm run monitor:once
+```
+
+The prior snapshot, the observation, and the before-and-after record are written under `lib/resource-database/monitor/proof/`. A text change stays pending human approval. A failed fetch is recorded as a failure.
