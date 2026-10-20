@@ -135,7 +135,7 @@ export function AskUpwardia() {
           )}
         </div>
       )}
-      <form onSubmit={onSubmit} className="shrink-0 border-t border-[#e4e0d8] bg-white px-4 py-3">
+      <form method="dialog" onSubmit={onSubmit} className="shrink-0 border-t border-[#e4e0d8] bg-white px-4 py-3">
         <label htmlFor="ask-question" className="text-base font-medium text-stone-900">
           Your question
         </label>
