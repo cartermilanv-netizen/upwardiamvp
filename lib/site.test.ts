@@ -54,9 +54,18 @@ describe("public site navigation", () => {
     expect(hero.primaryHref).toBe(routes.assessment);
     expect(hero.primaryLabel).toBe("Find My Resources");
     expect(hero.secondaryHref).toBe("/resources");
-    expect(desktopNav.map((item) => item.href)).toEqual(["/", "/resources", "/assessment", "/plan", "/#about"]);
+    expect(desktopNav.map((item) => item.href)).toEqual([
+      "/",
+      "/resources",
+      "/applications",
+      "/assessment",
+      "/plan",
+      "/profile",
+      "/ask",
+      "/#about",
+    ]);
     expect(mobileNav.map((item) => item.label)).toEqual(["Home", "Resources", "Assessment", "My Plan"]);
-    expect(mobileMenuLinks().map((item) => item.href)).toEqual(["/#about"]);
+    expect(mobileMenuLinks().map((item) => item.href)).toEqual(["/applications", "/profile", "/ask", "/#about"]);
   });
 
   it("offers Get Started until an assessment is saved, then Continue", () => {

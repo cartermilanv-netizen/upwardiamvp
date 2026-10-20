@@ -6,6 +6,9 @@ export const routes = {
   assessment: "/assessment",
   resources: "/resources",
   plan: "/plan",
+  applications: "/applications",
+  profile: "/profile",
+  ask: "/ask",
   about: "/#about",
   privacy: "/privacy",
   accessibility: "/accessibility",
@@ -32,8 +35,11 @@ export const howItWorks = [
 export const desktopNav = [
   { href: routes.home, label: "Home" },
   { href: routes.resources, label: "Find Resources" },
+  { href: routes.applications, label: "My Applications" },
   { href: routes.assessment, label: "My Assessment" },
   { href: routes.plan, label: "My Plan" },
+  { href: routes.profile, label: "My Profile" },
+  { href: routes.ask, label: "Ask Upwardia" },
   { href: routes.about, label: "About" },
 ] as const;
 

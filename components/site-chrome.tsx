@@ -68,7 +68,7 @@ function SiteHeader() {
     <header className="z-30 shrink-0 border-b border-[#e4e0d8] bg-[#f4f1ea]/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <BrandLockup compact />
-        <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Primary" className="hidden items-center justify-end gap-1 md:flex md:flex-wrap">
           {desktopNav.map((item) => (
             <Link
               key={item.href}
