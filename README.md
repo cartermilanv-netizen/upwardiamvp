@@ -12,7 +12,7 @@ There is no county dashboard, reward ledger, document upload, or seeded program 
 - `/plan` personalized results after an assessment is saved on this device
 - `/applications` demonstration application center (made-up programs, in-memory drafts)
 - `/profile` demonstration profile for those drafts
-- `/ask` unfinished Ask Upwardia page
+- `/ask` Ask Upwardia. Questions go to `POST /api/chat` and the OpenAI Responses API. The assistant may cite only the verified catalog, which is empty until real listings are added. The key is `OPENAI_API_KEY` on the server. Assessment answers, profile fields, and application drafts are not sent.
 
 Privacy, accessibility, and contact links in the footer are placeholders. Each page is labeled “Not finished.”
 

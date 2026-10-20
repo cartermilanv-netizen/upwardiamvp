@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { UnfinishedPage } from "@/components/unfinished-page";
+import { AskUpwardia } from "@/components/ask-upwardia";
 
-export const metadata: Metadata = { title: "Ask Upwardia | Upwardia" };
+export const metadata: Metadata = {
+  title: "Ask Upwardia | Upwardia",
+  description: "Ask a question. Answers can cite only the verified resource catalog.",
+};
 
 export default function AskPage() {
-  return (
-    <UnfinishedPage
-      title="Ask Upwardia"
-      purpose="A helper that answers from approved sources is not built. This page does not send a question anywhere and does not fill or submit an application."
-    />
-  );
+  return <AskUpwardia />;
 }
