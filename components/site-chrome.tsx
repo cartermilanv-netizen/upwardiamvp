@@ -14,7 +14,7 @@ const mobileIcons = [Home, Library, ClipboardList, ListChecks] as const;
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="flex h-dvh flex-col overflow-hidden">
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-[#092451] focus:ring-2 focus:ring-[#092451]"
@@ -22,7 +22,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <div id="content" className="flex-1 pb-24 md:pb-0">
+      <div id="content" className="min-h-0 flex-1 overflow-y-auto pb-10 md:pb-0">
         {children}
         <SiteFooter />
       </div>
@@ -65,7 +65,7 @@ function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#e4e0d8] bg-[#f4f1ea]/95 backdrop-blur">
+    <header className="z-30 shrink-0 border-b border-[#e4e0d8] bg-[#f4f1ea]/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <BrandLockup compact />
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
@@ -132,7 +132,7 @@ function SiteHeader() {
 function MobileNav() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Sections" className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e0d8] bg-white md:hidden">
+    <nav aria-label="Sections" className="z-40 shrink-0 border-t border-[#e4e0d8] bg-white md:hidden">
       <ul className="mx-auto grid h-16 max-w-lg grid-cols-4">
         {mobileNav.map((item, index) => {
           const Icon = mobileIcons[index] ?? Home;

@@ -247,7 +247,7 @@ export function AssessmentApp() {
           )}
         </div>
         {!showSavedIntro && screen !== "results" && (
-          <footer className="sticky bottom-16 z-20 flex flex-col gap-3 border-t border-[#e4e0d8] bg-white/95 px-4 py-3 backdrop-blur sm:px-6 md:bottom-0">
+          <footer className="sticky bottom-0 z-20 flex flex-col gap-3 border-t border-[#e4e0d8] bg-white/95 px-4 py-3 backdrop-blur sm:px-6">
             <div className="flex gap-2">
               {screen !== "intro" && (
                 <Button type="button" variant="outline" className="h-12 flex-1 text-base" onClick={onBack}>

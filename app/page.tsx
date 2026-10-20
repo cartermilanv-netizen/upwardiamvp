@@ -7,16 +7,16 @@ import { cn } from "@/lib/utils";
 export default function HomePage() {
   return (
     <main>
-      <section className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <section className="mx-auto grid w-full max-w-6xl gap-3 px-4 pt-3 pb-2 sm:gap-8 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div>
           <div className="flex items-center gap-3">
-            <Image src="/brand/upwardia-wordmark.png" alt="Upwardia" width={697} height={253} className="h-14 w-auto sm:h-16" priority />
+            <Image src="/brand/upwardia-wordmark.png" alt="Upwardia" width={697} height={253} className="h-9 w-auto sm:h-16" priority />
           </div>
-          <p className="mt-5 text-sm font-semibold tracking-wide text-[#092451] uppercase">{hero.tagline}</p>
-          <h1 className="mt-3 max-w-xl text-4xl font-semibold tracking-tight text-balance text-[#092451] sm:text-5xl">{hero.headline}</h1>
-          <div className="mt-4 h-1.5 w-16 rounded-full bg-[#FFC928]" aria-hidden />
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone-700">{hero.body}</p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-2 text-xs font-semibold tracking-wide text-[#092451] uppercase sm:mt-5 sm:text-sm">{hero.tagline}</p>
+          <h1 className="mt-2 max-w-xl text-[1.7rem] leading-tight font-semibold tracking-tight text-balance text-[#092451] sm:mt-3 sm:text-5xl sm:leading-tight">{hero.headline}</h1>
+          <div className="mt-2 h-1.5 w-16 rounded-full bg-[#FFC928] sm:mt-4" aria-hidden />
+          <p className="mt-2 max-w-xl text-base leading-snug text-stone-700 sm:mt-5 sm:text-lg sm:leading-relaxed">{hero.body}</p>
+          <div className="mt-3 flex flex-col gap-2 sm:mt-7 sm:flex-row sm:gap-3">
             <Link href={hero.primaryHref} className={cn(buttonVariants(), "h-12 px-5 text-base")}>
               {hero.primaryLabel}
             </Link>
@@ -28,10 +28,10 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <aside className="rounded-3xl bg-[#092451] p-6 text-white sm:p-8">
+        <aside className="rounded-3xl bg-[#092451] p-3 text-white sm:p-8">
           <p className="text-sm font-semibold tracking-wide text-white uppercase">On this device</p>
-          <p className="mt-3 text-2xl font-semibold tracking-tight">A private assessment. A plan you can come back to.</p>
-          <p className="mt-3 text-sm leading-relaxed text-white/85">
+          <p className="mt-1 text-lg leading-snug font-semibold tracking-tight sm:mt-3 sm:text-2xl sm:leading-tight">A private assessment. A plan you can come back to.</p>
+          <p className="mt-1 text-sm leading-snug text-white/85 sm:mt-3 sm:leading-relaxed">
             Your answers are not uploaded. When a verified catalog is empty, the plan says so instead of inventing a program.
           </p>
         </aside>
