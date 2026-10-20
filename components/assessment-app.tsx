@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { actionNotes, actionTitle, rebuildToday } from "@/lib/actions";
 import { residentCatalog } from "@/lib/catalog";
@@ -41,6 +42,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export function AssessmentApp() {
+  const router = useRouter();
   const [draft, setDraft] = useState<DraftAssessment | null>(null);
   const [actions, setActions] = useState<MicroAction[]>([]);
   const [screen, setScreen] = useState<ScreenId>("intro");
@@ -74,7 +76,13 @@ export function AssessmentApp() {
 
   function openResults(nextDraft: DraftAssessment) {
     const today = formatLocalDate(new Date());
-    setActions(rebuildToday(actions, nextDraft, residentCatalog, today));
+    const nextActions = rebuildToday(actions, nextDraft, residentCatalog, today);
+    if (nextDraft.prototypeStorage === "local_device") {
+      savePrototype({ assessment: nextDraft, actions: nextActions });
+      router.push("/plan");
+      return;
+    }
+    setActions(nextActions);
     move(nextDraft, "results");
   }
 
@@ -239,7 +247,7 @@ export function AssessmentApp() {
           )}
         </div>
         {!showSavedIntro && screen !== "results" && (
-          <footer className="sticky bottom-0 flex flex-col gap-3 border-t border-[#e4e0d8] bg-white/95 px-4 py-3 backdrop-blur sm:px-6">
+          <footer className="sticky bottom-16 z-20 flex flex-col gap-3 border-t border-[#e4e0d8] bg-white/95 px-4 py-3 backdrop-blur sm:px-6 md:bottom-0">
             <div className="flex gap-2">
               {screen !== "intro" && (
                 <Button type="button" variant="outline" className="h-12 flex-1 text-base" onClick={onBack}>
@@ -728,7 +736,7 @@ function ReviewBody({ draft, onEdit, onOptIn }: { draft: DraftAssessment; onEdit
   );
 }
 
-function ResultsBody({
+export function ResultsBody({
   draft,
   actions,
   onAction,
