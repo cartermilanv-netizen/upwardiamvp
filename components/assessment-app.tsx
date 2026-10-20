@@ -277,10 +277,11 @@ export function AssessmentApp() {
 
 function ProgressHeader({ screen }: { screen: ScreenId }) {
   const section = screenSection(screen);
-  const doneThrough = screen === "consent" ? 1 : screen === "review" || screen === "results" ? 7 : Math.max((section ?? 1) - 1, 0);
+  const current: SectionNumber | null = screen === "consent" ? 1 : screen === "review" || screen === "results" ? 7 : section;
+  const doneThrough = current === null ? 0 : screen === "review" || screen === "results" ? 6 : current - 1;
   return (
     <div className="flex flex-col gap-2">
-      <StepBar active={section} doneThrough={doneThrough} />
+      <StepBar active={current} doneThrough={doneThrough} />
       {section && (
         <div>
           <p className="text-sm font-medium text-[#092451]">{t("assessment.section.nOf", { n: section })}</p>
