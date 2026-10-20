@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 const mobileIcons = [Home, Library, ClipboardList, ListChecks] as const;
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const chatLayout = pathname === routes.ask;
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
       <a
@@ -22,9 +24,12 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <div id="content" className="min-h-0 flex-1 overflow-y-auto pb-10 md:pb-0">
+      <div
+        id="content"
+        className={chatLayout ? "flex min-h-0 flex-1 flex-col overflow-hidden" : "min-h-0 flex-1 overflow-y-auto pb-10 md:pb-0"}
+      >
         {children}
-        <SiteFooter />
+        {chatLayout ? null : <SiteFooter />}
       </div>
       <MobileNav />
     </div>

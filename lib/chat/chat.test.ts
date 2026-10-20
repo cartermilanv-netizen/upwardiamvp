@@ -16,6 +16,7 @@ import { catalogInstructions } from "@/lib/chat/grounding";
 import { handleChatRequest } from "@/lib/chat/handle";
 import { CHAT_MODEL, MAX_MESSAGE_LENGTH, MAX_MESSAGES, RATE_LIMIT } from "@/lib/chat/limits";
 import { resetRateLimit } from "@/lib/chat/rate-limit";
+import { withAssistantReply, withUserMessage } from "@/lib/chat/thread";
 import type { VerifiedCatalogEntry } from "@/lib/types";
 
 const question = { messages: [{ role: "user", content: "What food help is listed?" }] };
@@ -150,6 +151,32 @@ describe("ask upwardia chat", () => {
     expect(ask).not.toMatch(/localStorage|readPrototypeRaw|demonstrationProfile|getApplicationSnapshot|getDraft/);
     expect(route).toContain("process.env.OPENAI_API_KEY");
     expect(route).not.toMatch(/process\.env\.(?!OPENAI_API_KEY\b)/);
+  });
+
+  it("sends a second message with the earlier turns", async () => {
+    answer("No verified resources are loaded.");
+    const first = withUserMessage([], "What food help is available in Los Angeles?");
+    const opened = await handleChatRequest({ body: { messages: first }, apiKey: "test-key", clientId: "thread", now: 10 });
+    expect(opened.status).toBe(200);
+    if (!("reply" in opened.body)) throw new Error("expected a reply");
+    const visible = withAssistantReply(first, opened.body.reply);
+    const second = withUserMessage(visible, "What about help with rent?");
+    expect(second.map((message) => message.content)).toEqual([
+      "What food help is available in Los Angeles?",
+      "No verified resources are loaded.",
+      "What about help with rent?",
+    ]);
+    answer("No verified resources are loaded for rent.");
+    const follow = await handleChatRequest({ body: { messages: second }, apiKey: "test-key", clientId: "thread", now: 11 });
+    expect(follow.status).toBe(200);
+    const request = createMock.mock.calls.at(-1)?.[0] as { input: { role: string; content: string }[] };
+    expect(request.input).toEqual(second);
+    expect(request.input.slice(0, -1)).toEqual(visible);
+
+    const ask = readFileSync(path.join(process.cwd(), "components/ask-upwardia.tsx"), "utf8");
+    expect(ask).toContain("withUserMessage(messages, content)");
+    expect(ask).toContain("JSON.stringify({ messages: next })");
+    expect(ask).not.toContain("setMessages([])");
   });
 
   it("hides timeout and API failures instead of inventing a resource answer", async () => {
