@@ -1,11 +1,13 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { residentCatalog } from "@/lib/catalog";
 import { PublishedListing } from "@/components/published-listing";
 import { MAX_MESSAGE_LENGTH } from "@/lib/chat/limits";
 import { withAssistantReply, withUserMessage } from "@/lib/chat/thread";
 import type { ChatMessage } from "@/lib/chat/validate";
+import { emptyNeedChatMessage, programsForNeed, resourceNeed } from "@/lib/resources";
 
 type Status = "idle" | "loading" | "error";
 
@@ -19,8 +21,13 @@ function errorText(payload: unknown, status: number): string {
 }
 
 export function AskUpwardia() {
+  const params = useSearchParams();
+  const program = residentCatalog.find((entry) => entry.id === params.get("program"));
+  const need = resourceNeed(params.get("need"));
+  const notice = need && programsForNeed(residentCatalog, need.id).length === 0 ? emptyNeedChatMessage(need.label) : null;
+  const initialQuestion = program ? `What can you tell me about ${program.name}?` : "";
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [draft, setDraft] = useState("");
+  const [draft, setDraft] = useState(initialQuestion);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
@@ -83,6 +90,16 @@ export function AskUpwardia() {
         <p className="text-sm font-semibold tracking-wide text-[#092451] uppercase">Ask a question</p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#092451] sm:text-3xl">Ask Upwardia</h1>
         <div className="mt-2 h-1.5 w-16 rounded-full bg-[#FFC928]" aria-hidden />
+        {notice && (
+          <p className="mt-3 rounded-2xl border border-[#e4e0d8] bg-white px-4 py-3 text-sm leading-relaxed text-stone-800" role="note">
+            {notice}
+          </p>
+        )}
+        {initialQuestion && (
+          <p className="mt-3 text-sm leading-relaxed text-stone-700">
+            This question names a published program. Household answers are not sent.
+          </p>
+        )}
         <p className="mt-3 text-sm leading-relaxed text-stone-700 sm:text-base">
           {residentCatalog.length === 0
             ? "Ask about resources. The assistant can mention a program only when it is in the verified catalog. No verified resources are loaded right now, so it should say when a listing is missing. Your household assessment, profile, and application drafts are not sent. Nothing is submitted."

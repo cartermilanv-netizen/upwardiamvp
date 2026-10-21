@@ -12,7 +12,21 @@ import {
   prominentCta,
   routes,
 } from "@/lib/site";
-import { resourceCategories, resourceCategoryHref, resourcesForCategory } from "@/lib/resources";
+import {
+  ELIGIBILITY_NOTE,
+  EMPTY_NEED_MESSAGE,
+  benefitSentence,
+  exploreSearch,
+  hasApplicationPreparation,
+  officialApplication,
+  programsForNeed,
+  resourceCategories,
+  resourceCategoryHref,
+  resourceNeedHref,
+  resourceNeedIds,
+  resourceNeeds,
+  resourcesForCategory,
+} from "@/lib/resources";
 
 function readyDraft() {
   const started = commitPending(createDraft("local_device"), "intro", { kind: "storage", value: "local_device" }).draft;
@@ -85,7 +99,8 @@ describe("public site navigation", () => {
 describe("resource categories", () => {
   it("lists the six browse categories and selects one without inventing rows", () => {
     expect(resourceCategories).toHaveLength(6);
-    expect(resourceCategoryHref("housing-food")).toBe("/resources?category=housing-food");
+    expect(resourceCategoryHref("housing-food")).toBe("/resources/housing-food");
+    expect(resourceNeedHref("housing-food", "food-groceries")).toBe("/resources/housing-food/food-groceries");
     expect(resourcesForCategory(residentCatalog, "housing-food").map((entry) => entry.id)).toEqual([
       "la-county-dpss-calfresh",
       "california-wic",
@@ -97,4 +112,100 @@ describe("resource categories", () => {
     const unverified = { ...housing, id: "draft-row", verified: false as unknown as true };
     expect(resourcesForCategory([unverified], "housing-food")).toEqual([]);
   });
+
+  it("keeps a stable id for every need and publishes programs only on the mapped needs", () => {
+    expect(new Set(resourceNeedIds).size).toBe(resourceNeeds.length);
+    expect(resourceNeeds.map((need) => need.label)).toEqual([
+      "Health insurance",
+      "Find a primary care doctor",
+      "Mental health",
+      "Dental care",
+      "Pregnancy and family health",
+      "Prescriptions",
+      "Cash assistance",
+      "Help paying bills",
+      "Debt and financial counseling",
+      "Tax assistance",
+      "Emergency financial support",
+      "Food and groceries",
+      "Rent assistance",
+      "Affordable housing",
+      "Homelessness prevention",
+      "Emergency shelter",
+      "Utilities",
+      "Job opportunities",
+      "Job training",
+      "Adult education",
+      "College support",
+      "Childcare assistance",
+      "Discounted public transit",
+      "Transportation to healthcare",
+      "Transportation for seniors or people with disabilities",
+      "Affordable home internet",
+      "Free public Wi-Fi",
+      "Computers and devices",
+      "Help completing online forms",
+    ]);
+    expect(programsForNeed(residentCatalog, "food-groceries").map((entry) => entry.id)).toEqual([
+      "la-county-dpss-calfresh",
+      "california-wic",
+    ]);
+    expect(programsForNeed(residentCatalog, "pregnancy-family-health").map((entry) => entry.id)).toEqual(["california-wic"]);
+    for (const need of resourceNeeds) {
+      if (need.id === "food-groceries" || need.id === "pregnancy-family-health") continue;
+      expect(programsForNeed(residentCatalog, need.id)).toEqual([]);
+    }
+    expect(programsForNeed([housing], "affordable-housing")).toEqual([]);
+    expect(programsForNeed([unverifiedHousing()], "food-groceries")).toEqual([]);
+  });
+
+  it("routes everyday searches to a need, including empty needs", () => {
+    expect(needIdFor("I need food")).toBe("food-groceries");
+    expect(programsForNeed(residentCatalog, "food-groceries").map((entry) => entry.name)).toEqual(["CalFresh", "California WIC"]);
+    expect(needIdFor("Help with rent")).toBe("rent-assistance");
+    expect(needIdFor("I need help paying rent")).toBe("rent-assistance");
+    expect(needIdFor("Find a doctor")).toBe("primary-care-doctor");
+    expect(needIdFor("Pay my electricity bill")).toBe("utilities");
+    expect(needIdFor("Find affordable housing")).toBe("affordable-housing");
+    for (const phrase of ["Help with rent", "I need help paying rent", "Find a doctor", "Pay my electricity bill", "Find affordable housing"]) {
+      const id = needIdFor(phrase);
+      expect(programsForNeed(residentCatalog, id)).toEqual([]);
+    }
+    expect(EMPTY_NEED_MESSAGE).toBe("We are still adding verified resources in this area.");
+    expect(ELIGIBILITY_NOTE).toBe("Eligibility depends on household circumstances.");
+    const named = exploreSearch("CalFresh", residentCatalog);
+    expect(named.kind).toBe("programs");
+    if (named.kind === "programs") expect(named.programs.map((entry) => entry.id)).toEqual(["la-county-dpss-calfresh"]);
+    expect(exploreSearch("Santa Monica Below Market Housing", residentCatalog).kind).toBe("none");
+    expect(exploreSearch("Medi-Cal", residentCatalog).kind).toBe("none");
+  });
+
+  it("uses the printed application address and keeps preparation on published guidance", () => {
+    const food = programsForNeed(residentCatalog, "food-groceries");
+    const benefits = food.find((entry) => entry.id === "la-county-dpss-calfresh");
+    const wic = food.find((entry) => entry.id === "california-wic");
+    if (!benefits || !wic) throw new Error("published food listings");
+    expect(officialApplication(benefits)).toMatchObject({
+      url: "https://benefitscal.com",
+      note: "This address is printed on the official page. That site itself was not read.",
+    });
+    expect(officialApplication(wic)?.url).toBe("https://myfamily.wic.ca.gov/Home/HowCanIGetWIC");
+    expect(benefitSentence(benefits.claimText)).toBe(
+      "CalFresh, formerly known as Food Stamps, helps low-income households increase their food-buying power to meet their household's nutritional needs.",
+    );
+    expect(benefitSentence(wic.claimText)).toBe("California WIC is a food and nutrition program for growing families.");
+    expect(hasApplicationPreparation(benefits)).toBe(true);
+    expect(hasApplicationPreparation(wic)).toBe(true);
+    expect(hasApplicationPreparation({ ...housing, applicationInstructions: null, documents: [] })).toBe(false);
+  });
 });
+
+function needIdFor(query: string): string {
+  const result = exploreSearch(query, residentCatalog);
+  if (result.kind !== "need") throw new Error(`${query} -> ${result.kind}`);
+  return result.need.id;
+}
+
+function unverifiedHousing() {
+  return { ...housing, id: "la-county-dpss-calfresh", verified: false as unknown as true };
+}

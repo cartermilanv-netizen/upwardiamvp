@@ -12,6 +12,11 @@ import { cn } from "@/lib/utils";
 
 const mobileIcons = [Home, Library, ClipboardList, ListChecks] as const;
 
+function sectionCurrent(pathname: string, href: string): boolean {
+  if (href === "/" || href.startsWith("/#")) return pathname === href;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   if (pathname.startsWith("/impact")) return children;
@@ -83,10 +88,10 @@ function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={sectionCurrent(pathname, item.href) ? "page" : undefined}
               className={cn(
                 "rounded-lg px-3 py-2 text-sm font-medium text-[#092451] hover:bg-white focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none",
-                pathname === item.href && "bg-white",
+                sectionCurrent(pathname, item.href) && "bg-white",
               )}
             >
               {item.label}
@@ -146,7 +151,7 @@ function MobileNav() {
       <ul className="mx-auto grid h-16 max-w-lg grid-cols-4">
         {mobileNav.map((item, index) => {
           const Icon = mobileIcons[index] ?? Home;
-          const current = pathname === item.href;
+          const current = sectionCurrent(pathname, item.href);
           return (
             <li key={item.href}>
               <Link

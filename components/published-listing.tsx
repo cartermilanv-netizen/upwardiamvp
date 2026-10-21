@@ -124,7 +124,7 @@ export function PublishedListing({ entry, compact = false }: { entry: VerifiedCa
   );
 }
 
-function IncomeChartTable({
+export function IncomeChartTable({
   chart,
   staffNote,
 }: {
