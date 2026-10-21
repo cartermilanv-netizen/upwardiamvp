@@ -46,10 +46,10 @@ export const HP2030: Record<HpObjectiveId, OfficialObjective> = {
     dataSource: "National Health Interview Survey (NHIS), CDC/NCHS",
     targetSettingMethod: "Percentage point improvement",
     nationalPopulation: "Persons in the National Health Interview Survey. That survey population is not the group of Upwardia participants.",
-    mappedGoals: ["Health: find a usual place of care"],
-    mappedActions: ["Save the Care Connection Desk listing", "Start a care-navigation task", "Record a follow-up about a usual place of care"],
+    mappedGoals: ["Health: find a usual place of care", "Find a primary care doctor"],
+    mappedActions: ["Save the Care Connection Desk listing", "Start a care-navigation task", "Record a 90-day follow-up about a usual place of care"],
     platformMeasure:
-      "Share of consented demonstration participants with a baseline and a 90-day follow-up whose follow-up says they have a usual source of care.",
+      "Share of consented participants with a baseline and a 90-day follow-up whose follow-up says they have a usual source of care. Resource views, need clicks, and applications started do not move this numerator.",
     numerator: "Participants in the denominator whose follow-up observation is positive for a usual source of care.",
     denominator: "Consented demonstration participants in the authorized scope with both a baseline observation and a 90-day follow-up for AHS-07.",
     population: populationNote,
@@ -71,8 +71,8 @@ export const HP2030: Record<HpObjectiveId, OfficialObjective> = {
     dataSource: "Current Population Survey Food Security Supplement (CPS-FSS), Census and USDA/ERS",
     targetSettingMethod: "Maintain consistency with national programs, regulations, policies, or laws",
     nationalPopulation: "U.S. households in the Current Population Survey Food Security Supplement. Those households are not Upwardia participants.",
-    mappedGoals: ["Food: steady access to food"],
-    mappedActions: ["View a food listing", "Save a food listing", "Start a food program application"],
+    mappedGoals: ["Food: steady access to food", "Food and groceries"],
+    mappedActions: ["Save a food listing", "Start a food program application", "Record a 90-day food-access follow-up"],
     platformMeasure:
       "Share of consented demonstration participants with a baseline and a 90-day follow-up whose follow-up says they had enough food access.",
     numerator: "Participants in the denominator whose follow-up observation is positive for food access.",
@@ -96,8 +96,8 @@ export const HP2030: Record<HpObjectiveId, OfficialObjective> = {
     dataSource: "National Health Interview Survey (NHIS), CDC/NCHS",
     targetSettingMethod: "Percentage point improvement",
     nationalPopulation: "Persons in the National Health Interview Survey. That survey population is not the group of Upwardia participants.",
-    mappedGoals: ["Health: get care when it is needed"],
-    mappedActions: ["View a health listing", "Start a coverage or care-navigation task", "Record that a health resource was accessed"],
+    mappedGoals: ["Health: get care when it is needed", "Health insurance"],
+    mappedActions: ["Start a coverage or care-navigation task", "Record a 90-day follow-up about getting care"],
     platformMeasure:
       "Share of consented demonstration participants with a baseline and a 90-day follow-up whose follow-up says they accessed a health resource.",
     numerator: "Participants in the denominator whose follow-up observation is positive for accessing a health resource.",
@@ -122,8 +122,8 @@ export const HP2030: Record<HpObjectiveId, OfficialObjective> = {
     targetSettingMethod: "Projection",
     nationalPopulation:
       "Persons in the Current Population Survey Annual Social and Economic Supplement. That national population is not the group of Upwardia participants.",
-    mappedGoals: ["Training or a job step", "A housing stability step"],
-    mappedActions: ["Start a training task", "Complete a housing navigation task", "Record an education or housing follow-up"],
+    mappedGoals: ["Training or a job step", "A housing stability step", "Rent assistance", "Affordable housing", "Education and job training"],
+    mappedActions: ["Start a training task", "Complete a housing navigation task", "Record a 90-day education or housing follow-up"],
     platformMeasure:
       "Share of consented demonstration participants with a baseline and a 90-day follow-up whose follow-up records a completed education, workforce, or housing step.",
     numerator: "Participants in the denominator whose follow-up observation is positive for an education, workforce, or housing step.",

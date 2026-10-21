@@ -29,7 +29,11 @@ function rowsFor(title: string, rows: LabeledCount[]): string[] {
 
 export function reportToCsv(report: ImpactReport): string {
   const lines = [
+    line(["dataset", report.dataset]),
     line(["notice", report.disclaimer]),
+    line(["separation", report.separation.note]),
+    line(["demo_participating_residents", countText(report.separation.demo)]),
+    line(["live_participating_residents", countText(report.separation.live)]),
     line(["scope", report.scopeLabel]),
     line(["organization", report.organizationLabel ?? ""]),
     line(["from", report.applied.from.slice(0, 10)]),
@@ -42,6 +46,7 @@ export function reportToCsv(report: ImpactReport): string {
     line(["participating_residents", countText(report.participating)]),
     line(["active_7_days", countText(report.active7)]),
     line(["active_30_days", countText(report.active30)]),
+    line(["assessments_completed", countText(report.assessmentsCompleted)]),
     line(["assessment_completion_percent", rateText(report.assessmentCompletion)]),
     line(["resources_discovered", countText(report.resourcesDiscovered)]),
     line(["resources_saved", countText(report.resourcesSaved)]),
@@ -57,6 +62,7 @@ export function reportToCsv(report: ImpactReport): string {
     ...rowsFor("weekly_engagement", report.weekly),
     ...rowsFor("monthly_engagement", report.monthly),
     ...rowsFor("category_demand", report.categories),
+    ...rowsFor("need_demand", report.needs),
     ...rowsFor("barriers", report.barriers),
     ...rowsFor("places", report.cities),
     line(["funnel_started", countText(report.funnel.started)]),

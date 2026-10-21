@@ -5,6 +5,7 @@ export type IdempotencyInput = {
   residentId: string;
   occurredAt: string;
   resourceId?: string | null;
+  needId?: string | null;
   actionId?: string | null;
   applicationId?: string | null;
   goalId?: string | null;
@@ -24,9 +25,11 @@ export function idempotencyKey(event: IdempotencyInput): string {
     case "assessment_completed":
       return `${event.type}:${event.residentId}`;
     case "resource_viewed":
-      return `resource_viewed:${event.residentId}:${event.resourceId ?? ""}:${event.occurredAt.slice(0, 10)}`;
+      return `resource_viewed:${event.residentId}:${event.resourceId ?? ""}:${event.needId ?? ""}:${event.occurredAt.slice(0, 10)}`;
     case "resource_saved":
-      return `resource_saved:${event.residentId}:${event.resourceId ?? ""}`;
+      return `resource_saved:${event.residentId}:${event.resourceId ?? ""}:${event.needId ?? ""}`;
+    case "need_selected":
+      return `need_selected:${event.residentId}:${event.needId ?? ""}:${event.occurredAt.slice(0, 10)}`;
     case "chat_session_started":
       return `chat_session_started:${event.residentId}:${event.sessionId ?? ""}`;
     case "action_started":

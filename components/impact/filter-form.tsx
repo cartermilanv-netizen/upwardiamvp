@@ -22,6 +22,7 @@ export function FilterForm({
 }) {
   return (
     <form method="get" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" onChange={submitSelects}>
+      <input type="hidden" name="dataset" value={filters.dataset} />
       <label className="flex flex-col gap-1 text-sm font-medium text-[#092451]">
         Date range
         <select name="range" defaultValue={filters.range === "custom" ? "custom" : filters.range} className={fieldClass}>

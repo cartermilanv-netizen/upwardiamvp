@@ -57,6 +57,8 @@ function event(partial: Partial<EventFact> & Pick<EventFact, "id" | "type" | "re
     resourceId: partial.resourceId ?? null,
     programId: partial.programId ?? null,
     category: partial.category ?? null,
+    needId: partial.needId ?? null,
+    serverConfirmed: partial.serverConfirmed ?? false,
     goalId: partial.goalId ?? null,
     actionId: partial.actionId ?? null,
     applicationId: partial.applicationId ?? null,
@@ -74,6 +76,7 @@ describe("impact definitions", () => {
       "assessment_completed",
       "resource_viewed",
       "resource_saved",
+      "need_selected",
       "chat_session_started",
       "action_started",
       "action_completed",
@@ -133,6 +136,7 @@ describe("impact definitions", () => {
           followUpIntervalDays: 90,
           consent: "granted",
           evidence: "self_reported",
+          source: "demo_fixture",
           verificationMethod: null,
           verificationSource: null,
           recordedOn: asOf,
@@ -154,6 +158,75 @@ describe("impact definitions", () => {
     expect(rows.outcomeReports).toBe(1);
     expect(rows.outcomesVerified).toBe(0);
     expect(rows.participating).toBe(1);
+    const before = rows.health.find((item) => item.objectiveId === "NWS-01");
+    const withClicks = tally({
+      residents: [resident("demo-r-0001")],
+      events: [
+        event({ id: "v1", type: "resource_viewed", residentId: "demo-r-0001", resourceId: "res_market", category: "food", needId: "food-groceries" }),
+        event({ id: "n1", type: "need_selected", residentId: "demo-r-0001", needId: "food-groceries", category: "food" }),
+        event({ id: "a1", type: "application_started", residentId: "demo-r-0001", applicationId: "application-1", needId: "food-groceries", category: "food" }),
+      ],
+      outcomes: [
+        {
+          id: "base",
+          residentId: "demo-r-0001",
+          organizationId: "org_harborlight",
+          jurisdictionId: "jur_harbor",
+          city: "North Harbor",
+          outcomeType: "food_access",
+          objectiveId: "NWS-01",
+          phase: "baseline",
+          indicator: "negative",
+          followUpIntervalDays: 90,
+          consent: "granted",
+          evidence: "self_reported",
+          source: "demo_fixture",
+          verificationMethod: null,
+          verificationSource: null,
+          recordedOn: "2026-07-01T00:00:00.000Z",
+        },
+        {
+          id: "follow",
+          residentId: "demo-r-0001",
+          organizationId: "org_harborlight",
+          jurisdictionId: "jur_harbor",
+          city: "North Harbor",
+          outcomeType: "food_access",
+          objectiveId: "NWS-01",
+          phase: "follow_up",
+          indicator: "negative",
+          followUpIntervalDays: 90,
+          consent: "granted",
+          evidence: "self_reported",
+          source: "demo_fixture",
+          verificationMethod: null,
+          verificationSource: null,
+          recordedOn: asOf,
+        },
+      ],
+      barriers: [],
+      from: "2026-07-01T00:00:00.000Z",
+      to: asOf,
+      city: null,
+      jurisdictionId: null,
+      programId: null,
+      category: null,
+      cities: ["North Harbor"],
+      categories: ["food"],
+      barrierIds: [],
+      needs: [
+        { id: "food-groceries", label: "Food and groceries" },
+        { id: "rent-assistance", label: "Rent assistance" },
+      ],
+    });
+    const after = withClicks.health.find((item) => item.objectiveId === "NWS-01");
+    expect(before?.followUpPositive ?? 0).toBe(0);
+    expect(after?.followUpPositive).toBe(0);
+    expect(after?.paired).toBe(1);
+    expect(withClicks.applicationsStarted).toBe(1);
+    expect(withClicks.outcomesVerified).toBe(0);
+    expect(withClicks.needs.find((need) => need.id === "food-groceries")?.n).toBe(1);
+    expect(withClicks.needs.find((need) => need.id === "rent-assistance")?.n).toBe(0);
   });
 
   it("hides a small partition cell and a second cell so the small one cannot be subtracted", () => {
@@ -242,8 +315,10 @@ describe("impact access and stored demonstration", () => {
     for (const table of tables) {
       for (const column of tableColumns(db, table)) expect(column).not.toMatch(banned);
     }
-    const foreign = db.prepare("SELECT COUNT(*) AS n FROM events WHERE source != 'demo_fixture'").get();
-    expect(Number(foreign?.n ?? 0)).toBe(0);
+    const foreign = db.prepare("SELECT source, event_type, need_id, server_confirmed FROM events WHERE source != 'demo_fixture'").all();
+    expect(foreign).toEqual([{ source: "resident_event", event_type: "action_started", need_id: "food-groceries", server_confirmed: 0 }]);
+    const sessions = db.prepare("SELECT COUNT(*) AS n FROM analytics_sessions").get() as { n?: number } | undefined;
+    expect(Number(sessions?.n ?? 0)).toBe(0);
     const dataset = buildDemoDataset();
     const keys = dataset.events.map((item) => item.dedupeKey);
     expect(keys.length).toBeGreaterThan(new Set(keys).size);
@@ -285,6 +360,40 @@ describe("impact access and stored demonstration", () => {
     expect(harborJson).not.toContain("Pierpoint Care Partners");
     expect(JSON.stringify(harborlight)).not.toContain("Cedar Works");
     expect(everyone.disclaimer).toContain("not actual Upwardia results");
+    expect(everyone.dataset).toBe("demo");
+    expect(everyone.syntheticActivity).toBeNull();
+    expect(everyone.separation.demo.value).toBe(172);
+    expect(everyone.separation.live.suppressed).toBe(true);
+    expect(everyone.participating.value).not.toBe((everyone.separation.demo.value ?? 0) + 1);
+    expect(everyone.needs.find((need) => need.id === "food-groceries")?.count.value).toBeGreaterThanOrEqual(11);
+    expect(everyone.assessmentsCompleted.value).toBeGreaterThan(0);
+    const live = buildImpactReport(db, superAdmin, { dataset: "live" });
+    expect(live.disclaimer).toBe("Synthetic test activity. Not real residents.");
+    expect(live.dataset).toBe("live");
+    expect(live.demonstration).toBe(false);
+    expect(live.participating).toEqual({ value: null, suppressed: true });
+    expect(live.separation.demo.value).toBe(172);
+    expect(live.separation.live.suppressed).toBe(true);
+    expect(live.syntheticActivity).toMatchObject({ eventType: "action_started", needId: "food-groceries", needLabel: "Food and groceries" });
+    expect(live.needs.every((need) => need.count.suppressed)).toBe(true);
+    const liveJson = JSON.stringify(live);
+    expect(liveJson).not.toContain("res_synthetic_test");
+    expect(liveJson).not.toContain("demo-r-");
+    const cedarLive = buildImpactReport(
+      db,
+      {
+        userId: "cedar-test",
+        email: "cedar-test",
+        displayName: "Cedar test",
+        role: "organization_admin",
+        organizationId: "org_cedar",
+        jurisdictionId: "jur_cedar",
+      },
+      { dataset: "live" },
+    );
+    expect(cedarLive.syntheticActivity).toBeNull();
+    expect(cedarLive.participating.value).toBe(0);
+    expect(cedarLive.empty).toBe(true);
     expect(everyone.outcomesVerified.value).toBeLessThan(everyone.outcomeReports.value ?? 0);
     expect(everyone.funnel.submitted.suppressed).toBe(false);
     expect(everyone.funnel.submitted.value).toBeLessThan(everyone.funnel.draft.value ?? 0);
@@ -345,10 +454,27 @@ describe("resident code does not record impact events", () => {
       for (const file of sourceFiles(path.join(process.cwd(), root))) {
         if (file.includes(`${path.sep}impact${path.sep}`)) continue;
         const text = readFileSync(file, "utf8");
-        if (text.includes("@/lib/impact") || text.includes("/api/impact")) hits.push(file);
+        if (text.includes("@/lib/impact") || text.includes("/api/impact") || text.includes("ingestResidentEvent")) hits.push(file);
       }
     }
     expect(hits).toEqual([]);
+    const consentActions = readFileSync(path.join(process.cwd(), "app/impact/consent-actions.ts"), "utf8");
+    expect(consentActions).not.toContain("ingestResidentEvent");
+    expect(consentActions).not.toContain("/events");
+    const consentUi = readFileSync(path.join(process.cwd(), "components/analytics-consent.tsx"), "utf8");
+    expect(consentUi).toContain("Aggregate analytics are off");
+    expect(consentUi).toContain("Reports are totals for groups of people");
+    expect(consentUi).toContain("household income");
+    expect(consentUi).toContain("health conditions");
+    expect(consentUi).toContain("immigration information");
+    expect(consentUi).toContain("Social Security number");
+    expect(consentUi).toContain("chat messages");
+    expect(consentUi).toContain("application answers");
+    expect(consentUi).toContain("stay available either way");
+    const assessment = readFileSync(path.join(process.cwd(), "app/assessment/page.tsx"), "utf8");
+    const resources = readFileSync(path.join(process.cwd(), "app/resources/page.tsx"), "utf8");
+    expect(assessment).not.toContain("analytics");
+    expect(resources).not.toContain("analytics");
   });
 });
 

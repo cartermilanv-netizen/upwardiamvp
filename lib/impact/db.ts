@@ -1,17 +1,26 @@
+import { randomBytes } from "node:crypto";
 import { mkdirSync } from "node:fs";
 import path from "node:path";
 import { DatabaseSync, type SqlValue } from "node:sqlite";
 import { hashPassword, hashToken, makeSalt, newSessionToken, passwordMatches } from "@/lib/impact/auth";
 import { CATEGORIES, DEMO_LOGINS, JURISDICTIONS, ORGANIZATIONS, PROGRAMS, categoryLabel, jurisdictionName, organizationName, programName } from "@/lib/impact/catalog";
+import { saveConsent } from "@/lib/impact/consent";
 import {
   AUDIT_RETENTION_DAYS,
   DEMO_AS_OF,
   EVENT_RETENTION_DAYS,
+  HOLDING_ORGANIZATION_ID,
   OUTCOME_RETENTION_DAYS,
   SEED_VERSION,
   SESSION_HOURS,
+  SYNTHETIC_ACTION_ID,
+  SYNTHETIC_EVENT_ID,
+  SYNTHETIC_NEED_ID,
+  SYNTHETIC_RESIDENT_ID,
   plusDays,
 } from "@/lib/impact/constants";
+import { ingestResidentEvent } from "@/lib/impact/ingest";
+import { issueAnalyticsSession } from "@/lib/impact/resident-session";
 import { buildDemoDataset } from "@/lib/impact/seed";
 import type { Directory } from "@/lib/impact/query";
 import type {
@@ -20,9 +29,11 @@ import type {
   BarrierFact,
   CategoryId,
   EventFact,
+  EventSource,
   EventType,
   GoalFact,
   OutcomeFact,
+  OutcomeSource,
   Principal,
   ResidentFact,
 } from "@/lib/impact/types";
@@ -80,11 +91,25 @@ CREATE TABLE IF NOT EXISTS events (
   resource_id TEXT,
   program_id TEXT,
   category TEXT,
+  need_id TEXT,
+  server_confirmed INTEGER NOT NULL DEFAULT 0,
   goal_id TEXT,
   action_id TEXT,
   application_id TEXT,
   outcome_id TEXT,
   session_id TEXT
+);
+CREATE TABLE IF NOT EXISTS analytics_sessions (
+  id TEXT PRIMARY KEY,
+  token_hash TEXT NOT NULL UNIQUE,
+  resident_id TEXT NOT NULL,
+  issued_at TEXT NOT NULL,
+  expires_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS ingest_nonces (
+  nonce TEXT PRIMARY KEY,
+  resident_id TEXT NOT NULL,
+  received_at TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS outcomes (
   id TEXT PRIMARY KEY,
@@ -99,6 +124,7 @@ CREATE TABLE IF NOT EXISTS outcomes (
   follow_up_interval_days INTEGER NOT NULL,
   consent TEXT NOT NULL,
   evidence TEXT NOT NULL,
+  source TEXT NOT NULL DEFAULT 'demo_fixture',
   verification_method TEXT,
   verification_source TEXT,
   recorded_on TEXT NOT NULL
@@ -171,9 +197,15 @@ function nullable(value: SqlValue | undefined): string | null {
 }
 
 function scope(principal: Principal): { sql: string; params: string[] } {
-  if (principal.role === "super_admin") return { sql: "1 = 1", params: [] };
-  if (principal.role === "government_admin") return { sql: "jurisdiction_id = ?", params: [principal.jurisdictionId ?? ""] };
-  return { sql: "organization_id = ? AND jurisdiction_id = ?", params: [principal.organizationId ?? "", principal.jurisdictionId ?? ""] };
+  const holding = "organization_id != ?";
+  if (principal.role === "super_admin") return { sql: holding, params: [HOLDING_ORGANIZATION_ID] };
+  if (principal.role === "government_admin") {
+    return { sql: `${holding} AND jurisdiction_id = ?`, params: [HOLDING_ORGANIZATION_ID, principal.jurisdictionId ?? ""] };
+  }
+  return {
+    sql: `${holding} AND organization_id = ? AND jurisdiction_id = ?`,
+    params: [HOLDING_ORGANIZATION_ID, principal.organizationId ?? "", principal.jurisdictionId ?? ""],
+  };
 }
 
 function all(db: DatabaseSync, sql: string, params: SqlValue[] = []): Row[] {
@@ -194,6 +226,9 @@ export function openDatabase(filePath: string): DatabaseSync {
   db.exec("PRAGMA journal_mode = WAL;");
   db.exec("PRAGMA foreign_keys = ON;");
   db.exec(SCHEMA);
+  ensureColumn(db, "events", "need_id", "TEXT");
+  ensureColumn(db, "events", "server_confirmed", "INTEGER NOT NULL DEFAULT 0");
+  ensureColumn(db, "outcomes", "source", "TEXT NOT NULL DEFAULT 'demo_fixture'");
   const seeded = one(db, "SELECT value FROM meta WHERE key = 'seed'");
   if (!seeded || text(seeded.value) !== SEED_VERSION) seed(db);
   purgeExpired(db, new Date().toISOString());
@@ -229,6 +264,8 @@ function clearRows(db: DatabaseSync): void {
     "actions",
     "applications",
     "sessions",
+    "analytics_sessions",
+    "ingest_nonces",
     "audit_log",
     "residents",
     "users",
@@ -287,8 +324,8 @@ function seed(db: DatabaseSync): void {
     const insertEvent = db.prepare(
       `INSERT OR IGNORE INTO events (
         id, dedupe_key, resident_id, organization_id, jurisdiction_id, city, event_type, occurred_at, source,
-        resource_id, program_id, category, goal_id, action_id, application_id, outcome_id, session_id
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        resource_id, program_id, category, need_id, server_confirmed, goal_id, action_id, application_id, outcome_id, session_id
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     );
     for (const event of dataset.events) {
       insertEvent.run(
@@ -304,6 +341,8 @@ function seed(db: DatabaseSync): void {
         event.resourceId,
         event.programId,
         event.category,
+        event.needId,
+        event.serverConfirmed ? 1 : 0,
         event.goalId,
         event.actionId,
         event.applicationId,
@@ -314,8 +353,8 @@ function seed(db: DatabaseSync): void {
     const insertOutcome = db.prepare(
       `INSERT INTO outcomes (
         id, resident_id, organization_id, jurisdiction_id, city, outcome_type, objective_id, phase, indicator,
-        follow_up_interval_days, consent, evidence, verification_method, verification_source, recorded_on
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        follow_up_interval_days, consent, evidence, source, verification_method, verification_source, recorded_on
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     );
     for (const outcome of dataset.outcomes) {
       insertOutcome.run(
@@ -331,6 +370,7 @@ function seed(db: DatabaseSync): void {
         outcome.followUpIntervalDays,
         outcome.consent,
         outcome.evidence,
+        outcome.source,
         outcome.verificationMethod,
         outcome.verificationSource,
         outcome.recordedOn,
@@ -386,6 +426,34 @@ function seed(db: DatabaseSync): void {
       SESSION_HOURS,
       "Demonstration retention. Events and outcomes are eligible for deletion after the stated number of days. Sessions expire on the hour count. Audit rows age out after the audit window.",
     );
+    const nowIso = new Date().toISOString();
+    saveConsent(db, {
+      id: SYNTHETIC_RESIDENT_ID,
+      organizationId: "org_harborlight",
+      jurisdictionId: "jur_harbor",
+      city: "North Harbor",
+      consent: "granted",
+      at: nowIso,
+    });
+    const session = issueAnalyticsSession(db, SYNTHETIC_RESIDENT_ID, nowIso);
+    if (!session.ok) throw new Error(session.error);
+    const ingested = ingestResidentEvent(
+      db,
+      session.token,
+      {
+        type: "action_started",
+        occurredAt: nowIso,
+        sentAt: nowIso,
+        nonce: randomBytes(16).toString("hex"),
+        needId: SYNTHETIC_NEED_ID,
+        actionId: SYNTHETIC_ACTION_ID,
+      },
+      { now: nowIso, eventId: SYNTHETIC_EVENT_ID },
+    );
+    if (!ingested.ok || ingested.status !== "accepted") {
+      throw new Error(ingested.ok ? "The synthetic test event was already stored." : ingested.error);
+    }
+    db.prepare("DELETE FROM analytics_sessions WHERE resident_id = ?").run(SYNTHETIC_RESIDENT_ID);
     db.prepare("INSERT INTO meta (key, value) VALUES ('seed', ?)").run(SEED_VERSION);
     db.exec("COMMIT");
   } catch (error) {
@@ -408,7 +476,9 @@ export function loadFacts(db: DatabaseSync, principal: Principal): ScopedFacts {
   const limited = scope(principal);
   const residentSql = `SELECT * FROM residents WHERE analytics_consent = 'granted' AND deleted_at IS NULL AND consent_withdrawn_at IS NULL AND ${limited.sql}`;
   const residents = all(db, residentSql, limited.params).map(mapResident);
-  const events = all(db, `SELECT * FROM events WHERE ${limited.sql}`, limited.params).map(mapEvent);
+  const events = all(db, `SELECT * FROM events WHERE ${limited.sql}`, limited.params)
+    .map(mapEvent)
+    .filter((event): event is EventFact => event !== null);
   const outcomes = all(db, `SELECT * FROM outcomes WHERE consent = 'granted' AND ${limited.sql}`, limited.params).map(mapOutcome);
   const barriers = all(db, `SELECT * FROM barriers WHERE ${limited.sql}`, limited.params).map(mapBarrier);
   const goals = all(db, `SELECT * FROM goals WHERE ${limited.sql}`, limited.params).map(mapGoal);
@@ -502,15 +572,18 @@ export function purgeExpired(db: DatabaseSync, nowIso: string): void {
   db.prepare("DELETE FROM events WHERE occurred_at < ?").run(eventCutoff);
   db.prepare("DELETE FROM outcomes WHERE recorded_on < ?").run(outcomeCutoff);
   db.prepare("DELETE FROM sessions WHERE expires_at <= ?").run(nowIso);
+  db.prepare("DELETE FROM analytics_sessions WHERE expires_at <= ?").run(nowIso);
+  db.prepare("DELETE FROM ingest_nonces WHERE received_at < ?").run(plusDays(nowIso, -2));
   db.prepare("DELETE FROM audit_log WHERE created_at < ?").run(auditCutoff);
 }
 
 export function withdrawConsent(db: DatabaseSync, residentId: string, at: string): void {
   db.prepare("UPDATE residents SET analytics_consent = 'withdrawn', consent_withdrawn_at = ? WHERE id = ?").run(at, residentId);
+  db.prepare("DELETE FROM analytics_sessions WHERE resident_id = ?").run(residentId);
 }
 
 export function deleteResidentAnalytics(db: DatabaseSync, residentId: string, at: string): void {
-  for (const table of ["events", "outcomes", "barriers", "goals", "actions", "applications"]) {
+  for (const table of ["events", "outcomes", "barriers", "goals", "actions", "applications", "ingest_nonces", "analytics_sessions"]) {
     db.prepare(`DELETE FROM ${table} WHERE resident_id = ?`).run(residentId);
   }
   db.prepare("UPDATE residents SET deleted_at = ?, city = '', analytics_consent = 'withdrawn', consent_withdrawn_at = ? WHERE id = ?").run(
@@ -538,7 +611,9 @@ function mapResident(row: Row): ResidentFact {
   };
 }
 
-function mapEvent(row: Row): EventFact {
+function mapEvent(row: Row): EventFact | null {
+  const source = mapEventSource(text(row.source));
+  if (!source) return null;
   return {
     id: text(row.id),
     dedupeKey: text(row.dedupe_key),
@@ -548,16 +623,29 @@ function mapEvent(row: Row): EventFact {
     city: text(row.city),
     type: text(row.event_type) as EventType,
     occurredAt: text(row.occurred_at),
-    source: "demo_fixture",
+    source,
     resourceId: nullable(row.resource_id),
     programId: nullable(row.program_id),
     category: nullable(row.category) as CategoryId | null,
+    needId: nullable(row.need_id),
+    serverConfirmed: Number(row.server_confirmed) === 1,
     goalId: nullable(row.goal_id),
     actionId: nullable(row.action_id),
     applicationId: nullable(row.application_id),
     outcomeId: nullable(row.outcome_id),
     sessionId: nullable(row.session_id),
   };
+}
+
+function mapEventSource(value: string): EventSource | null {
+  if (value === "demo_fixture" || value === "resident_event" || value === "self_reported_outcome" || value === "externally_verified_outcome") {
+    return value;
+  }
+  return null;
+}
+
+function ensureColumn(db: DatabaseSync, table: string, column: string, definition: string): void {
+  if (!tableColumns(db, table).includes(column)) db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
 }
 
 function mapOutcome(row: Row): OutcomeFact {
@@ -577,10 +665,16 @@ function mapOutcome(row: Row): OutcomeFact {
     followUpIntervalDays: Number(row.follow_up_interval_days ?? 0),
     consent: "granted",
     evidence,
+    source: mapOutcomeSource(text(row.source)),
     verificationMethod: nullable(row.verification_method),
     verificationSource: nullable(row.verification_source),
     recordedOn: text(row.recorded_on),
   };
+}
+
+function mapOutcomeSource(value: string): OutcomeSource {
+  if (value === "self_reported_outcome" || value === "externally_verified_outcome") return value;
+  return "demo_fixture";
 }
 
 function mapBarrier(row: Row): BarrierFact {

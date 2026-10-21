@@ -4,7 +4,7 @@ A public homepage, resource browsing, and a resident household assessment. The a
 
 Category browsing, matching, and Ask Upwardia read `residentCatalog`. That catalog currently shows two published programs whose fields were checked against the official pages. Other records in `lib/resource-database/` stay unpublished and are not shown.
 
-Upwardia Impact is a separate signed-in analytics route at `/impact`. It is not in the resident header, footer, or mobile bar. The numbers there are a fictional demonstration stored in SQLite. The resident assessment is still not uploaded.
+Upwardia Impact is a separate signed-in analytics route at `/impact`. It is not in the resident header, footer, or mobile bar. Demo and Live are separate totals and are never added together. Demo rows are fictional. The Live view in this environment shows one synthetic test action, labeled as not real residents. The resident assessment is still not uploaded, and resident pages do not send analytics events.
 
 ## Routes
 
@@ -13,7 +13,7 @@ Upwardia Impact is a separate signed-in analytics route at `/impact`. It is not 
 - `/assessment` household assessment
 - `/plan` personalized results after an assessment is saved on this device
 - `/applications` demonstration application center (made-up programs, in-memory drafts)
-- `/profile` demonstration profile for those drafts
+- `/profile` demonstration profile for those drafts, including the optional aggregate-analytics choice. It is off unless the resident turns it on. Explore Resources and the assessment do not depend on that choice.
 - `/ask` Ask Upwardia. Questions go to `POST /api/chat` and the OpenAI Responses API. The assistant may cite only published catalog facts. The key is `OPENAI_API_KEY` on the server. Assessment answers, profile fields, and application drafts are not sent. Upwardia prepares an application and does not submit one.
 - `/impact` Upwardia Impact, a separate signed-in demonstration dashboard. It is not linked from the resident navigation.
 
@@ -57,7 +57,9 @@ npm run build
 
 These passwords are for the local demonstration. They are not production secrets. Every Impact screen says the figures are demonstration data.
 
-The first server start creates `data/impact.sqlite` and fills it with fictional rows. That file is gitignored. `GET /api/impact/metrics` and `GET /api/impact/export` require the session cookie. A role only receives its own organization and jurisdiction, and counts under 11 are suppressed.
+The first server start creates `data/impact.sqlite` and fills it with fictional demo rows plus one synthetic live action sent through the ingest path. That file is gitignored. After sign-in, choose Demo or Live. Those totals are not combined. `GET /api/impact/metrics` and `GET /api/impact/export` require the session cookie. `POST /api/impact/events` is the resident ingest endpoint. It is not called from resident pages. A role only receives its own organization and jurisdiction, and counts under 11 are suppressed.
+
+Optional analytics consent is on My profile. The default is off. Withdraw stops new events. Delete removes that resident's stored analytics events. The id is pseudonymous. Income, health conditions, immigration information, Social Security numbers, chat text, and application answers are not accepted.
 
 ## Storage
 

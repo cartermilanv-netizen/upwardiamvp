@@ -13,7 +13,8 @@ export function ReportView({ report, view }: { report: ImpactReport; view: "over
       <header className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="text-sm font-semibold text-[#092451]">{report.disclaimer}</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight text-[#092451]">{title}</h1>
+          <DatasetSwitch report={report} view={view} />
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#092451]">{title}</h1>
           <p className="mt-1 text-sm text-[#3d4a5c]">
             {report.scopeLabel}
             {report.organizationLabel ? ` · ${report.organizationLabel}` : ""} · Reporting date {report.asOf.slice(0, 10)}
@@ -26,6 +27,15 @@ export function ReportView({ report, view }: { report: ImpactReport; view: "over
           Export aggregate report
         </a>
       </header>
+
+      <SeparationStrip report={report} />
+      {report.syntheticActivity ? (
+        <section id="impact-synthetic" className="rounded-2xl border border-[#092451]/15 bg-white p-5" aria-label="Synthetic test activity">
+          <h2 className="text-base font-semibold text-[#092451]">{report.disclaimer}</h2>
+          <p className="mt-2 text-sm leading-6 text-[#3d4a5c]">{report.syntheticActivity.summary}</p>
+          <p className="mt-2 text-sm text-[#3d4a5c]">Need: {report.syntheticActivity.needLabel}. Event: action started.</p>
+        </section>
+      ) : null}
 
       <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-[#092451]/10" aria-label="Filters">
         <FilterForm
@@ -46,7 +56,7 @@ export function ReportView({ report, view }: { report: ImpactReport; view: "over
       ) : null}
       {report.empty ? (
         <p className="rounded-2xl border border-[#092451]/15 bg-white p-5 text-[#092451]" role="status">
-          No demonstration participants match these filters.
+          {report.dataset === "live" ? "No live activity matches these filters." : "No demonstration participants match these filters."}
         </p>
       ) : null}
 
@@ -64,18 +74,19 @@ function Overview({ report }: { report: ImpactReport }) {
         <Metric label="Participating residents" value={showCount(report.participating)} detail="Consented people with a qualifying event in the selected dates." />
         <Metric label="Active in 7 days" value={showCount(report.active7)} detail="A qualifying event in the last 7 days of this range." />
         <Metric label="Active in 30 days" value={showCount(report.active30)} detail="A qualifying event in the last 30 days of this range." />
+        <Metric label="Assessments completed" value={showCount(report.assessmentsCompleted)} detail="Distinct residents who finished an assessment in the selected dates." />
         <Metric label="Assessment completion" value={showRate(report.assessmentCompletion)} detail={rateDetail(report.assessmentCompletion)} />
-        <Metric label="Resources discovered" value={showCount(report.resourcesDiscovered)} detail="Distinct resident and resource. A view is not an application." />
+        <Metric label="Resources viewed" value={showCount(report.resourcesDiscovered)} detail="Distinct resident and resource. A view is not an application or a verified outcome." />
         <Metric label="Resources saved" value={showCount(report.resourcesSaved)} detail="Distinct resident and resource. Repeat saves count once." />
-        <Metric label="Tasks started" value={showCount(report.tasksStarted)} detail="Distinct actions that were started." />
-        <Metric label="Tasks completed" value={showCount(report.tasksCompleted)} detail="Distinct actions that were completed." />
+        <Metric label="Actions started" value={showCount(report.tasksStarted)} detail="Distinct actions that were started. An action is not a verified outcome." />
+        <Metric label="Actions completed" value={showCount(report.tasksCompleted)} detail="Distinct actions that were completed." />
         <Metric label="Action completion" value={showRate(report.actionCompletion)} detail={rateDetail(report.actionCompletion)} />
         <Metric label="Applications started" value={showCount(report.applicationsStarted)} detail="Distinct applications. Resource views are not included." />
         <Metric label="Drafts saved" value={showCount(report.draftsSaved)} detail="Distinct applications with a saved draft. Repeat saves count once." />
-        <Metric label="Verified submissions" value={showCount(report.submissionsConfirmed)} detail="Distinct applications with a confirmed submission." />
+        <Metric label="Verified submissions" value={showCount(report.submissionsConfirmed)} detail="Distinct applications with a server-confirmed submission. Started applications are not included." />
         <Metric label="Goals completed" value={showCount(report.goalsCompleted)} detail="Distinct goals marked completed." />
-        <Metric label="Outcome reports" value={showCount(report.outcomeReports)} detail="Self-reported outcome records. A report is not a verified outcome." />
-        <Metric label="Verified outcomes" value={showCount(report.outcomesVerified)} detail="Counted only when a verification method and source are stored." />
+        <Metric label="Self-reported outcomes" value={showCount(report.outcomeReports)} detail="Outcome reports from residents. A report is not a verified outcome." />
+        <Metric label="Verified outcomes" value={showCount(report.outcomesVerified)} detail="Counted only for server-confirmed verification events with a method and source." />
       </CardGrid>
       <div className="grid gap-4 xl:grid-cols-2">
         <Panel title="Weekly engagement" caption="Distinct participating residents with a qualifying event in each week.">
@@ -85,6 +96,11 @@ function Overview({ report }: { report: ImpactReport }) {
           <Bars rows={report.monthly} />
         </Panel>
       </div>
+      <Panel title="Need demand" caption="Distinct residents with an event for that Explore Resources need. Views, need clicks, and started applications are demand. They are not verified outcomes and they do not change Healthy People 2030 numerators.">
+        <div id="impact-needs">
+          <Bars rows={report.needs} />
+        </div>
+      </Panel>
       <Panel title="Categories with the greatest demand" caption="Distinct residents who viewed a resource in the category. Choosing a bar filters the report.">
         <Bars
           rows={report.categories}
@@ -151,7 +167,7 @@ function Health({ report }: { report: ImpactReport }) {
   return (
     <div className="flex flex-col gap-5">
       <p className="rounded-2xl bg-white p-4 text-sm leading-6 text-[#3d4a5c] shadow-sm ring-1 ring-[#092451]/10">
-        National figures below are copied from the official Healthy People 2030 pages. Platform baseline and follow-up use only this demonstration&apos;s consented participants. The two populations are different. Upwardia Impact does not treat platform figures as a cause of change in a national target.
+        National figures below are copied from the official Healthy People 2030 pages. Platform baseline and follow-up use only consented participants in this {report.dataset === "live" ? "live" : "demonstration"} view. The two populations are different. Resource views, need clicks, and applications started do not move the numerators. Upwardia Impact does not treat platform figures as a cause of change in a national target.
       </p>
       {report.health.map((block) => {
         const official = HP2030[block.objectiveId];
@@ -205,7 +221,7 @@ function Health({ report }: { report: ImpactReport }) {
                   <Metric label="Engagement indicator" value={showCount(block.engagement)} detail="Residents with a mapped event in the selected dates." />
                   <Metric label="Intermediate outcome" value={showCount(block.intermediate)} detail="Completed actions or confirmed submissions in the mapped category." />
                   <Metric label="Self-reported outcome" value={showCount(block.selfReported)} detail="Follow-up observations without external verification." />
-                  <Metric label="Verified outcome" value={showCount(block.verified)} detail="Follow-up observations with a verification method and source." />
+                  <Metric label="Verified outcome" value={showCount(block.verified)} detail="Follow-up observations with a server-confirmed verification method and source." />
                 </div>
               </>
             )}
@@ -225,11 +241,58 @@ function Definitions() {
         A participating resident is a consented, pseudonymous person in your organization and jurisdiction with at least one qualifying event in the selected dates. Active residents are the subset with a qualifying event in the last 7 or 30 days of that range.
       </p>
       <p className="mt-2">
-        Qualifying events are assessment start or completion, resource view or save, chat session start, action start or completion, application start, draft save, or confirmed submission, goal completion, and an outcome report. An external verification is not treated as resident engagement. Duplicate events share an idempotency key and count once. A resource view is never an application. A self-reported outcome is never a verified outcome.
+        Qualifying events are assessment start or completion, resource view or save, a need click, chat session start, action start or completion, application start, draft save, or confirmed submission, goal completion, and an outcome report. An external verification is not treated as resident engagement. Duplicate events share an idempotency key and count once. A resource view, a need click, and an application start are never verified outcomes. A self-reported outcome is never a verified outcome. Verified submissions and verified outcomes count only when the server confirmed them. Demonstration fixtures and live events are never added into one total.
       </p>
       <p className="mt-2">
         Groups under 11 are suppressed. If hiding one place or barrier would let someone subtract it from the total, another cell in that breakdown is hidden as well. A filter that removes fewer than 11 people from the larger group returns no counts.
       </p>
+    </section>
+  );
+}
+
+function DatasetSwitch({ report, view }: { report: ImpactReport; view: "overview" | "funnel" | "health" }) {
+  const path = view === "funnel" ? "/impact/funnel" : view === "health" ? "/impact/health" : "/impact";
+  const options = [
+    { dataset: "demo" as const, label: "Demo" },
+    { dataset: "live" as const, label: "Live" },
+  ];
+  return (
+    <div id="impact-dataset" className="mt-3 flex flex-wrap items-center gap-2">
+      <span className="text-sm font-medium text-[#3d4a5c]">Dataset</span>
+      {options.map((option) => {
+        const selected = report.dataset === option.dataset;
+        return (
+          <Link
+            key={option.dataset}
+            href={hrefFor(path, report.applied, { dataset: option.dataset })}
+            aria-current={selected ? "page" : undefined}
+            className={`inline-flex h-10 items-center rounded-lg px-3 text-sm font-semibold ${selected ? "bg-[#092451] text-white" : "bg-white text-[#092451] ring-1 ring-[#092451]/15"}`}
+          >
+            {option.label}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+function SeparationStrip({ report }: { report: ImpactReport }) {
+  return (
+    <section id="impact-separation" className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-[#092451]/10" aria-label="Demo and live separation">
+      <h2 className="text-base font-semibold text-[#092451]">Demo and live stay apart</h2>
+      <p className="mt-1 text-sm leading-6 text-[#3d4a5c]">{report.separation.note}</p>
+      <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl bg-[#f4f7fb] p-3">
+          <dt className="text-sm text-[#3d4a5c]">Demonstration fixtures</dt>
+          <dd className="mt-1 text-2xl font-semibold text-[#092451]">{showCount(report.separation.demo)}</dd>
+          <p className="mt-1 text-xs text-[#3d4a5c]">Participating residents in the demo total only.</p>
+        </div>
+        <div className="rounded-xl bg-[#f4f7fb] p-3">
+          <dt className="text-sm text-[#3d4a5c]">Live resident events</dt>
+          <dd className="mt-1 text-2xl font-semibold text-[#092451]">{showCount(report.separation.live)}</dd>
+          <p className="mt-1 text-xs text-[#3d4a5c]">Participating residents in the live total only.</p>
+        </div>
+      </dl>
     </section>
   );
 }

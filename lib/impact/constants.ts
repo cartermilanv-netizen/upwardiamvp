@@ -2,13 +2,32 @@ export const DEMO_AS_OF = "2026-10-20T23:59:59.000Z";
 export const REPORTING_MINIMUM = 11;
 export const SESSION_COOKIE = "upwardia_impact_session";
 export const SESSION_HOURS = 12;
-export const SEED_VERSION = "2";
+export const SEED_VERSION = "3";
 export const EVENT_RETENTION_DAYS = 730;
 export const OUTCOME_RETENTION_DAYS = 730;
 export const AUDIT_RETENTION_DAYS = 365;
 export const FOLLOW_UP_DAYS = 90;
 
 export const DISCLAIMER = "Demonstration data. These numbers are not actual Upwardia results.";
+export const LIVE_DISCLAIMER = "Synthetic test activity. Not real residents.";
+export const SEPARATION_NOTE = "Demonstration fixtures and live resident events are separate totals. They are not added together.";
+export const HOLDING_ORGANIZATION_ID = "org_unassigned";
+export const HOLDING_JURISDICTION_ID = "jur_unassigned";
+export const HOLDING_CITY = "Unassigned";
+export const SYNTHETIC_RESIDENT_ID = "res_synthetic_test";
+export const SYNTHETIC_EVENT_ID = "synthetic-test-action";
+export const SYNTHETIC_ACTION_ID = "action-synthetic-test";
+export const SYNTHETIC_NEED_ID = "food-groceries";
+export const INGEST_WINDOW_MS = 5 * 60 * 1000;
+export const INGEST_RATE_LIMIT = 30;
+export const INGEST_RATE_WINDOW_MS = 60 * 1000;
+export const ANALYTICS_SESSION_HOURS = 12;
+export const PUBLIC_RESIDENT_ID = /^res_[a-f0-9]{32}$/;
+
+/** Local development fallback. Not a production secret. */
+export function ingestSecret(): string {
+  return process.env.IMPACT_INGEST_SECRET || "impact-dev-ingest-secret";
+}
 
 export function plusDays(iso: string, days: number): string {
   return new Date(Date.parse(iso) + days * 24 * 60 * 60 * 1000).toISOString();

@@ -1,5 +1,6 @@
 import { BARRIER_LABELS } from "@/lib/impact/catalog";
 import { HP_ORDER } from "@/lib/impact/hp2030";
+import { needRows } from "@/lib/impact/needs";
 import { countCell, emptyCount, emptyRate, hiddenReportCells, presentRate, protectPartition } from "@/lib/impact/protect";
 import type { HealthBlock, ImpactReport, RawBucket } from "@/lib/impact/types";
 import type { RawTally } from "@/lib/impact/metrics";
@@ -61,6 +62,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
   | "participating"
   | "active7"
   | "active30"
+  | "assessmentsCompleted"
   | "assessmentCompletion"
   | "resourcesDiscovered"
   | "resourcesSaved"
@@ -76,6 +78,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
   | "weekly"
   | "monthly"
   | "categories"
+  | "needs"
   | "barriers"
   | "cities"
   | "funnel"
@@ -88,6 +91,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
       participating: hiddenCell,
       active7: hiddenCell,
       active30: hiddenCell,
+      assessmentsCompleted: hiddenCell,
       assessmentCompletion: hiddenRate,
       resourcesDiscovered: hiddenCell,
       resourcesSaved: hiddenCell,
@@ -103,6 +107,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
       weekly: [],
       monthly: [],
       categories: [],
+      needs: needRows().map((need) => ({ id: need.id, label: need.label, count: hiddenCell })),
       barriers: [],
       cities: [],
       funnel: { started: hiddenCell, draft: hiddenCell, submitted: hiddenCell, dropBeforeDraft: hiddenCell, dropBeforeSubmit: hiddenCell },
@@ -113,6 +118,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
     participating: countCell(raw.participating),
     active7: countCell(raw.active7),
     active30: countCell(raw.active30),
+    assessmentsCompleted: countCell(raw.assessmentCompleted),
     assessmentCompletion: presentRate(raw.assessmentCompleted, raw.assessmentStarted),
     resourcesDiscovered: countCell(raw.resourcesDiscovered),
     resourcesSaved: countCell(raw.resourcesSaved),
@@ -128,6 +134,7 @@ export function metricsFromTally(raw: RawTally, hidden: boolean): Pick<
     weekly: protectPartition(raw.weekly.filter((row) => row.n > 0)),
     monthly: protectPartition(raw.monthly.filter((row) => row.n > 0)),
     categories: protectPartition(raw.categories),
+    needs: protectPartition(raw.needs),
     barriers: relabel(raw.barriers, BARRIER_LABELS),
     cities: protectPartition(raw.cities),
     funnel: funnelCells(raw.funnelStarted, raw.funnelDraft, raw.funnelSubmitted),

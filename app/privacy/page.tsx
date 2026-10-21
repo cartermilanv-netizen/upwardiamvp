@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <UnfinishedPage
       title="Privacy"
-      purpose="A privacy notice will explain what stays on this device and what, if anything, is ever sent."
+      purpose="The optional aggregate analytics choice is on My profile. It is off unless you turn it on, and it does not control access to resources or the assessment. A full privacy notice is still to come."
     />
   );
 }

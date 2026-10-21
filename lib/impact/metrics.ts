@@ -1,6 +1,6 @@
 import { monthKey, monthLabel, plusDays, weekStart } from "@/lib/impact/constants";
 import { categoryLabel, objectivesForCategory, PROGRAMS } from "@/lib/impact/catalog";
-import { QUALIFYING_EVENT_TYPES, type CategoryId, type EventFact, type HpObjectiveId, type OutcomeFact, type ResidentFact } from "@/lib/impact/types";
+import { QUALIFYING_EVENT_TYPES, type CategoryId, type DatasetMode, type EventFact, type HpObjectiveId, type OutcomeFact, type ResidentFact } from "@/lib/impact/types";
 import type { BarrierFact, RawBucket } from "@/lib/impact/types";
 
 const QUALIFYING = new Set<string>(QUALIFYING_EVENT_TYPES);
@@ -19,6 +19,8 @@ export type TallyInput = {
   cities: readonly string[];
   categories: readonly CategoryId[];
   barrierIds: readonly string[];
+  dataset?: DatasetMode;
+  needs?: readonly { id: string; label: string }[];
 };
 
 export type RawHealth = {
@@ -52,6 +54,7 @@ export type RawTally = {
   weekly: RawBucket[];
   monthly: RawBucket[];
   categories: RawBucket[];
+  needs: RawBucket[];
   barriers: RawBucket[];
   cities: RawBucket[];
   funnelStarted: number;
@@ -109,15 +112,36 @@ function categoryMapsTo(category: CategoryId | null, objectiveId: HpObjectiveId)
   return objectivesForCategory(category).includes(objectiveId);
 }
 
+function eventInDataset(event: EventFact, dataset: DatasetMode): boolean {
+  if (dataset === "demo") return event.source === "demo_fixture";
+  return event.source === "resident_event" || event.source === "self_reported_outcome" || event.source === "externally_verified_outcome";
+}
+
+function outcomeInDataset(outcome: OutcomeFact, dataset: DatasetMode): boolean {
+  if (dataset === "demo") return outcome.source === "demo_fixture";
+  return outcome.source === "self_reported_outcome" || outcome.source === "externally_verified_outcome";
+}
+
+function trustedVerified(event: EventFact): boolean {
+  if (event.type !== "outcome_verified" || !event.serverConfirmed || !event.outcomeId) return false;
+  return event.source === "demo_fixture" || event.source === "externally_verified_outcome";
+}
+
 export function tally(input: TallyInput): RawTally {
+  const dataset = input.dataset ?? "demo";
   const roster = input.residents.filter((resident) => {
-    if (resident.consent !== "granted" || resident.deletedAt || resident.withdrawnAt) return false;
+    if (resident.consent !== "granted" || resident.deletedAt || resident.withdrawnAt || !resident.consentedAt) return false;
     if (input.jurisdictionId && resident.jurisdictionId !== input.jurisdictionId) return false;
     if (input.city && resident.city !== input.city) return false;
     return true;
   });
   const rosterIds = new Set(roster.map((resident) => resident.id));
-  const deduped = dedupe(input.events).filter((event) => rosterIds.has(event.residentId));
+  const consentAt = new Map(roster.map((resident) => [resident.id, resident.consentedAt ?? ""]));
+  const deduped = dedupe(input.events).filter((event) => {
+    if (!rosterIds.has(event.residentId) || !eventInDataset(event, dataset)) return false;
+    return event.occurredAt >= (consentAt.get(event.residentId) ?? "");
+  });
+  const outcomes = input.outcomes.filter((outcome) => outcomeInDataset(outcome, dataset));
   const attributeIds = new Set(
     deduped
       .filter((event) => {
@@ -165,12 +189,12 @@ export function tally(input: TallyInput): RawTally {
   );
   const submissionsConfirmed = distinct(
     qualifying
-      .filter((event) => event.type === "application_submitted_confirmed" && event.applicationId)
+      .filter((event) => event.type === "application_submitted_confirmed" && event.applicationId && event.serverConfirmed)
       .map((event) => event.applicationId ?? ""),
   );
   const goalsCompleted = distinct(qualifying.filter((event) => event.type === "goal_completed" && event.goalId).map((event) => event.goalId ?? ""));
 
-  const outcomeById = new Map(input.outcomes.map((outcome) => [outcome.id, outcome]));
+  const outcomeById = new Map(outcomes.map((outcome) => [outcome.id, outcome]));
   const reportedIds = new Set(
     qualifying.filter((event) => event.type === "outcome_reported" && event.outcomeId).map((event) => event.outcomeId ?? ""),
   );
@@ -180,7 +204,15 @@ export function tally(input: TallyInput): RawTally {
       .map((event) => event.outcomeId ?? "")
       .filter((outcomeId) => {
         const outcome = outcomeById.get(outcomeId);
-        return Boolean(outcome && outcome.evidence === "verified" && outcome.verificationMethod && outcome.verificationSource);
+        const event = events.find((item) => item.type === "outcome_verified" && item.outcomeId === outcomeId);
+        return Boolean(
+          event &&
+            trustedVerified(event) &&
+            outcome &&
+            outcome.evidence === "verified" &&
+            outcome.verificationMethod &&
+            outcome.verificationSource,
+        );
       }),
   );
 
@@ -227,7 +259,12 @@ export function tally(input: TallyInput): RawTally {
 
   const allowed = objectivesInFilter(input.category, input.programId);
   const healthObjectives: HpObjectiveId[] = ["AHS-07", "NWS-01", "AHS-04", "SDOH-01"];
-  const health = healthObjectives.map((objectiveId) => healthFor(objectiveId, allowed, healthRoster, qualifying, input.outcomes));
+  const needs = (input.needs ?? []).map((need) => ({
+    id: need.id,
+    label: need.label,
+    n: distinct(qualifying.filter((event) => event.needId === need.id).map((event) => event.residentId)),
+  }));
+  const health = healthObjectives.map((objectiveId) => healthFor(objectiveId, allowed, healthRoster, qualifying, outcomes, deduped));
 
   return {
     participating: participants.length,
@@ -248,6 +285,7 @@ export function tally(input: TallyInput): RawTally {
     weekly,
     monthly,
     categories,
+    needs,
     barriers,
     cities,
     funnelStarted: applicationsStarted,
@@ -263,6 +301,7 @@ function healthFor(
   roster: readonly ResidentFact[],
   qualifying: readonly EventFact[],
   outcomes: readonly OutcomeFact[],
+  verificationEvents: readonly EventFact[],
 ): RawHealth {
   const inFilter = allowed === "all" || allowed.includes(objectiveId);
   if (!inFilter) {
@@ -297,10 +336,13 @@ function healthFor(
     qualifying
       .filter(
         (event) =>
-          (event.type === "action_completed" || event.type === "application_submitted_confirmed") &&
+          (event.type === "action_completed" || (event.type === "application_submitted_confirmed" && event.serverConfirmed)) &&
           categoryMapsTo(event.category, objectiveId),
       )
       .map((event) => event.residentId),
+  );
+  const verifiedIds = new Set(
+    verificationEvents.filter((event) => trustedVerified(event) && event.outcomeId).map((event) => event.outcomeId ?? ""),
   );
   return {
     objectiveId,
@@ -311,6 +353,13 @@ function healthFor(
     engagement,
     intermediate,
     selfReported: pairs.filter((pair) => pair.follow?.evidence === "self_reported").length,
-    verified: pairs.filter((pair) => pair.follow?.evidence === "verified" && pair.follow.verificationMethod && pair.follow.verificationSource).length,
+    verified: pairs.filter(
+      (pair) =>
+        pair.follow &&
+        verifiedIds.has(pair.follow.id) &&
+        pair.follow.evidence === "verified" &&
+        pair.follow.verificationMethod &&
+        pair.follow.verificationSource,
+    ).length,
   };
 }

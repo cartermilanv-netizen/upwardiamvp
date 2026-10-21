@@ -6,6 +6,7 @@ import {
   resourceFor,
 } from "@/lib/impact/catalog";
 import { idempotencyKey } from "@/lib/impact/idempotency";
+import { needForImpactCategory } from "@/lib/impact/needs";
 import { assertVerification } from "@/lib/impact/verify";
 import type {
   ActionFact,
@@ -81,9 +82,19 @@ function indicator(n: number, objective: HpObjectiveId, phase: "baseline" | "fol
   return (n + salt) % 7 < 5 ? "positive" : "negative";
 }
 
-function pushEvent(events: EventFact[], event: Omit<EventFact, "dedupeKey" | "source"> & { source?: EventFact["source"] }): void {
-  const dedupeKey = idempotencyKey(event);
-  events.push({ ...event, dedupeKey, source: "demo_fixture" });
+function pushEvent(events: EventFact[], event: Omit<EventFact, "dedupeKey" | "source" | "serverConfirmed"> & { serverConfirmed?: boolean }): void {
+  const needId =
+    event.needId ??
+    (event.category && (event.type === "resource_viewed" || event.type === "resource_saved") ? needForImpactCategory(event.category) : null);
+  const row: EventFact = {
+    ...event,
+    needId,
+    serverConfirmed: event.type === "outcome_verified" || event.type === "application_submitted_confirmed",
+    source: "demo_fixture",
+    dedupeKey: "",
+  };
+  row.dedupeKey = idempotencyKey(row);
+  events.push(row);
 }
 
 export function buildDemoDataset(asOf = DEMO_AS_OF): DemoDataset {
@@ -311,6 +322,7 @@ function addOutcomePair(
     followUpIntervalDays: FOLLOW_UP_DAYS,
     consent: "granted",
     evidence: "self_reported",
+    source: "demo_fixture",
     verificationMethod: null,
     verificationSource: null,
     recordedOn: plusDays(when, -FOLLOW_UP_DAYS),
@@ -330,6 +342,7 @@ function addOutcomePair(
     followUpIntervalDays: FOLLOW_UP_DAYS,
     consent: "granted",
     evidence: followEvidence,
+    source: "demo_fixture",
     verificationMethod: method,
     verificationSource: source,
     recordedOn: when,
@@ -377,6 +390,7 @@ function addExtraOutcome(
     followUpIntervalDays: FOLLOW_UP_DAYS,
     consent: "granted",
     evidence: "self_reported",
+    source: "demo_fixture",
     verificationMethod: null,
     verificationSource: null,
     recordedOn: when,
@@ -403,6 +417,8 @@ function baseEvent(
     resourceId: null,
     programId: null,
     category: null,
+    needId: null,
+    serverConfirmed: false,
     goalId: null,
     actionId: null,
     applicationId: null,

@@ -3,6 +3,7 @@ export const EVENT_TYPES = [
   "assessment_completed",
   "resource_viewed",
   "resource_saved",
+  "need_selected",
   "chat_session_started",
   "action_started",
   "action_completed",
@@ -21,6 +22,7 @@ export const QUALIFYING_EVENT_TYPES = [
   "assessment_completed",
   "resource_viewed",
   "resource_saved",
+  "need_selected",
   "chat_session_started",
   "action_started",
   "action_completed",
@@ -62,7 +64,10 @@ export type ApplicationStatus = "started" | "draft_saved" | "submitted_confirmed
 export type EvidenceKind = "self_reported" | "verified";
 export type OutcomePhase = "baseline" | "follow_up";
 export type Indicator = "positive" | "negative";
-export type EventSource = "demo_fixture";
+export const EVENT_SOURCES = ["demo_fixture", "resident_event", "self_reported_outcome", "externally_verified_outcome"] as const;
+export type EventSource = (typeof EVENT_SOURCES)[number];
+export type OutcomeSource = "demo_fixture" | "self_reported_outcome" | "externally_verified_outcome";
+export type DatasetMode = "demo" | "live";
 
 export type Principal = {
   userId: string;
@@ -97,6 +102,8 @@ export type EventFact = {
   resourceId: string | null;
   programId: string | null;
   category: CategoryId | null;
+  needId: string | null;
+  serverConfirmed: boolean;
   goalId: string | null;
   actionId: string | null;
   applicationId: string | null;
@@ -117,6 +124,7 @@ export type OutcomeFact = {
   followUpIntervalDays: number;
   consent: "granted";
   evidence: EvidenceKind;
+  source: OutcomeSource;
   verificationMethod: string | null;
   verificationSource: string | null;
   recordedOn: string;
@@ -192,6 +200,7 @@ export type AppliedFilters = {
   programId: string | null;
   category: CategoryId | null;
   range: RangePreset;
+  dataset: DatasetMode;
 };
 
 export type FilterOption = { id: string; label: string };
@@ -207,9 +216,23 @@ export type HealthBlock = {
   followUp: RateCell;
 };
 
+export type SyntheticActivity = {
+  eventType: "action_started";
+  needId: string;
+  needLabel: string;
+  summary: string;
+};
+
 export type ImpactReport = {
-  demonstration: true;
+  demonstration: boolean;
+  dataset: DatasetMode;
   disclaimer: string;
+  separation: {
+    demo: CountCell;
+    live: CountCell;
+    note: string;
+  };
+  syntheticActivity: SyntheticActivity | null;
   asOf: string;
   role: ImpactRole;
   scopeLabel: string;
@@ -221,6 +244,7 @@ export type ImpactReport = {
   participating: CountCell;
   active7: CountCell;
   active30: CountCell;
+  assessmentsCompleted: CountCell;
   assessmentCompletion: RateCell;
   resourcesDiscovered: CountCell;
   resourcesSaved: CountCell;
@@ -236,6 +260,7 @@ export type ImpactReport = {
   weekly: LabeledCount[];
   monthly: LabeledCount[];
   categories: LabeledCount[];
+  needs: LabeledCount[];
   barriers: LabeledCount[];
   cities: LabeledCount[];
   funnel: {

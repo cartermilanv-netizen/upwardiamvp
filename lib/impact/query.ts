@@ -1,5 +1,5 @@
 import { DEMO_AS_OF, rangeEnding } from "@/lib/impact/constants";
-import { CATEGORY_IDS, type AppliedFilters, type CategoryId, type Principal, type RangePreset } from "@/lib/impact/types";
+import { CATEGORY_IDS, type AppliedFilters, type CategoryId, type DatasetMode, type Principal, type RangePreset } from "@/lib/impact/types";
 
 export type RawQuery = Record<string, string | string[] | undefined>;
 
@@ -19,7 +19,9 @@ function isDay(value: string): boolean {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00.000Z`));
 }
 
-export function parseFilters(raw: RawQuery, principal: Principal, directory: Directory, asOf = DEMO_AS_OF): AppliedFilters {
+export function parseFilters(raw: RawQuery, principal: Principal, directory: Directory, nowIso = new Date().toISOString()): AppliedFilters {
+  const dataset: DatasetMode = first(raw.dataset) === "live" ? "live" : "demo";
+  const asOf = dataset === "live" ? nowIso : DEMO_AS_OF;
   const requested = first(raw.range);
   let range: RangePreset = "90";
   let window = rangeEnding(asOf, 90);
@@ -53,7 +55,7 @@ export function parseFilters(raw: RawQuery, principal: Principal, directory: Dir
     jurisdictionId = principal.jurisdictionId;
   }
 
-  return { from: window.from, to: window.to, city, jurisdictionId, programId, category, range };
+  return { from: window.from, to: window.to, city, jurisdictionId, programId, category, range, dataset };
 }
 
 export function filtersToQuery(filters: AppliedFilters, patch: Partial<AppliedFilters> = {}): string {
@@ -69,6 +71,7 @@ export function filtersToQuery(filters: AppliedFilters, patch: Partial<AppliedFi
   if (next.jurisdictionId) params.set("jurisdiction", next.jurisdictionId);
   if (next.programId) params.set("program", next.programId);
   if (next.category) params.set("category", next.category);
+  params.set("dataset", next.dataset);
   const query = params.toString();
   return query ? `?${query}` : "";
 }

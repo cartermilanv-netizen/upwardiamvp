@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { getApplicationSnapshot, getServerApplicationSnapshot, subscribeApplications } from "@/lib/applications/store";
 import { routes } from "@/lib/site";
 
@@ -20,6 +21,7 @@ export function ProfileView() {
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-4 py-8 sm:py-12">
       <p className="text-sm font-semibold tracking-wide text-[#092451] uppercase">Demonstration profile</p>
       <h1 className="text-3xl font-semibold tracking-tight text-[#092451]">My profile</h1>
+      <AnalyticsConsent />
       <p className="text-base leading-relaxed text-stone-700">
         Avery Example is a made-up person. This profile lives in the application mock for this session. It is not saved in this browser, and it is not used on an application until that application asks for consent.
       </p>
