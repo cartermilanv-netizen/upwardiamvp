@@ -9,6 +9,11 @@ Upwardia Impact is a separate signed-in analytics route at `/impact`. It is not 
 ## Routes
 
 - `/` homepage
+- `/journey` My Journey for the fictional resident Avery Example
+- `/goals` goals and smaller tasks
+- `/actions` steps, including complete, skip, postpone, and stuck
+- `/rewards` fictional reward pilot (not real money, no payment)
+- `/notifications` in-app reminders only
 - `/resources` category browsing
 - `/assessment` household assessment
 - `/plan` personalized results after an assessment is saved on this device
@@ -16,6 +21,8 @@ Upwardia Impact is a separate signed-in analytics route at `/impact`. It is not 
 - `/profile` demonstration profile for those drafts, including the optional aggregate-analytics choice. It is off unless the resident turns it on. Explore Resources and the assessment do not depend on that choice.
 - `/ask` Ask Upwardia. Questions go to `POST /api/chat` and the OpenAI Responses API. The assistant may cite only published catalog facts. The key is `OPENAI_API_KEY` on the server. Assessment answers, profile fields, and application drafts are not sent. Upwardia prepares an application and does not submit one.
 - `/impact` Upwardia Impact, a separate signed-in demonstration dashboard. It is not linked from the resident navigation.
+
+My Journey reads the existing application drafts and the on-device assessment. It does not copy them, and it does not send analytics events. Reward amounts are a labeled demonstration. Nothing is paid.
 
 Privacy, accessibility, and contact links in the footer are placeholders. Each page is labeled “Not finished.”
 

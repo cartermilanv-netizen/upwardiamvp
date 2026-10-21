@@ -1,0 +1,306 @@
+import { DEMO_DAY, DEFAULT_MONTHLY_CAP, EXAMPLE_MILESTONE_DOLLARS, JOURNEY_RESIDENT_ID } from "@/lib/journey/constants";
+import { defaultPreferences, derivedProgress, sampleCampaign, stamp } from "@/lib/journey/logic";
+import type { JourneyAction, JourneyGoal, JourneyNotice, JourneyReward, JourneyState } from "@/lib/journey/types";
+
+function goal(
+  partial: Pick<JourneyGoal, "id" | "domain" | "title" | "priority" | "choice" | "source"> & { createdOn: string },
+): JourneyGoal {
+  const { createdOn, ...fields } = partial;
+  return {
+    ...fields,
+    residentId: JOURNEY_RESIDENT_ID,
+    progress: 0,
+    programId: null,
+    outcomeReported: false,
+    history: [{ at: stamp(createdOn, 12), choice: "active", progress: 0, note: "Goal started." }],
+    createdAt: stamp(createdOn, 12),
+    updatedAt: stamp(DEMO_DAY),
+  };
+}
+
+function action(partial: Pick<JourneyAction, "id" | "goalId" | "description" | "type" | "status"> & Partial<JourneyAction>): JourneyAction {
+  return {
+    residentId: JOURNEY_RESIDENT_ID,
+    programId: null,
+    campaignId: null,
+    residentChoice: "none",
+    dueDate: null,
+    completionDate: null,
+    verificationMethod: "none",
+    verificationStatus: "not_required",
+    eligibleRewardAmount: 0,
+    instructionSource: "demonstration",
+    countsAsOutcome: false,
+    exclusion: null,
+    createdAt: stamp("2026-10-01", 12),
+    ...partial,
+  };
+}
+
+export function createSeed(): JourneyState {
+  const goals: JourneyGoal[] = [
+    goal({ id: "goal-food", domain: "food", title: "Keep groceries on hand", priority: true, choice: "active", source: "manual", createdOn: "2026-10-01" }),
+    goal({ id: "goal-housing", domain: "housing", title: "Work toward a stable place to stay", priority: true, choice: "active", source: "manual", createdOn: "2026-10-01" }),
+    goal({ id: "goal-health", domain: "healthcare", title: "Find a usual place for care", priority: false, choice: "active", source: "manual", createdOn: "2026-10-03" }),
+    goal({ id: "goal-money", domain: "financial_stability", title: "Make a plan for this month's bills", priority: false, choice: "active", source: "manual", createdOn: "2026-10-04" }),
+    goal({ id: "goal-education", domain: "education", title: "Look at one training option", priority: false, choice: "active", source: "manual", createdOn: "2026-10-05" }),
+    goal({ id: "goal-employment", domain: "employment", title: "Prepare a one-page work history", priority: false, choice: "stuck", source: "manual", createdOn: "2026-10-02" }),
+    goal({ id: "goal-transport", domain: "transportation", title: "Find a reliable way to appointments", priority: false, choice: "active", source: "manual", createdOn: "2026-10-06" }),
+    goal({ id: "goal-digital", domain: "digital_access", title: "Use a computer for forms", priority: false, choice: "completed", source: "manual", createdOn: "2026-10-08" }),
+  ];
+
+  const actions: JourneyAction[] = [
+    action({
+      id: "act-food-questions",
+      goalId: "goal-food",
+      description: "Write three questions to ask before you call a food program.",
+      type: "preparation",
+      status: "not_started",
+      dueDate: DEMO_DAY,
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-food-milestone",
+      goalId: "goal-food",
+      description: "Check off the first food milestone for this month.",
+      type: "milestone",
+      status: "pending_verification",
+      residentChoice: "complete",
+      dueDate: DEMO_DAY,
+      completionDate: DEMO_DAY,
+      campaignId: "campaign-harborlight",
+      verificationMethod: "partner_review",
+      verificationStatus: "pending",
+      eligibleRewardAmount: EXAMPLE_MILESTONE_DOLLARS,
+    }),
+    action({
+      id: "act-housing-verified",
+      goalId: "goal-housing",
+      description: "Review a housing checklist you saved for yourself.",
+      type: "milestone",
+      status: "verified",
+      residentChoice: "complete",
+      dueDate: "2026-10-19",
+      completionDate: "2026-10-19",
+      campaignId: "campaign-harborlight",
+      verificationMethod: "partner_review",
+      verificationStatus: "verified",
+      eligibleRewardAmount: EXAMPLE_MILESTONE_DOLLARS,
+    }),
+    action({
+      id: "act-housing-open",
+      goalId: "goal-housing",
+      description: "List two questions about a lease.",
+      type: "task",
+      status: "not_started",
+      dueDate: "2026-10-28",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-transport-today",
+      goalId: "goal-transport",
+      description: "Look up one way to get to an appointment.",
+      type: "task",
+      status: "in_progress",
+      dueDate: DEMO_DAY,
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-transport-done",
+      goalId: "goal-transport",
+      description: "Write down the bus or ride you can use.",
+      type: "preparation",
+      status: "completed_self_reported",
+      residentChoice: "complete",
+      dueDate: "2026-10-14",
+      completionDate: "2026-10-14",
+      verificationMethod: "self_report",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-digital-verified",
+      goalId: "goal-digital",
+      description: "Practice signing in on a shared computer.",
+      type: "milestone",
+      status: "verified",
+      residentChoice: "complete",
+      dueDate: "2026-10-18",
+      completionDate: "2026-10-18",
+      campaignId: "campaign-harborlight",
+      verificationMethod: "partner_review",
+      verificationStatus: "verified",
+      eligibleRewardAmount: EXAMPLE_MILESTONE_DOLLARS,
+    }),
+    action({
+      id: "act-employ-verified",
+      goalId: "goal-employment",
+      description: "Finish a one-page work history for yourself.",
+      type: "milestone",
+      status: "verified",
+      residentChoice: "complete",
+      dueDate: "2026-10-20",
+      completionDate: "2026-10-20",
+      campaignId: "campaign-northline",
+      verificationMethod: "partner_review",
+      verificationStatus: "verified",
+      eligibleRewardAmount: EXAMPLE_MILESTONE_DOLLARS,
+    }),
+    action({
+      id: "act-employ-open",
+      goalId: "goal-employment",
+      description: "Ask someone to read that work history.",
+      type: "task",
+      status: "not_started",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-health-open",
+      goalId: "goal-health",
+      description: "Write the name of a clinic you want to call.",
+      type: "task",
+      status: "not_started",
+      dueDate: "2026-10-24",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-edu-prep",
+      goalId: "goal-education",
+      description: "Pick one training topic to read about. This is preparation, not a finished outcome.",
+      type: "preparation",
+      status: "not_started",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-money-done",
+      goalId: "goal-money",
+      description: "List the bills that are due this month. The list stays on this screen.",
+      type: "preparation",
+      status: "completed_self_reported",
+      residentChoice: "complete",
+      dueDate: "2026-10-12",
+      completionDate: "2026-10-12",
+      verificationMethod: "self_report",
+      instructionSource: "resident",
+    }),
+    action({
+      id: "act-money-open",
+      goalId: "goal-money",
+      description: "Choose one bill to handle first.",
+      type: "task",
+      status: "not_started",
+      dueDate: "2026-10-30",
+      instructionSource: "resident",
+    }),
+  ];
+
+  const progressed = goals.map((item) => {
+    const progress = item.choice === "completed" ? 100 : derivedProgress(actions, item.id);
+    if (progress === 0) return item;
+    return {
+      ...item,
+      progress,
+      history: [...item.history, { at: stamp(DEMO_DAY), choice: item.choice, progress, note: "Progress so far. Preparatory steps are not outcomes." }],
+    };
+  });
+
+  const rewards: JourneyReward[] = [
+    {
+      id: "reward-act-digital-verified",
+      residentId: JOURNEY_RESIDENT_ID,
+      actionId: "act-digital-verified",
+      campaignId: "campaign-harborlight",
+      amountDollars: EXAMPLE_MILESTONE_DOLLARS,
+      status: "issued",
+      month: "2026-10",
+      demonstration: true,
+      createdAt: stamp("2026-10-18"),
+    },
+    {
+      id: "reward-act-housing-verified",
+      residentId: JOURNEY_RESIDENT_ID,
+      actionId: "act-housing-verified",
+      campaignId: "campaign-harborlight",
+      amountDollars: EXAMPLE_MILESTONE_DOLLARS,
+      status: "approved",
+      month: "2026-10",
+      demonstration: true,
+      createdAt: stamp("2026-10-19"),
+    },
+    {
+      id: "reward-act-employ-verified",
+      residentId: JOURNEY_RESIDENT_ID,
+      actionId: "act-employ-verified",
+      campaignId: "campaign-northline",
+      amountDollars: EXAMPLE_MILESTONE_DOLLARS,
+      status: "pending",
+      month: "2026-10",
+      demonstration: true,
+      createdAt: stamp("2026-10-20"),
+    },
+  ];
+
+  const notifications: JourneyNotice[] = [
+    {
+      id: "notice-task-food",
+      residentId: JOURNEY_RESIDENT_ID,
+      kind: "task_reminder",
+      title: "A food step is due today",
+      body: "Write three questions before you call a food program.",
+      href: "/actions",
+      read: false,
+      dismissed: false,
+      createdAt: stamp(DEMO_DAY, 8),
+    },
+    {
+      id: "notice-app-harbor",
+      residentId: JOURNEY_RESIDENT_ID,
+      kind: "application_prep",
+      title: "Harbor Pantry Box still needs a review",
+      body: "The demonstration draft is in progress. Open it in My Applications. Answers stay in that draft.",
+      href: "/applications/draft-harbor",
+      read: false,
+      dismissed: false,
+      createdAt: stamp(DEMO_DAY, 9),
+    },
+    {
+      id: "notice-goal-transport",
+      residentId: JOURNEY_RESIDENT_ID,
+      kind: "goal_milestone",
+      title: "Transportation is halfway",
+      body: "One preparation step is checked off. That step is not an outcome.",
+      href: "/goals",
+      read: true,
+      dismissed: false,
+      createdAt: stamp("2026-10-14"),
+    },
+    {
+      id: "notice-reward-employ",
+      residentId: JOURNEY_RESIDENT_ID,
+      kind: "reward_verification",
+      title: "A demonstration reward is waiting",
+      body: "The work-history milestone is verified and the reward is pending. This is not a payment.",
+      href: "/rewards",
+      read: false,
+      dismissed: false,
+      createdAt: stamp("2026-10-20"),
+    },
+  ];
+
+  return {
+    residentId: JOURNEY_RESIDENT_ID,
+    residentMonthlyCapDollars: DEFAULT_MONTHLY_CAP,
+    goalSeq: 20,
+    actionSeq: 40,
+    noticeSeq: 40,
+    goals: progressed,
+    actions,
+    rewards,
+    campaigns: [
+      sampleCampaign("campaign-harborlight", "Harborlight Neighbor Fund", 25),
+      sampleCampaign("campaign-northline", "Northline Community Partners", 15),
+    ],
+    notifications,
+    preferences: defaultPreferences(),
+    rewardNotice: null,
+  };
+}

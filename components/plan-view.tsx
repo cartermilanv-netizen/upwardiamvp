@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { rebuildToday } from "@/lib/actions";
 import { residentCatalog } from "@/lib/catalog";
 import { formatLocalDate } from "@/lib/dates";
+import { noteSavedProgramRemoved } from "@/lib/journey/store";
 import { programDetailHref, programTypeLabel, needsForProgram } from "@/lib/resources";
 import { assessmentPresence, prominentCta, routes } from "@/lib/site";
 import { parseSavedProgramIds, readSavedResourcesRaw, setProgramSaved, subscribeSavedResources } from "@/lib/saved-resources";
@@ -39,7 +40,10 @@ function SavedPrograms() {
                 </Link>
                 <button
                   type="button"
-                  onClick={() => setProgramSaved(entry.id, false)}
+                  onClick={() => {
+                    setProgramSaved(entry.id, false);
+                    noteSavedProgramRemoved(entry.id, entry.name);
+                  }}
                   className="inline-flex h-11 items-center justify-center rounded-lg border border-[#092451] px-3 text-sm font-semibold text-[#092451]"
                 >
                   Remove
@@ -65,6 +69,11 @@ export function PlanView() {
     return (
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-10">
         <h1 className="text-3xl font-semibold tracking-tight text-[#092451]">My plan</h1>
+        <p className="text-sm">
+          <Link href={routes.journey} className="font-semibold text-[#092451] underline-offset-4 hover:underline">
+            My Journey
+          </Link>
+        </p>
         <p className="text-base leading-relaxed text-stone-700">
           {hasSavedResources
             ? "Saved resources stay on this device. A household plan appears after the assessment."
@@ -93,6 +102,11 @@ export function PlanView() {
     <main className="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 py-8">
       <div>
         <h1 className="text-3xl font-semibold tracking-tight text-[#092451]">My plan</h1>
+        <p className="mt-1 text-sm">
+          <Link href={routes.journey} className="font-semibold text-[#092451] underline-offset-4 hover:underline">
+            Back to My Journey
+          </Link>
+        </p>
         <p className="mt-2 text-base leading-relaxed text-stone-700">
           These steps come from the assessment saved on this device. We will not guess programs.
         </p>

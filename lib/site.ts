@@ -6,6 +6,11 @@ export const routes = {
   assessment: "/assessment",
   resources: "/resources",
   plan: "/plan",
+  journey: "/journey",
+  goals: "/goals",
+  actions: "/actions",
+  rewards: "/rewards",
+  notifications: "/notifications",
   applications: "/applications",
   profile: "/profile",
   ask: "/ask",
@@ -32,28 +37,31 @@ export const howItWorks = [
   { title: "Take Action", body: "Work through a few small steps. Your progress stays on this device." },
 ] as const;
 
-export const desktopNav = [
-  { href: routes.home, label: "Home" },
-  { href: routes.resources, label: "Find Resources" },
+export const memberNav = [
+  { href: routes.journey, label: "My Journey" },
+  { href: routes.goals, label: "My Goals" },
+  { href: routes.actions, label: "My Actions" },
   { href: routes.applications, label: "My Applications" },
+  { href: routes.rewards, label: "My Rewards" },
+  { href: routes.notifications, label: "Notifications" },
+  { href: routes.profile, label: "My Profile" },
+] as const;
+
+export const reachNav = [
+  { href: routes.resources, label: "Explore Resources" },
+  { href: routes.ask, label: "Ask Upwardia" },
   { href: routes.assessment, label: "My Assessment" },
   { href: routes.plan, label: "My Plan" },
-  { href: routes.profile, label: "My Profile" },
-  { href: routes.ask, label: "Ask Upwardia" },
   { href: routes.about, label: "About" },
 ] as const;
 
-export const mobileNav = [
-  { href: routes.home, label: "Home" },
-  { href: routes.resources, label: "Resources" },
-  { href: routes.assessment, label: "Assessment" },
-  { href: routes.plan, label: "My Plan" },
-] as const;
+export const desktopNav = [...memberNav, ...reachNav] as const;
 
-/** Links that belong in the mobile menu because the bottom bar does not already show them. */
+export const mobileNav = memberNav;
+
+/** Links that belong in the mobile menu because the member bar does not already show them. */
 export function mobileMenuLinks() {
-  const bottom = new Set<string>(mobileNav.map((item) => item.href));
-  return desktopNav.filter((item) => !bottom.has(item.href));
+  return [{ href: routes.home, label: "Home" }, ...reachNav];
 }
 
 export const footerLinks = [

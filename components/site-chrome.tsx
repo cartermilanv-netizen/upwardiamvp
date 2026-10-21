@@ -1,16 +1,16 @@
 "use client";
 
-import { ClipboardList, Home, Library, ListChecks, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState, useSyncExternalStore } from "react";
 import { buttonVariants } from "@/components/ui/button";
+import { visibleNotices } from "@/lib/journey/logic";
+import { getJourneySnapshot, getServerJourneySnapshot, subscribeJourney } from "@/lib/journey/store";
 import { parseStored, readPrototypeRaw, subscribePrototype } from "@/lib/storage";
 import { assessmentPresence, desktopNav, footerLinks, mobileMenuLinks, mobileNav, prominentCta, routes } from "@/lib/site";
 import { cn } from "@/lib/utils";
-
-const mobileIcons = [Home, Library, ClipboardList, ListChecks] as const;
 
 function sectionCurrent(pathname: string, href: string): boolean {
   if (href === "/" || href.startsWith("/#")) return pathname === href;
@@ -52,6 +52,11 @@ function usePresence() {
   return assessmentPresence(saved?.assessment ?? null);
 }
 
+function useUnreadCount(): number {
+  const state = useSyncExternalStore(subscribeJourney, getJourneySnapshot, getServerJourneySnapshot);
+  return visibleNotices(state).filter((notice) => !notice.read).length;
+}
+
 function BrandLockup({ compact = false }: { compact?: boolean }) {
   return (
     <Link href={routes.home} className="flex items-center gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none">
@@ -64,6 +69,7 @@ function BrandLockup({ compact = false }: { compact?: boolean }) {
 function SiteHeader() {
   const pathname = usePathname();
   const presence = usePresence();
+  const unread = useUnreadCount();
   const cta = prominentCta(presence);
   const menuId = useId();
   const [menuPath, setMenuPath] = useState<string | null>(null);
@@ -81,22 +87,28 @@ function SiteHeader() {
 
   return (
     <header className="z-30 shrink-0 border-b border-[#e4e0d8] bg-[#f4f1ea]/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-3">
         <BrandLockup compact />
-        <nav aria-label="Primary" className="hidden items-center justify-end gap-1 md:flex md:flex-wrap">
-          {desktopNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={sectionCurrent(pathname, item.href) ? "page" : undefined}
-              className={cn(
-                "rounded-lg px-3 py-2 text-sm font-medium text-[#092451] hover:bg-white focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none",
-                sectionCurrent(pathname, item.href) && "bg-white",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav aria-label="Primary" className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-1 md:flex">
+          {desktopNav.map((item) => {
+            const current = sectionCurrent(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={current ? "page" : undefined}
+                className={cn(
+                  "shrink-0 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-[#092451] hover:bg-white focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none",
+                  current && "bg-[#FFC928]",
+                )}
+              >
+                {item.label}
+                {item.href === routes.notifications && unread > 0 ? (
+                  <span className="ml-1 inline-flex min-w-5 items-center justify-center rounded-full bg-[#092451] px-1 text-xs text-white">{unread}</span>
+                ) : null}
+              </Link>
+            );
+          })}
           {cta && (
             <Link href={cta.href} className={cn(buttonVariants(), "ml-2 h-10 px-4 text-sm")}>
               {cta.label}
@@ -146,24 +158,26 @@ function SiteHeader() {
 
 function MobileNav() {
   const pathname = usePathname();
+  const unread = useUnreadCount();
   return (
-    <nav aria-label="Sections" className="z-40 shrink-0 border-t border-[#e4e0d8] bg-white md:hidden">
-      <ul className="mx-auto grid h-16 max-w-lg grid-cols-4">
-        {mobileNav.map((item, index) => {
-          const Icon = mobileIcons[index] ?? Home;
+    <nav aria-label="Member" className="z-40 shrink-0 border-t border-[#e4e0d8] bg-white md:hidden">
+      <ul className="flex gap-1 overflow-x-auto px-2 py-2">
+        {mobileNav.map((item) => {
           const current = sectionCurrent(pathname, item.href);
           return (
-            <li key={item.href}>
+            <li key={item.href} className="shrink-0">
               <Link
                 href={item.href}
                 aria-current={current ? "page" : undefined}
                 className={cn(
-                  "flex h-full flex-col items-center justify-center gap-1 text-xs font-medium text-[#092451] focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none",
-                  current && "bg-[#f4f1ea]",
+                  "inline-flex h-11 items-center rounded-full px-3 text-sm font-medium whitespace-nowrap text-[#092451] focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:outline-none",
+                  current ? "bg-[#FFC928]" : "bg-[#f4f1ea]",
                 )}
               >
-                <Icon aria-hidden className="size-5" />
                 {item.label}
+                {item.href === routes.notifications && unread > 0 ? (
+                  <span className="ml-1 inline-flex min-w-5 items-center justify-center rounded-full bg-[#092451] px-1 text-xs text-white">{unread}</span>
+                ) : null}
               </Link>
             </li>
           );

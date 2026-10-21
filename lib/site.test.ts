@@ -7,6 +7,7 @@ import {
   assessmentPresence,
   desktopNav,
   hero,
+  memberNav,
   mobileMenuLinks,
   mobileNav,
   prominentCta,
@@ -65,21 +66,40 @@ describe("public site navigation", () => {
   it("keeps the assessment on its own route and points the homepage there", () => {
     expect(routes.home).toBe("/");
     expect(routes.assessment).toBe("/assessment");
+    expect(routes.journey).toBe("/journey");
+    expect(routes.goals).toBe("/goals");
+    expect(routes.actions).toBe("/actions");
+    expect(routes.rewards).toBe("/rewards");
+    expect(routes.notifications).toBe("/notifications");
     expect(hero.primaryHref).toBe(routes.assessment);
     expect(hero.primaryLabel).toBe("Find My Resources");
     expect(hero.secondaryHref).toBe("/resources");
+    expect(memberNav.map((item) => item.label)).toEqual([
+      "My Journey",
+      "My Goals",
+      "My Actions",
+      "My Applications",
+      "My Rewards",
+      "Notifications",
+      "My Profile",
+    ]);
+    expect(memberNav.map((item) => item.href)).toEqual(["/journey", "/goals", "/actions", "/applications", "/rewards", "/notifications", "/profile"]);
     expect(desktopNav.map((item) => item.href)).toEqual([
-      "/",
-      "/resources",
+      "/journey",
+      "/goals",
+      "/actions",
       "/applications",
+      "/rewards",
+      "/notifications",
+      "/profile",
+      "/resources",
+      "/ask",
       "/assessment",
       "/plan",
-      "/profile",
-      "/ask",
       "/#about",
     ]);
-    expect(mobileNav.map((item) => item.label)).toEqual(["Home", "Resources", "Assessment", "My Plan"]);
-    expect(mobileMenuLinks().map((item) => item.href)).toEqual(["/applications", "/profile", "/ask", "/#about"]);
+    expect(mobileNav.map((item) => item.label)).toEqual(memberNav.map((item) => item.label));
+    expect(mobileMenuLinks().map((item) => item.href)).toEqual(["/", "/resources", "/ask", "/assessment", "/plan", "/#about"]);
     const residentHrefs = [...desktopNav, ...mobileNav, ...mobileMenuLinks()].map((item) => item.href);
     expect(residentHrefs.some((href) => href.startsWith("/impact"))).toBe(false);
   });

@@ -67,7 +67,7 @@ export function ProgramDetail({ programId }: { programId: string }) {
         <p className="mt-2 text-sm text-stone-600">Last verified {verifiedDate(entry.lastVerified)}.</p>
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        <SaveProgramButton programId={entry.id} />
+        <SaveProgramButton programId={entry.id} name={entry.name} categories={entry.categories} />
         <Link
           href={askAboutProgramHref(entry.id)}
           className="inline-flex h-11 items-center justify-center rounded-xl bg-[#092451] px-4 text-sm font-semibold text-white focus-visible:ring-2 focus-visible:ring-[#092451] focus-visible:ring-offset-2 focus-visible:outline-none"
